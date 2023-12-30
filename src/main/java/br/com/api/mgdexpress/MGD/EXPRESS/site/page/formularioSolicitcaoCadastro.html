@@ -73,9 +73,9 @@
         var formulario = document.getElementById('registroForm');
         var formData = new FormData(formulario);
 
-        fetch('https://mgdexpressapi-production.up.railway.app/gerente/temporario', {
+        fetch('https://mgdexpress-production.up.railway.app/gerente-temporario', {
             method: 'POST',
-            body: formData
+            body:  JSON.stringify(Object.fromEntries(formData)),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -84,16 +84,9 @@
             if (!response.ok) {
                 throw new Error('Erro na solicitação');
             }
-            return response.json();
+           window.location.href = 'https://mgdexpress-production.up.railway.app/site/gerente/cadastro/pendente'
+
         })
-        .then(data => {
-            // Manipular a resposta aqui, se necessário
-            console.log(data);
-            window.location.href = 'https://mgdexpressapi-production.up.railway.app/site/gerente/cadastro/pendente'
-        })
-        .catch(error => {
-            console.error('Erro na solicitação fetch:', error);
-        });
     }
 </script>
 

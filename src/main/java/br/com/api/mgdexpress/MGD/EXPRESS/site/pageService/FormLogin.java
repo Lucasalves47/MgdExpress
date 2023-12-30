@@ -68,7 +68,7 @@ public class FormLogin {
                               <button type="button" onclick="login()">Login</button>
                       
                               <!-- Adiciona a tag 'a' ao lado do botão -->
-                              <a href="https://mgdexpressapi-production.up.railway.app/site/gerente/solicitacao/cadastro">cadastre-se</a>
+                              <a href="https://mgdexpress-production.up.railway.app/site/gerente/solicitacao/cadastro">cadastre-se</a>
                           </form>
                       </div>
                 """;

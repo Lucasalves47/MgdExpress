@@ -22,11 +22,13 @@ public class MainHtml {
                        
                        <script>
                        
-                           var url = "https://mgdexpressapi-production.up.railway.app/site/gerente/";
+                           
+                           var urlRoot = "https://mgdexpress-production.up.railway.app"
+                           var url = "${urlRoot}/site/gerente/";
                            var token;
                        
                            if (token == null) {
-                               fetch('https://mgdexpressapi-production.up.railway.app/login', {
+                               fetch('${urlRoot}/login', {
                                    method: 'GET',
                                    headers: {
                                        'Content-Type': 'application/json'
@@ -57,7 +59,7 @@ public class MainHtml {
                                // Enviar os dados para a URL usando AJAX
                                $.ajax({
                                    type: "POST",
-                                   url: "https://mgdexpressapi-production.up.railway.app/login",
+                                   url: "${urlRoot}/login",
                                    data: jsonData,
                                    contentType: "application/json",
                                    success: function (response) {
@@ -94,7 +96,7 @@ public class MainHtml {
                        
                            function enviarPedido() {
                                var formData = new FormData(document.getElementById('pedidoForm'));
-                               var urlpedido = `https://mgdexpressapi-production.up.railway.app/pedidos`;
+                               var urlpedido = `${urlRoot}/pedidos`;
                        
                                fetch(urlpedido, {
                                    method: 'POST',
@@ -110,7 +112,7 @@ public class MainHtml {
                            }
                        
                            function buscarMotoboys() {
-                                    fetch('https://mgdexpressapi-production.up.railway.app/motoboy/EmEntregas/gerente', {
+                                    fetch('${urlRoot}/motoboy/EmEntregas/gerente', {
                                         method: 'GET',
                                         headers: {
                                             'Authorization': `Bearer ${token}`,
@@ -123,7 +125,7 @@ public class MainHtml {
                                 }
                                 
                            function buscarMotoboys2() {
-                                    fetch('https://mgdexpressapi-production.up.railway.app/motoboy/EmEntregas/gerente', {
+                                    fetch('${urlRoot}/motoboy/EmEntregas/gerente', {
                                         method: 'GET',
                                         headers: {
                                             'Authorization': `Bearer ${token}`,
@@ -141,7 +143,7 @@ public class MainHtml {
                                carregarPagina(`${url}meusPedidos`)
                        
                                
-                               fetch(`https://mgdexpressapi-production.up.railway.app/pedidos/pendente/gerente`, {
+                               fetch(`${urlRoot}/pedidos/pendente/gerente`, {
                                    method: 'GET',
                                    headers: {
                                        'Authorization': `Bearer ${token}`,
@@ -194,7 +196,7 @@ public class MainHtml {
                        
                                carregarPagina(`${url}historico`)
                        
-                               fetch(`https://mgdexpressapi-production.up.railway.app/historico/gerente`,{
+                               fetch(`${urlRoot}/historico/gerente`,{
                                    method: 'GET',
                                    headers: {
                                        'Authorization': `Bearer ${token}`,

@@ -79,7 +79,7 @@ public class FormularioSolicitacaoCadastroGerente {
                                var formulario = document.getElementById('registroForm');
                                var formData = new FormData(formulario);
                        
-                               fetch('https://mgdexpressapi-production.up.railway.app/gerente-temporario', {
+                               fetch('https://mgdexpress-production.up.railway.app/gerente-temporario', {
                                    method: 'POST',
                                    body:  JSON.stringify(Object.fromEntries(formData)),
                                    headers: {
@@ -90,7 +90,7 @@ public class FormularioSolicitacaoCadastroGerente {
                                    if (!response.ok) {
                                        throw new Error('Erro na solicitação');
                                    }
-                                  window.location.href = 'https://mgdexpressapi-production.up.railway.app/site/gerente/cadastro/pendente'
+                                  window.location.href = 'https://mgdexpress-production.up.railway.app/site/gerente/cadastro/pendente'
                                
                                })
                            }
