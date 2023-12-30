@@ -35,10 +35,10 @@ public class ListaLocalizacao {
     @PostConstruct
     private void initialize() {
         listaLocalizacao = new ArrayList<>(Collections.nCopies(motoboyRepository.encontrarMaiorId().intValue() + 1, null));
-        motoboyRepository.findAllAtivos().forEach(motoboy ->{
+       /* motoboyRepository.findAllAtivos().forEach(motoboy ->{
             listaLocalizacao.set(motoboy.getId().intValue(),new DadosMotoboyList(motoboy));
             System.out.println(listaLocalizacao.get(motoboy.getId().intValue()));
-        });
+        });*/
     }
 
     public void inicializar(){
