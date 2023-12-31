@@ -196,7 +196,7 @@ public class MainHtml {
                                    function listarHistorico() {
                                             \s
                                               
-                                               carregarPagina(`${url}/historico`);
+                                               carregarPagina(`${url}historico`);
                                    
                                                fetch(`${urlRoot}/historico/gerente`, {
                                                    method: 'GET',
