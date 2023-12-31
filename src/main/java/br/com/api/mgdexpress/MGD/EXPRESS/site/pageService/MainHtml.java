@@ -216,7 +216,7 @@ public class MainHtml {
                                                            <p>Motoboy: ${item.motoboyNome}</p>
                                                            <p>Estabelecimento: ${item.nomeStabelecimento}</p>
                                                            <p>Valor: R$ ${item.valor.toFixed(2)}</p>
-                                                           <a onclick="carregarPagina('${url}historico/detalhes/${item.id}')">
+                                                           <a onclick="preencherDetalhesHistorico('${urlRoot}/historico/pedido/${item.id}')">
                                                                <button>Detalhes</button>
                                                            </a>`;
                                                        historicoList.appendChild(li);
@@ -228,32 +228,19 @@ public class MainHtml {
                                            };
                                            
                                            
-                                           function preencherDetalhesHistorico() {
-                                                       
-                                                       
-                                                       // Suponha que você tenha os detalhes do histórico em um objeto chamado 'detalhes'
-                                                       const detalhes = {
-                                                           nomeEstabelecimento: "Nome do Estabelecimento",
-                                                           localOrigem: "Local de Origem",
-                                                           localDestino: "Local de Destino",
-                                                           valor: 0,
-                                                           observacao: "Observação",
-                                                           itensPedido: "Itens do Pedido",
-                                                           dataCriacao: "2023-12-06",
-                                                           dataEntrega: "2023-12-06",
-                                                           motoboy: {
-                                                               nome: "Nome do Motoboy",
-                                                               telefone: "Telefone do Motoboy",
-                                                               email: "Email do Motoboy"
-                                                           },
-                                                           gerente: {
-                                                               nome: "Nome do Gerente",
-                                                               telefone: "Telefone do Gerente",
-                                                               email: "Email do Gerente"
-                                                           }
-                                                       };
+                                           function preencherDetalhesHistorico(urll) {
                                            
-                                                       const historicoDetails = document.getElementById('historico-details');
+                                                        fetch(urll, {
+                                           method: 'GET',
+                                           headers: {
+                                               'Authorization': `Bearer ${token}`,
+                                               'Content-Type': 'application/json'
+                                           }
+                                       })
+                                           .then(response => response.json())
+                                           .then(detalhes => {
+                                       
+                                               const historicoDetails = document.getElementById('historico-details');
                                                        historicoDetails.innerHTML = `
                                                            <h3>Histórico</h3>
                                                            <p>Nome do Estabelecimento: ${detalhes.nomeEstabelecimento}</p>
@@ -274,11 +261,9 @@ public class MainHtml {
                                                                <li>Telefone: ${detalhes.gerente.telefone}</li>
                                                                <li>Email: ${detalhes.gerente.email}</li>
                                                            </ul>`;
-                                                   }
-                                           
-                                                  
-                                           
-                               
+                                           })
+                                           .catch(error => console.error('Erro:', error));
+                                   
                                </script>
                                </body>
                                
