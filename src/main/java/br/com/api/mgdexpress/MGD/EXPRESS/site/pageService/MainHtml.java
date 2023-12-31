@@ -195,8 +195,8 @@ public class MainHtml {
                                
                                    function listarHistorico() {
                                             \s
-                                               // Substitua `${url}` pela URL correta
-                                               carregarPagina(`${urlRoot}/historico`);
+                                              
+                                               carregarPagina(`${url}/historico`);
                                    
                                                fetch(`${urlRoot}/historico/gerente`, {
                                                    method: 'GET',
