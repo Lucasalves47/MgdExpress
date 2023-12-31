@@ -226,6 +226,58 @@ public class MainHtml {
                                                    console.error('Erro:', error);
                                                });
                                            };
+                                           
+                                           
+                                           function preencherDetalhesHistorico() {
+                                                       
+                                                       
+                                                       // Suponha que você tenha os detalhes do histórico em um objeto chamado 'detalhes'
+                                                       const detalhes = {
+                                                           nomeEstabelecimento: "Nome do Estabelecimento",
+                                                           localOrigem: "Local de Origem",
+                                                           localDestino: "Local de Destino",
+                                                           valor: 0,
+                                                           observacao: "Observação",
+                                                           itensPedido: "Itens do Pedido",
+                                                           dataCriacao: "2023-12-06",
+                                                           dataEntrega: "2023-12-06",
+                                                           motoboy: {
+                                                               nome: "Nome do Motoboy",
+                                                               telefone: "Telefone do Motoboy",
+                                                               email: "Email do Motoboy"
+                                                           },
+                                                           gerente: {
+                                                               nome: "Nome do Gerente",
+                                                               telefone: "Telefone do Gerente",
+                                                               email: "Email do Gerente"
+                                                           }
+                                                       };
+                                           
+                                                       const historicoDetails = document.getElementById('historico-details');
+                                                       historicoDetails.innerHTML = `
+                                                           <h3>Histórico</h3>
+                                                           <p>Nome do Estabelecimento: ${detalhes.nomeEstabelecimento}</p>
+                                                           <p>Local de Origem: ${detalhes.localOrigem}  Local de Destino: ${detalhes.localDestino}</p>
+                                                           <p>Valor: ${detalhes.valor}</p>
+                                                           <p>Observação: ${detalhes.observacao}</p>
+                                                           <p>Itens do Pedido: ${detalhes.itensPedido}</p>
+                                                           <p>Data de Criação: ${detalhes.dataCriacao}   Data de Entrega: ${detalhes.dataEntrega}</p>
+                                                           <p>Motoboy:</p>
+                                                           <ul>
+                                                               <li>Nome: ${detalhes.motoboy.nome}</li>
+                                                               <li>Telefone: ${detalhes.motoboy.telefone}</li>
+                                                               <li>Email: ${detalhes.motoboy.email}</li>
+                                                           </ul>
+                                                           <p>Gerente:</p>
+                                                           <ul>
+                                                               <li>Nome: ${detalhes.gerente.nome}</li>
+                                                               <li>Telefone: ${detalhes.gerente.telefone}</li>
+                                                               <li>Email: ${detalhes.gerente.email}</li>
+                                                           </ul>`;
+                                                   }
+                                           
+                                                  
+                                           
                                
                                </script>
                                </body>
