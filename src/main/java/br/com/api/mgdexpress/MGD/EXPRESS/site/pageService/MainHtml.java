@@ -263,7 +263,7 @@ public class MainHtml {
                                                            </ul>`;
                                            })
                                            .catch(error => console.error('Erro:', error));
-                                   
+                                   }
                                </script>
                                </body>
                                
