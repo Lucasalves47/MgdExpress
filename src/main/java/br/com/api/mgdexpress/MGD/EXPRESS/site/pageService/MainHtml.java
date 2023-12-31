@@ -22,13 +22,13 @@ public class MainHtml {
                                
                                <script>
                                
-                                  \s
+                                  
                                    var urlRoot = "https://mgdexpress-production.up.railway.app"
                                    var url = `${urlRoot}/site/gerente/`;
                                    var token;
                                
                                    if (token == null) {
-                                      \s
+                                      
                                        fetch(`${urlRoot}/login`, {
                                            method: 'GET',
                                            headers: {
@@ -88,7 +88,7 @@ public class MainHtml {
                                        })
                                            .then(response => response.json())
                                            .then(data => {
-                                       \s
+                                       
                                                $('#content-container').html(data.page);
                                            })
                                            .catch(error => console.error('Erro:', error));
@@ -124,7 +124,7 @@ public class MainHtml {
                                                 .then(data =>initMap(data))
                                                 .catch(error => console.error('Erro na requisição:', error));
                                         }
-                                       \s
+                                       
                                    function buscarMotoboys2() {
                                             fetch(`${urlRoot}/motoboy/EmEntregas/gerente`, {
                                                 method: 'GET',
@@ -143,7 +143,7 @@ public class MainHtml {
                                    function listarPedidos() {
                                        carregarPagina(`${url}meusPedidos`)
                                
-                                      \s
+                                      
                                        fetch(`${urlRoot}/pedidos/pendente/gerente`, {
                                            method: 'GET',
                                            headers: {
@@ -155,31 +155,31 @@ public class MainHtml {
                                            .then(data => {
                                                console.log("Dados recebidos:");
                                                console.log(data);
-                                      \s
+                                      
                                                data.forEach(interData => {
                                                     interData.forEach(cardData =>{
                                                     const cardContainer = document.getElementById('card-container');
-                                      \s
-                                              \s
+                                      
+                                              
                                                    console.log("Dados do card:");
                                                    console.log(cardData.localDestino);
-                                      \s
+                                      
                                                    const card = document.createElement('div');
                                                    card.className = 'card';
-                                      \s
+                                      
                                                    const cardContent = document.createElement('div');
                                                    cardContent.className = 'card-content';
-                                      \s
+                                      
                                                    const cardDetails = `
-                                                 \s
+                                                 
                                                        <p class="titulo"><strong>${cardData.nomePedido}</strong></p>
                                                        <p><strong>Valor:</strong> ${cardData.valor}</p>
                                                        <p><strong>Local de Destino:</strong> ${cardData.localDestino}</p>
-                                                       <a onclick="carregarPagina('${url}/site/site/detalhes/${cardData.id}')"><button>Detalhes</button></a>
+                                                       <a onclick="carregarPagina('${url}detalhes/${cardData.id}')"><button>Detalhes</button></a>
                                                    `;
-                                      \s
+                                      
                                                    cardContent.innerHTML = cardDetails;
-                                      \s
+                                      
                                                    card.appendChild(cardContent);
                                                    cardContainer.appendChild(card);
                                               }); });
@@ -187,14 +187,14 @@ public class MainHtml {
                                            .catch(error => {
                                                console.error('Erro na requisição:', error);
                                            });
-                                      \s
+                                      
                                    };
                                
                                    //area destinada ou codigo do listar pedidos em andamento
                                    // fim da area
                                
                                    function listarHistorico() {
-                                            \s
+                                            
                                               
                                                carregarPagina(`${url}historico`);
                                    
@@ -216,7 +216,7 @@ public class MainHtml {
                                                            <p>Motoboy: ${item.motoboyNome}</p>
                                                            <p>Estabelecimento: ${item.nomeStabelecimento}</p>
                                                            <p>Valor: R$ ${item.valor.toFixed(2)}</p>
-                                                           <a onclick="carregarPagina('${urlRoot}/gerente/historico/detalhes/${item.id}')">
+                                                           <a onclick="carregarPagina('${url}historico/detalhes/${item.id}')">
                                                                <button>Detalhes</button>
                                                            </a>`;
                                                        historicoList.appendChild(li);
