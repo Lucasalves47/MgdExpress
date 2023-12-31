@@ -28,6 +28,7 @@ public class MainHtml {
                            var token;
                        
                            if (token == null) {
+                               console.log('${urlRoot}/login')
                                fetch('${urlRoot}/login', {
                                    method: 'GET',
                                    headers: {
