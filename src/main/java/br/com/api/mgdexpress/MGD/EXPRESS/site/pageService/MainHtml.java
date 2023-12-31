@@ -194,40 +194,38 @@ public class MainHtml {
                                    // fim da area
                                
                                    function listarHistorico() {
-                               
-                                       carregarPagina(`${url}historico`)
-                               
-                                       fetch(`${urlRoot}/historico/gerente`,{
-                                           method: 'GET',
-                                           headers: {
-                                               'Authorization': `Bearer ${token}`,
-                                               'Content-Type': 'application/json'
-                                           }
-                                       })
-                                           .then(response => response.json())
-                                           .then(data => {
-                               
-                                               data.forEach(item => {
-                                                   console.log(item.id);
-                               
-                                                   const li = document.createElement('li');
-                                                   li.innerHTML = `
-                               
-                                       <p>Data de Entrega: ${item.dataEntrega}</p>
-                                       <p>Motoboy: ${item.motoboyNome}</p>
-                                       <p>Estabelecimento: ${item.nomeStabelecimento}</p>
-                                       <p>Valor: R$ ${item.valor.toFixed(2)}</p>
-                                       <a onclick="carregarPagina('${url}site/gerente/historico/detalhes/${item.id}'"><button>Detalhes</button></a>
-                                   `;
-                                                   historicoList.appendChild(li);
+                                            \s
+                                               // Substitua `${url}` pela URL correta
+                                               carregarPagina(`${urlRoot}/historico`);
+                                   
+                                               fetch(`${urlRoot}/historico/gerente`, {
+                                                   method: 'GET',
+                                                   headers: {
+                                                       'Authorization': `Bearer ${token}`,
+                                                       'Content-Type': 'application/json'
+                                                   }
+                                               })
+                                               .then(response => response.json())
+                                               .then(data => {
+                                                   data.forEach(item => {
+                                                       const historicoList = document.getElementById('historico-list');
+                                   
+                                                       const li = document.createElement('li');
+                                                       li.innerHTML = `
+                                                           <p>Data de Entrega: ${item.dataEntrega}</p>
+                                                           <p>Motoboy: ${item.motoboyNome}</p>
+                                                           <p>Estabelecimento: ${item.nomeStabelecimento}</p>
+                                                           <p>Valor: R$ ${item.valor.toFixed(2)}</p>
+                                                           <a onclick="carregarPagina('${urlRoot}/gerente/historico/detalhes/${item.id}')">
+                                                               <button>Detalhes</button>
+                                                           </a>`;
+                                                       historicoList.appendChild(li);
+                                                   });
+                                               })
+                                               .catch(error => {
+                                                   console.error('Erro:', error);
                                                });
-                                           })
-                                           .catch(error => {
-                                               // trate erros de requisição
-                                           });
-                               
-                                       const historicoList = document.getElementById('historico-list');
-                                   };
+                                           };
                                
                                </script>
                                </body>
