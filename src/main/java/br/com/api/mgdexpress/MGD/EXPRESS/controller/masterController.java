@@ -1,8 +1,6 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.controller;
 
-import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.DadosMotoboyList;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.Motoboy;
-import br.com.api.mgdexpress.MGD.EXPRESS.model.users.User;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("master")
@@ -41,7 +41,7 @@ public class masterController {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
     @GetMapping("/motoboy/{id}")
-    public ResponseEntity<Motoboy> MotoboysPorId(@PathVariable Long id){
-        return ResponseEntity.ok(motoboyRepository.getReferenceById(id));
+    public ResponseEntity<Optional<Motoboy>> MotoboysPorId(@PathVariable Long id){
+        return ResponseEntity.ok(motoboyRepository.findById(id));
     }
 }
