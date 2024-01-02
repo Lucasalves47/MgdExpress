@@ -47,7 +47,6 @@ public class DownloadPage {
        return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment;filename=\""+resource.getFile()+"\"")
                .body(resource);
-
     }
 
     @GetMapping("/lista")
