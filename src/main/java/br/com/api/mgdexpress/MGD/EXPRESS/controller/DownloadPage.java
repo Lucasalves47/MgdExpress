@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DownloadPage {
 
     @GetMapping
-    public ResponseEntity<HtmlPage> download(){
-        return ResponseEntity.ok(new HtmlPage(Download.html()));
+    public ResponseEntity<String> download(){
+        return ResponseEntity.ok(Download.html());
     }
 }
