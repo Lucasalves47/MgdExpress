@@ -28,7 +28,7 @@ public class DownloadPage {
     public ResponseEntity<Resource> downloadFile() throws IOException {
         Path currentPath = Paths.get(System.getProperty("user.dir"));
 
-        System.out.println(currentPath.resolveSibling("app"));
+        System.out.println(currentPath.resolveSibling("app.dir"));
         // Caminho para o arquivo
         Path filePath = Paths.get("classpath:apk/app-release.apk");
 
