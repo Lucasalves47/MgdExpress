@@ -114,19 +114,16 @@ public class Home {
                     }
                     
                     function updateMarkersPosition(localizacoes) {
-                             // Itera sobre a lista de marcadores e atualiza suas posições
-                             markers.forEach(function(markerInfo) {
-                                 // Verifica se a posição é null ou undefined
-                                 if (markerInfo.position === null || typeof markerInfo.position === 'undefined') {
-                                     // Remove o marcador do mapa
-                                     markerInfo.marker.setMap(null);
-                                 } else {
-                                     // Atualiza a posição do marcador
-                                     markerInfo.marker.setPosition(markerInfo.position);
-                                 }
-                             });
-                         }
-                         
+                       
+                            // Itera sobre a lista de marcadores e atualiza suas posições
+                            markers.forEach(function(markerInfo) {
+                               
+                               
+                   
+                                // Atualiza a posição do marcador
+                                markerInfo.marker.setPosition(markerInfo.position);
+                            });
+                        }
                         
                         var intervalId = setInterval(buscarMotoboys2, 10000);
                     </script>
