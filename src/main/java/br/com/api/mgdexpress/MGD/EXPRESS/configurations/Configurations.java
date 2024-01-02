@@ -36,7 +36,7 @@ public class Configurations {
                     req.requestMatchers(HttpMethod.GET,"/site/gerente/cadastro/pendente","/site/gerente","/site/gerente/solicitacao/cadastro").permitAll();
                     req.requestMatchers("/v3/api-docs/**","/swagger-ui/**","/swagger-ui.html").permitAll();
                     req.requestMatchers("/gerente-temporario").permitAll();
-                    req.requestMatchers(HttpMethod.GET,"/**","/").permitAll();
+                    req.requestMatchers(HttpMethod.GET,"/download","/download/**").permitAll();
                     req.anyRequest().authenticated();
                 }).addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class).build();
     }
