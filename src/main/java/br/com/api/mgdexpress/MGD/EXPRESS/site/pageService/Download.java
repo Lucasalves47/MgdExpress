@@ -58,7 +58,7 @@ public class Download {
                     </div>
                     <div class="content">
                         <p>Faça o download do app Mgd Express para android aqui:</p>
-                        <a class="download-link" href="https://mgdexpress-production.up.railway.app/download" download="app-release.apk">Download</a>
+                        <a class="download-link" href="https://mgdexpress-production.up.railway.app/download/download" download="app-release.apk">Download</a>
                     </div>
                 </body>
                 </html>
