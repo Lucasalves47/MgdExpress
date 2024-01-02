@@ -39,14 +39,6 @@ public class masterController {
         return ResponseEntity.ok(gerenteRepository.findAll());
     }
 
-   /* @GetMapping("/master")
-    public ResponseEntity criarMaster(){
-
-        userRepository.save(new User(null,"134lucas@gmail.com","12lucas:santos","ROLE_USER_MASTER"));
-
-        return ResponseEntity.ok().build();
-    }*/
-
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
     @GetMapping("/motoboy/{id}")
     public ResponseEntity<Motoboy> MotoboysPorId(@PathVariable Long id){
