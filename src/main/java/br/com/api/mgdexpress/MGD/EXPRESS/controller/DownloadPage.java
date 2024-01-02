@@ -2,6 +2,7 @@ package br.com.api.mgdexpress.MGD.EXPRESS.controller;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.FileStorangePropets;
 import br.com.api.mgdexpress.MGD.EXPRESS.site.pageService.Download;
+import br.com.api.mgdexpress.MGD.EXPRESS.site.pageService.EmConstrucao;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -24,6 +25,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/download")
 public class DownloadPage {
 
+    @GetMapping
+    public ResponseEntity<String> download(){
+        return ResponseEntity.ok(EmConstrucao.html());
+    }
+    /*
     private final Path fileStorangeLocation;
 
     public DownloadPage(FileStorangePropets fileStorangePropetis) {
@@ -56,5 +62,5 @@ public class DownloadPage {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(fileName);
-    }
+    }*/
 }
