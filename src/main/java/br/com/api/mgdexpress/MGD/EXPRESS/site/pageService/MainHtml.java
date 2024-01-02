@@ -175,7 +175,7 @@ public class MainHtml {
                                                        <p class="titulo"><strong>${cardData.nomePedido}</strong></p>
                                                        <p><strong>Valor:</strong> ${cardData.valor}</p>
                                                        <p><strong>Local de Destino:</strong> ${cardData.localDestino}</p>
-                                                       <a onclick="carregarPagina('${url}/pedido/detalhes/${cardData.id}')"><button>Detalhes</button></a>
+                                                       <a onclick="carregarPagina('${url}pedido/detalhes/${cardData.id}')"><button>Detalhes</button></a>
                                                    `;
                                       
                                                    cardContent.innerHTML = cardDetails;
