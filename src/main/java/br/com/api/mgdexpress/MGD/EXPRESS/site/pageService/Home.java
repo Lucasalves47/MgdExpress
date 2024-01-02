@@ -78,61 +78,61 @@ public class Home {
                 </main>
                 
                 <script>
-                                        var markers;
-                                        buscarMotoboys();
-                                       
-                                       
-                                        function initMap(localizacoes) {
-                                            // Configurações iniciais do mapa
-                                            var mapOptions = {
-                                                center: { lat: -23.550520, lng: -46.633308 }, // Coordenadas iniciais
-                                                zoom: 10
-                                            };
-                                      
-                                            // Criação do mapa
-                                            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                                      
-                                            // Lista de marcadores
-                                             markers = localizacoes;
-                                      
-                                            // Criação dos marcadores iniciais
-                                            markers.forEach(function(markerInfo) {
-                                                var marker = new google.maps.Marker({
-                                                    position: markerInfo.position,
-                                                    map: map,
-                                                    title: markerInfo.title
-                                                });
-                                      
-                                                // Adiciona o marcador ao array para referência futura
-                                                markerInfo.marker = marker;
-                                            });
-                                      
-                                            // Função para atualizar as posições dos marcadores
-                                           
-                                            // Define o intervalo para atualizar as posições dos marcadores a cada 5 segundos (5000 milissegundos)
-                                           
-                                        }
-                                       
-                                        function updateMarkersPosition(localizacoes) {
-                                        // Itera sobre a lista de marcadores e atualiza suas posições
-                                        markers.forEach(function(markerInfo) {
-                                            // Verifica se a posição é nula
-                                            if (markerInfo.position) {
-                                                // Atualiza a posição do marcador
-                                                markerInfo.marker.setPosition(markerInfo.position);
-                                            } else {
-                                                // Se a posição for nula, remove o marcador do mapa
-                                                markerInfo.marker.setMap(null);
-                                            }
-                                        });
-                                    }
-                                           
-                                           
-                                            var intervalId = setInterval(buscarMotoboys2, 10000);
-                                        </script>
-                                       
-                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsTWHMwA_agU_-o35U_3b606930nBrsY8&callback=initMap" async
-                                        defer></script>""";
+                    var markers;
+                    buscarMotoboys();
+                    
+                    
+                    function initMap(localizacoes) {
+                        // Configurações iniciais do mapa
+                        var mapOptions = {
+                            center: { lat: -23.550520, lng: -46.633308 }, // Coordenadas iniciais
+                            zoom: 10
+                        };
+                   
+                        // Criação do mapa
+                        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+                   
+                        // Lista de marcadores
+                         markers = localizacoes;
+                   
+                        // Criação dos marcadores iniciais
+                        markers.forEach(function(markerInfo) {
+                            var marker = new google.maps.Marker({
+                                position: markerInfo.position,
+                                map: map,
+                                title: markerInfo.title
+                            });
+                   
+                            // Adiciona o marcador ao array para referência futura
+                            markerInfo.marker = marker;
+                        });
+                   
+                        // Função para atualizar as posições dos marcadores
+                        
+                        // Define o intervalo para atualizar as posições dos marcadores a cada 5 segundos (5000 milissegundos)
+                        
+                    }
+                    
+                    function updateMarkersPosition(localizacoes) {
+                             // Itera sobre a lista de marcadores e atualiza suas posições
+                             markers.forEach(function(markerInfo) {
+                                 // Verifica se a posição é null ou undefined
+                                 if (markerInfo.position === null || typeof markerInfo.position === 'undefined') {
+                                     // Remove o marcador do mapa
+                                     markerInfo.marker.setMap(null);
+                                 } else {
+                                     // Atualiza a posição do marcador
+                                     markerInfo.marker.setPosition(markerInfo.position);
+                                 }
+                             });
+                         }
+                         
+                        
+                        var intervalId = setInterval(buscarMotoboys2, 10000);
+                    </script>
+                    
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsTWHMwA_agU_-o35U_3b606930nBrsY8&callback=initMap" async
+                    defer></script> """;
     }
 }
 
