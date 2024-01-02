@@ -26,6 +26,8 @@ public class DownloadPage {
 
     @GetMapping("/download")
     public ResponseEntity<Resource> downloadFile() throws IOException {
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        System.out.println(currentPath);
         // Caminho para o arquivo
         Path filePath = Paths.get("mgdExpressApi/src/main/java/br/com/api/mgdexpress/MGD/EXPRESS/apk/app-release.apk");
 
