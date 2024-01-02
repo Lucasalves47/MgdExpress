@@ -216,7 +216,7 @@ public class MainHtml {
                                                            <p>Motoboy: ${item.motoboyNome}</p>
                                                            <p>Estabelecimento: ${item.nomeStabelecimento}</p>
                                                            <p>Valor: R$ ${item.valor.toFixed(2)}</p>
-                                                           <a onclick="preencherDetalhesHistorico('${urlRoot}/historico/pedido/${item.id}')">
+                                                           <a onclick="preencherDetalhesHistorico('${urlRoot}/historico/detalhes/${item.id}')">
                                                                <button>Detalhes</button>
                                                            </a>`;
                                                        historicoList.appendChild(li);
