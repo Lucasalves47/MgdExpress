@@ -27,7 +27,7 @@ public class DownloadPage {
     @GetMapping("/download")
     public ResponseEntity<Resource> downloadFile() throws IOException {
         // Caminho para o arquivo
-        Path filePath = Paths.get("/apk/app-release.apk");
+        Path filePath = Paths.get("mgdExpressApi/src/main/java/br/com/api/mgdexpress/MGD/EXPRESS/apk/app-release.apk");
 
         // Criar um recurso URL a partir do caminho do arquivo
         Resource resource = new UrlResource(filePath.toUri());
