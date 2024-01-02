@@ -44,7 +44,4 @@ public class masterController {
     public ResponseEntity<Motoboy> MotoboysPorId(@PathVariable Long id){
         return ResponseEntity.ok(motoboyRepository.getReferenceById(id));
     }
-
-
-
 }
