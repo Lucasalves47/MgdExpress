@@ -14,34 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @RestController
 @RequestMapping()
 public class DownloadPage {
 
-    private static final String DOWNLOADS_DIR = "br/com/api/mgdexpress/MGD/EXPRESS/apk";
-    private static final String FILE_NAME = "app-release.apk";
-
     @GetMapping("/download")
     public ResponseEntity<byte[]> downloadFile() throws IOException {
-        // Constrói o caminho completo do arquivo
-        Path filePath = Paths.get(DOWNLOADS_DIR, FILE_NAME);
+        // Substitua "arquivo.txt" pelo caminho do seu arquivo real
+        Resource resource = new ClassPathResource("src/main/java/br/com/api/mgdexpress/MGD/EXPRESS/apk/app-release.apk");
 
-        // Verifica se o arquivo existe
-        if (Files.exists(filePath)) {
-            // Lê o conteúdo do arquivo em um array de bytes
-            byte[] content = Files.readAllBytes(filePath);
+        // Lê o conteúdo do arquivo em um array de bytes
+        byte[] content = Files.readAllBytes(resource.getFile().toPath());
 
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.setContentDispositionFormData("attachment", FILE_NAME);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        headers.setContentDispositionFormData("attachment", "arquivo.txt");
 
-            return new ResponseEntity<>(content, headers, HttpStatus.OK);
-        } else {
-            // Retorna uma resposta 404 se o arquivo não for encontrado
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<>(content, headers, HttpStatus.OK);
     }
 }
