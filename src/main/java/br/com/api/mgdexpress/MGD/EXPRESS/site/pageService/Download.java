@@ -26,7 +26,7 @@ public class Download {
                         }
                                 
                         h1 {
-                            color: #007bff;
+                            color: white;
                         }
                                 
                         .content {
