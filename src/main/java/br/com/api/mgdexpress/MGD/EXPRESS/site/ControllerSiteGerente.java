@@ -85,6 +85,8 @@ public class ControllerSiteGerente {
         return ResponseEntity.ok(new HtmlPage(EmConstrucao.html()));
     }
 
+
+
     @GetMapping("solicitacao/cadastro")
     public String FormularioSolicitacaoCadastro(){
         return FormularioSolicitacaoCadastroGerente.html();
