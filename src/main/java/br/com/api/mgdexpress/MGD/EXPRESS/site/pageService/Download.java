@@ -4,7 +4,7 @@ public class Download {
     public static String html(){
         return """
                 <!DOCTYPE html>
-                <html lang="en">
+                <html lang="pt-br">
                 <head>
                     <meta charset="UTF-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,8 +57,8 @@ public class Download {
                         <h1>Download</h1>
                     </div>
                     <div class="content">
-                        <p>Faça o download do arquivo abaixo:</p>
-                        <a class="download-link" href="src/main/java/br/com/api/mgdexpress/MGD/EXPRESS/apk/app-release.apk" download="src/main/java/br/com/api/mgdexpress/MGD/EXPRESS/apk/app-release.apk">Download</a>
+                        <p>Faça o download do app Mgd Express para android aqui:</p>
+                        <a class="download-link" href="https://mgdexpress-production.up.railway.app/download" download="src/main/java/br/com/api/mgdexpress/MGD/EXPRESS/apk/app-release.apk">Download</a>
                     </div>
                 </body>
                 </html>
