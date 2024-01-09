@@ -100,9 +100,9 @@ public class MotoboyController {
     @GetMapping("/motoboyLocalizacao/{id}")
     public ResponseEntity<List<DadosMotoboyList>> MotoboysPorId(@PathVariable Long id){
         List<DadosMotoboyList> lista = new ArrayList<>();
-
+        System.out.println(id);
         listaLocalizacao.getListaLocalizacao().forEach(motoboy ->{
-            if(Objects.equals(motoboy.id(), id)){
+            if(Objects.equals(motoboy.id(),id)){
                 lista.add(motoboy);
             }
         });
@@ -113,8 +113,8 @@ public class MotoboyController {
     @GetMapping("/setAtivoInativo")
     public ResponseEntity setAtivoInativo(@RequestHeader("Authorization") String header){
 
-        header.replace("Bearer ","");
-        var id = tokenService.getId(header);
+        var token = header.replace("Bearer ","");
+        var id = tokenService.getId(token);
 
         var motoboy = motoboyRepository.getReferenceById(id);
 
