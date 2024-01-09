@@ -119,9 +119,9 @@ public class MotoboyController {
         var id = tokenService.getId(token);
 
         var motoboy = motoboyRepository.getReferenceById(id);
+        motoboy.setLocalizacao(new Localizacao(null,null));
 
-        motoboy.setAtivo(!motoboy.getAtivo());
-
+        listaLocalizacao.getListaLocalizacao().set(id.intValue(),new DadosMotoboyList(motoboy));
         return ResponseEntity.ok().build();
     }
 }

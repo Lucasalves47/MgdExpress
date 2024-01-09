@@ -29,6 +29,7 @@ public class ListaLocalizacao {
     @Autowired
     private MotoboyRepository motoboyRepository;
 
+
     @Getter
     private List<DadosMotoboyList> listaLocalizacao;
 
@@ -69,6 +70,16 @@ public class ListaLocalizacao {
             listaLocalizacao.set(id.intValue(), new DadosMotoboyList(id, dados.nome(), dados.localizacao(), true,email));
         }
     }
+
+   /* public List<DadosMotoboyList> getListaLocalizacao() {
+        List<DadosMotoboyList> lista = new ArrayList<>();
+        listaLocalizacao.forEach(item->{
+            if(item != null&& item.localizacao()!= null){
+                lista.add(new DadosMotoboyList(item));
+            }
+        });
+        return lista;
+    }*/
 
 
 }
