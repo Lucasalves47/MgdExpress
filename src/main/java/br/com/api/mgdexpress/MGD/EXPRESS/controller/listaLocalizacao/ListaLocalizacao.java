@@ -29,7 +29,7 @@ public class ListaLocalizacao {
     @Autowired
     private MotoboyRepository motoboyRepository;
 
-
+    @Getter
     private List<DadosMotoboyList> listaLocalizacao;
 
     @PostConstruct
@@ -70,14 +70,5 @@ public class ListaLocalizacao {
         }
     }
 
-    public List<DadosMotoboyList> getListaLocalizacao() {
 
-        List<DadosMotoboyList>lista = new ArrayList<>();
-        listaLocalizacao.forEach(motoboy->{
-            if(motoboy.localizacao() != null){
-                lista.add(motoboy);
-            }
-        });
-        return lista;
-    }
 }
