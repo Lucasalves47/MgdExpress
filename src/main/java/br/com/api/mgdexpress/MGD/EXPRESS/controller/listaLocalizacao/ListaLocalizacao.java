@@ -74,7 +74,7 @@ public class ListaLocalizacao {
 
         List<DadosMotoboyList>lista = new ArrayList<>();
         listaLocalizacao.forEach(motoboy->{
-            if(!(motoboy.localizacao().getLatitude().isEmpty())&&!(motoboy.localizacao().getLatitude().isBlank())){
+            if(motoboy.localizacao() != null){
                 lista.add(motoboy);
             }
         });
