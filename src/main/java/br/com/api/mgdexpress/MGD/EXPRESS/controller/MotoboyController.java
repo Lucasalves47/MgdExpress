@@ -102,9 +102,10 @@ public class MotoboyController {
         List<DadosMotoboyList> lista = new ArrayList<>();
         System.out.println(id);
         listaLocalizacao.getListaLocalizacao().forEach(motoboy ->{
-            if(motoboy.id() != null && Objects.equals(motoboy.id(),id)){
+            System.out.println(motoboy);
+            /*if(motoboy.id() != null && Objects.equals(motoboy.id(),id)){
                 lista.add(motoboy);
-            }
+            }*/
         });
 
         return ResponseEntity.ok(lista);
