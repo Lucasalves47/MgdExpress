@@ -6,4 +6,8 @@ public record DadosMotoboyList(Long id,String nome, Localizacao localizacao,Bool
     public DadosMotoboyList(Motoboy motoboy) {
         this(motoboy.getId(), motoboy.getNome(), motoboy.getLocalizacao(),motoboy.getDisponivel(),motoboy.getEmailGerente());
     }
+
+    public DadosMotoboyList(DadosMotoboyList motoboy) {
+        this(motoboy.id, motoboy.nome, motoboy.localizacao(),motoboy.disponivel(),motoboy.emailGerente());
+    }
 }

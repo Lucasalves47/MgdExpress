@@ -1,10 +1,7 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.controller;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.controller.listaLocalizacao.ListaLocalizacao;
-import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.DadosCadastroListaSemColcheteNoJsom;
-import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.DadosLocalizacaoMotoboy;
-import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.DadosMotoboyEmEntregaToGerente;
-import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.DadosMotoboyList;
+import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.*;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.MotoboyRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.UserRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.TokenService;
@@ -19,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("motoboy")
@@ -94,6 +92,34 @@ public class MotoboyController {
         listaLocalizacao.setListaLocalizacao(dados,id,nome);
 
         //messagingTemplate.convertAndSend("/topic/localizacao", listaLocalizacao);
+        return ResponseEntity.ok().build();
+    }
+
+
+    @PreAuthorize("hasRole('ROLE_USER_MASTER')")
+    @GetMapping("/motoboyLocalizacao/{id}")
+    public ResponseEntity<List<DadosMotoboyList>> MotoboysPorId(@PathVariable Long id){
+        List<DadosMotoboyList> lista = new ArrayList<>();
+
+        listaLocalizacao.getListaLocalizacao().forEach(motoboy ->{
+            if(Objects.equals(motoboy.id(), id)){
+                lista.add(motoboy);
+            }
+        });
+
+        return ResponseEntity.ok(lista);
+    }
+
+    @GetMapping("/setAtivoInativo")
+    public ResponseEntity setAtivoInativo(@RequestHeader("Authorization") String header){
+
+        header.replace("Bearer ","");
+        var id = tokenService.getId(header);
+
+        var motoboy = motoboyRepository.getReferenceById(id);
+
+        motoboy.setAtivo(!motoboy.getAtivo());
+
         return ResponseEntity.ok().build();
     }
 }
