@@ -103,9 +103,10 @@ public class MotoboyController {
         System.out.println(id);
         listaLocalizacao.getListaLocalizacao().forEach(motoboy ->{
             System.out.println(motoboy);
-            /*if(motoboy.id() != null && Objects.equals(motoboy.id(),id)){
+
+            if(motoboy != null && Objects.equals(motoboy.id(),id)){
                 lista.add(motoboy);
-            }*/
+            }
         });
 
         return ResponseEntity.ok(lista);
