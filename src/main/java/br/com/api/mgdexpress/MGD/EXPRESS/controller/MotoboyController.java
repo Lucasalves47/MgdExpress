@@ -49,14 +49,14 @@ public class MotoboyController {
         List<DadosCadastroListaSemColcheteNoJsom> lista = new ArrayList<>();
 
 
-        /*listaLocalizacao.getListaLocalizacao().forEach(motoboy->{
+        listaLocalizacao.getListaLocalizacao().forEach(motoboy->{
             if(motoboy !=null && motoboy.ultimaAtualizacao() != null) {
                 long minutosDediferencao = ChronoUnit.MINUTES.between(motoboy.ultimaAtualizacao(), LocalDateTime.now());
                 if (minutosDediferencao > 10) {
                     listaLocalizacao.setListaLocalizacao(new DadosLocalizacaoMotoboy(new Localizacao(null, null)), motoboy.id(), motoboy.nome());
                 }
             }
-        });*/
+        });
 
         listaLocalizacao.getListaLocalizacao().forEach(item ->{
             if(!Objects.isNull(item)){
@@ -64,10 +64,6 @@ public class MotoboyController {
                 lista.add(new DadosCadastroListaSemColcheteNoJsom(item));
             }
         });
-
-        System.out.println("______________________________________________");
-        lista.forEach(System.out::println);
-        System.out.println("______________________________________________");
         return ResponseEntity.ok(lista);
     }
 
