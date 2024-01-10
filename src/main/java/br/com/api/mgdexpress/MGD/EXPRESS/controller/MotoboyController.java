@@ -47,9 +47,6 @@ public class MotoboyController {
     @GetMapping("/EmEntregas&Disponivel")
     public ResponseEntity ListarMotoboysLocalizacao(){
         List<DadosCadastroListaSemColcheteNoJsom> lista = new ArrayList<>();
-        System.out.println("______________________________________________");
-        listaLocalizacao.getListaLocalizacao().forEach(System.out::println);
-        System.out.println("______________________________________________");
 
 
         /*listaLocalizacao.getListaLocalizacao().forEach(motoboy->{
@@ -63,12 +60,14 @@ public class MotoboyController {
 
         listaLocalizacao.getListaLocalizacao().forEach(item ->{
             if(!Objects.isNull(item)){
-                System.out.println("______________________________________________");
-                System.out.println(item);
-                System.out.println("______________________________________________");
+
                 lista.add(new DadosCadastroListaSemColcheteNoJsom(item));
             }
         });
+
+        System.out.println("______________________________________________");
+        lista.forEach(System.out::println);
+        System.out.println("______________________________________________");
         return ResponseEntity.ok(lista);
     }
 
