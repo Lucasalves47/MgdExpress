@@ -114,7 +114,7 @@ public class MotoboyController {
 
     @GetMapping("/setAtivoInativo")
     public ResponseEntity setAtivoInativo(@RequestHeader("Authorization") String header){
-
+        System.out.println("set Ativo Inativo");
         var token = header.replace("Bearer ","");
         var id = tokenService.getId(token);
 
@@ -122,6 +122,7 @@ public class MotoboyController {
         motoboy.setLocalizacao(new Localizacao(null,null));
 
         listaLocalizacao.getListaLocalizacao().set(id.intValue(),new DadosMotoboyList(motoboy));
+
         return ResponseEntity.ok().build();
     }
 }
