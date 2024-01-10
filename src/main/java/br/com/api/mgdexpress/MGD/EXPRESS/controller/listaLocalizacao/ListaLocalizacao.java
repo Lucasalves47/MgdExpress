@@ -11,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.time.LocalDate;
+import java.util.*;
 
 @Component
 @Scope("application")
@@ -56,7 +54,7 @@ public class ListaLocalizacao {
         }
 
         var dadosMotoboyList = listaLocalizacao.get(id.intValue());
-        listaLocalizacao.set(id.intValue(), new DadosMotoboyList(id, nome, lista.localizacao(), dadosMotoboyList.disponivel(), dadosMotoboyList.emailGerente()));
+        listaLocalizacao.set(id.intValue(), new DadosMotoboyList(id, nome, lista.localizacao(), dadosMotoboyList.disponivel(), dadosMotoboyList.emailGerente(), LocalDate.now()));
 
         System.out.println(listaLocalizacao.get(id.intValue()).localizacao().getLatitude());
         System.out.println(listaLocalizacao.get(id.intValue()).localizacao().getLongitude());
@@ -65,9 +63,9 @@ public class ListaLocalizacao {
     public void setStatus(Long id,String email) {
         var dados = listaLocalizacao.get(id.intValue());
         if (dados.disponivel()) {
-            listaLocalizacao.set(id.intValue(), new DadosMotoboyList(id, dados.nome(), dados.localizacao(), false,email));
+            listaLocalizacao.set(id.intValue(), new DadosMotoboyList(id, dados.nome(), dados.localizacao(), false,email,dados.ultimaAtualizacao()));
         } else {
-            listaLocalizacao.set(id.intValue(), new DadosMotoboyList(id, dados.nome(), dados.localizacao(), true,email));
+            listaLocalizacao.set(id.intValue(), new DadosMotoboyList(id, dados.nome(), dados.localizacao(), true,email,dados.ultimaAtualizacao()));
         }
     }
 

@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -44,6 +46,15 @@ public class MotoboyController {
     @GetMapping("/EmEntregas&Disponivel")
     public ResponseEntity ListarMotoboysLocalizacao(){
         List<DadosCadastroListaSemColcheteNoJsom> lista = new ArrayList<>();
+
+
+        listaLocalizacao.getListaLocalizacao().forEach(motoboy->{
+            long minutosDediferencao = ChronoUnit.MINUTES.between(motoboy.ultimaAtualizacao(), LocalDate.now());
+            if( minutosDediferencao > 10){
+                motoboy.localizacao().setLatitude(null);
+                motoboy.localizacao().setLongitude(null);
+            }
+        });
 
         listaLocalizacao.getListaLocalizacao().forEach(item ->{
             if(!Objects.isNull(item)){
@@ -90,6 +101,7 @@ public class MotoboyController {
         System.out.println("Up");
 
         listaLocalizacao.setListaLocalizacao(dados,id,nome);
+
 
         //messagingTemplate.convertAndSend("/topic/localizacao", listaLocalizacao);
         return ResponseEntity.ok().build();
