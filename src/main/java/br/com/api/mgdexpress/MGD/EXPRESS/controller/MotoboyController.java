@@ -123,6 +123,7 @@ public class MotoboyController {
 
         listaLocalizacao.getListaLocalizacao().set(id.intValue(),new DadosMotoboyList(motoboy));
 
+        listaLocalizacao.getListaLocalizacao().forEach(System.out::println);
         return ResponseEntity.ok().build();
     }
 }
