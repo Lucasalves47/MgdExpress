@@ -14,6 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,7 @@ public class MotoboyController {
 
         listaLocalizacao.getListaLocalizacao().forEach(motoboy->{
             if(motoboy !=null) {
-                long minutosDediferencao = ChronoUnit.MINUTES.between(motoboy.ultimaAtualizacao(), LocalDate.now());
+                long minutosDediferencao = ChronoUnit.MINUTES.between(motoboy.ultimaAtualizacao(), LocalDateTime.now());
                 if (minutosDediferencao > 10) {
                     listaLocalizacao.setListaLocalizacao(new DadosLocalizacaoMotoboy(new Localizacao(null, null)), motoboy.id(), motoboy.nome());
                 }

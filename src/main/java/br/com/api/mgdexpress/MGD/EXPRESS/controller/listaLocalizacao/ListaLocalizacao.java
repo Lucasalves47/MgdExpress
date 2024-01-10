@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Component
@@ -54,7 +55,7 @@ public class ListaLocalizacao {
         }
 
         var dadosMotoboyList = listaLocalizacao.get(id.intValue());
-        listaLocalizacao.set(id.intValue(), new DadosMotoboyList(id, nome, lista.localizacao(), dadosMotoboyList.disponivel(), dadosMotoboyList.emailGerente(), LocalDate.now()));
+        listaLocalizacao.set(id.intValue(), new DadosMotoboyList(id, nome, lista.localizacao(), dadosMotoboyList.disponivel(), dadosMotoboyList.emailGerente(), LocalDateTime.now()));
 
         System.out.println(listaLocalizacao.get(id.intValue()).localizacao().getLatitude());
         System.out.println(listaLocalizacao.get(id.intValue()).localizacao().getLongitude());
