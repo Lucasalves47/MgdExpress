@@ -47,8 +47,9 @@ public class MotoboyController {
     @GetMapping("/EmEntregas&Disponivel")
     public ResponseEntity ListarMotoboysLocalizacao(){
         List<DadosCadastroListaSemColcheteNoJsom> lista = new ArrayList<>();
-
+        System.out.println("______________________________________________");
         listaLocalizacao.getListaLocalizacao().forEach(System.out::println);
+        System.out.println("______________________________________________");
 
 
         /*listaLocalizacao.getListaLocalizacao().forEach(motoboy->{
