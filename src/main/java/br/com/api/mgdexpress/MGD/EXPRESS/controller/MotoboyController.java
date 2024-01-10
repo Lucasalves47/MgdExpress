@@ -49,9 +49,11 @@ public class MotoboyController {
 
 
         listaLocalizacao.getListaLocalizacao().forEach(motoboy->{
-            long minutosDediferencao = ChronoUnit.MINUTES.between(motoboy.ultimaAtualizacao(), LocalDate.now());
-            if( minutosDediferencao > 10){
-                listaLocalizacao.setListaLocalizacao(new DadosLocalizacaoMotoboy(new Localizacao(null,null)), motoboy.id(), motoboy.nome());
+            if(motoboy !=null) {
+                long minutosDediferencao = ChronoUnit.MINUTES.between(motoboy.ultimaAtualizacao(), LocalDate.now());
+                if (minutosDediferencao > 10) {
+                    listaLocalizacao.setListaLocalizacao(new DadosLocalizacaoMotoboy(new Localizacao(null, null)), motoboy.id(), motoboy.nome());
+                }
             }
         });
 
