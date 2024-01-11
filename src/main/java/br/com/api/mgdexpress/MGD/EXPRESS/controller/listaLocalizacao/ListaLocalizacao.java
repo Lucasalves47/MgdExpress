@@ -34,11 +34,15 @@ public class ListaLocalizacao {
 
     @PostConstruct
     private void initialize() {
-        listaLocalizacao = new ArrayList<>(Collections.nCopies(motoboyRepository.encontrarMaiorId().intValue() + 1, null));
-       motoboyRepository.findAllAtivos().forEach(motoboy ->{
-            listaLocalizacao.set(motoboy.getId().intValue(),new DadosMotoboyList(motoboy));
-            System.out.println(listaLocalizacao.get(motoboy.getId().intValue()));
-        });
+        if(motoboyRepository.encontrarMaiorId()!=null) {
+            listaLocalizacao = new ArrayList<>(Collections.nCopies(motoboyRepository.encontrarMaiorId().intValue() + 1, null));
+            motoboyRepository.findAllAtivos().forEach(motoboy -> {
+                listaLocalizacao.set(motoboy.getId().intValue(), new DadosMotoboyList(motoboy));
+                System.out.println(listaLocalizacao.get(motoboy.getId().intValue()));
+            });
+        }else {
+            listaLocalizacao = new ArrayList<>();
+        }
     }
 
     public void inicializar(){
