@@ -4,11 +4,11 @@ import br.com.api.mgdexpress.MGD.EXPRESS.model.pedido.Pedido;
 
 public class DetalhePedido {
 
-    public static String detalhar(){
+    public static String detalhar(Pedido dados){
         return """
                 
                        <head>
-                           <title>Detalhe do pedido</title>
+                           <title>Detalhe do Histórico</title>
                            <style>
                                body {
                                    font-family: Arial, sans-serif;
@@ -60,8 +60,40 @@ public class DetalhePedido {
                        </nav>
                        
                        <main>
-                           <div class=card_pedido">
-                              
+                           <div class="card">
+                               <h3>Pedido</h3>
+                               <p>Nome do Estabelecimento: """+dados.getNomeEstabelecimento()+ """
+                               </p>
+                               <p>Local de Origem: """+dados.getLocalOrigem()+"""
+                                            Local de Destino: """+dados.getLocalDestino()+"""
+                               </p>
+                               <p>Valor: """+dados.getValor()+"""
+                               </p>
+                               <p>Observação: """+dados.getObservacao()+"""
+                               </p>
+                               <p>Itens do Pedido: """+dados.getItensDoPedido()+"""
+                               </p>
+                               <p>Data de Criação: """+dados.getDataCriacao()+"""
+                                  Data de Entrega: """+dados.getDataEntrega()+"""
+                                  </p>
+                               <h3>Motoboy:</h3>
+                               <ul>
+                       
+                                   <li>Nome: string</li>
+                                   <li>Telefone: string</li>
+                                   <li>Email: string</li>
+                       
+                               </ul>
+                               <h3>Gerente:</h3>
+                               <ul>
+                                   <li>Nome: """+dados.getGerente().getNome()+"""
+                                   </li>
+                                   <li>Telefone: """+dados.getGerente().getTelefone()+"""
+                                   </li>
+                                   <li>Email: """+dados.getGerente().getEmail()+"""
+                               </li>
+                               </ul>
+                       
                            </div>
                        </main>
                 """;
