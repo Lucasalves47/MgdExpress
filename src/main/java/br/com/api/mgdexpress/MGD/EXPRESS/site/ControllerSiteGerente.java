@@ -80,8 +80,8 @@ public class ControllerSiteGerente {
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("pedido/detalhes/{id}")
     public ResponseEntity<HtmlPage> detalharPedido(@PathVariable Long id){
-        var pedido = pedidoRepository.getReferenceById(id);
-        return ResponseEntity.ok(new HtmlPage(DetalhePedido.detalhar(pedido)));
+
+        return ResponseEntity.ok(new HtmlPage(DetalhePedido.detalhar()));
        // return ResponseEntity.ok(new HtmlPage(EmConstrucao.html()));
     }
 

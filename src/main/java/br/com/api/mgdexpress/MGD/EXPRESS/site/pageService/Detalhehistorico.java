@@ -21,12 +21,14 @@ public class Detalhehistorico {
                                           color: #333;
                                       }
                               
-                                      nav {
-                                          background-color: #333;
-                                          color: white;
-                                          padding: 10px;
-                                          text-align: center;
-                                      }
+                                       nav {
+                            background-color: #333;
+                            color: white;
+                            padding: 10px;
+                            text-align: center;
+                            display: flex;
+                            align-items: center;
+                        }
                               
                                       main {
                                           padding: 20px;
@@ -48,10 +50,14 @@ public class Detalhehistorico {
                                       .card h3 {
                                           margin-top: 0;
                                       }
+                                       h2{margin-left: 40%;}
                                   </style>
                               </head>
                               <body>
                                   <nav>
+                                   <div>
+                                <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
+                           </div>
                                       <h2>Detalhe do Histórico</h2>
                                   </nav>
                               

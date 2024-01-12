@@ -4,11 +4,11 @@ import br.com.api.mgdexpress.MGD.EXPRESS.model.pedido.Pedido;
 
 public class DetalhePedido {
 
-    public static String detalhar(Pedido dados){
+    public static String detalhar(){
         return """
                 
                        <head>
-                           <title>Detalhe do Histórico</title>
+                           <title>Detalhe do pedido</title>
                            <style>
                                body {
                                    font-family: Arial, sans-serif;
@@ -18,12 +18,14 @@ public class DetalhePedido {
                                    color: #333;
                                }
                        
-                               nav {
-                                   background-color: #333;
-                                   color: white;
-                                   padding: 10px;
-                                   text-align: center;
-                               }
+                                nav {
+                            background-color: #333;
+                            color: white;
+                            padding: 10px;
+                            text-align: center;
+                            display: flex;
+                            align-items: center;
+                        }
                        
                                main {
                                    padding: 20px;
@@ -45,38 +47,21 @@ public class DetalhePedido {
                                .card h3 {
                                    margin-top: 0;
                                }
+                               h2{margin-left: 40%;}
                            </style>
                        </head>
                        
                        
                        <nav>
+                       <div>
+                                <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
+                           </div>
                            <h2>Detalhe do Pedido</h2>
                        </nav>
                        
                        <main>
-                           <div class="card">
-                               <h3>Pedido</h3>
-                               <p>Nome do Estabelecimento: string</p>
-                               <p>Local de Origem: string               Local de Destino: string</p>
-                               <p>Valor: 0</p>
-                               <p>Observação: string</p>
-                               <p>Itens do Pedido: string</p>
-                               <p>Data de Criação: 2023-12-06   Data de Entrega: 2023-12-06</p>
-                               <h3>Motoboy:</h3>
-                               <ul>
-                       
-                                   <li>Nome: string</li>
-                                   <li>Telefone: string</li>
-                                   <li>Email: string</li>
-                       
-                               </ul>
-                               <h3>Gerente:</h3>
-                               <ul>
-                                   <li>Nome: string</li>
-                                   <li>Telefone: string</li>
-                                   <li>Email: string</li>
-                               </ul>
-                       
+                           <div class=card_pedido">
+                              
                            </div>
                        </main>
                 """;
