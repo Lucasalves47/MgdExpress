@@ -26,12 +26,14 @@ public class ListarHistorico {
                                    background-color: #f4f4f4;
                                }
                        
-                               nav {
-                                   background-color: #333;
-                                   color: white;
-                                   padding: 10px;
-                                   text-align: center;
-                               }
+                              nav {
+                            background-color: #333;
+                            color: white;
+                            padding: 10px;
+                            text-align: center;
+                            display: flex;
+                            align-items: center;
+                        }
                        
                                ul {
                                    list-style-type: none;
@@ -67,6 +69,9 @@ public class ListarHistorico {
                        
                        
                        <nav>
+                            <div>
+                                <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
+                           </div>
                            <h2>Histórico</h2>
                        </nav>
                        
