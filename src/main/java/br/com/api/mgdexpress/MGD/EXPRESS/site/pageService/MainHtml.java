@@ -175,7 +175,7 @@ public class MainHtml {
                                                        <p class="titulo"><strong>${cardData.nomePedido}</strong></p>
                                                        <p><strong>Valor:</strong> ${cardData.valor}</p>
                                                        <p><strong>Local de Destino:</strong> ${cardData.localDestino}</p>
-                                                       <a onclick="cpreencherDetalhesPedido('${urlRoot}/pedidos/${cardData.id}')"><button>Detalhes</button></a>
+                                                       <a onclick="preencherDetalhesPedido('${urlRoot}/pedidos/${cardData.id}')"><button>Detalhes</button></a>
                                                    `;
                                       
                                                    cardContent.innerHTML = cardDetails;
