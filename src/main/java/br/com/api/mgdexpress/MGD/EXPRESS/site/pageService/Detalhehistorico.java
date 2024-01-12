@@ -63,10 +63,44 @@ public class Detalhehistorico {
                               
                                   <main>
                                       <div class="card" id="historico-details">
-                                          <!-- Conteúdo será preenchido dinamicamente com JavaScript -->
+                                         <h3>Histórico</h3>
+                                         <p>Nome do Estabelecimento: """+dados.getNomeEstabelecimento()+"""
+                                         </p>
+                                         <p>Local de Origem:"""+dados.getLocalOrigem()+"""
+                                         </p>
+                                         <p>Local de Destino: """+dados.getLocalDestino()+"""
+                                           </p>
+                                         <p>Valor: """+dados.getValor()+"""
+                                        </p>
+                                         <p>Observação: """+dados.getObservacao()+"""
+                                        </p>
+                                         <p>Itens do Pedido: """+dados.getItensDoPedido()+"""
+                                        </p>
+                                        <p style="display: inline-block;">Data de Criação: """+dados.getDataCriacao()+"""
+                                                                 </p>
+                                        <p style="display: inline-block; margin-left: 20px;">Data de Entrega: """+dados.getDataEntrega()+"""
+                                         </p>
+                                         <p>Motoboy:</p>
+                                         <ul>
+                                             <li>Nome: """+dados.getMotoboy().getNome()+"""
+                                                       </li>
+                                             <li>Telefone: """+dados.getMotoboy().getTelefone()+"""
+                                                                                       </li>
+                                             <li>Email: """+dados.getMotoboy().getEmail()+"""
+                                                                                 </li>
+                                         </ul>
+                                         <p>Gerente:</p>
+                                         <ul>
+                                             <li>Nome: """+dados.getGerente().getNome()+"""
+                                                                               </li>
+                                             <li>Telefone: """+dados.getGerente().getTelefone()+"""
+                                                                                       </li>
+                                             <li>Email: """+dados.getGerente().getEmail()+"""
+                                                                                 </li>
+                                         </ul>
                                       </div>
                                   </main>
-                                  <script>preencherDetalhesHistorico()</script>
+                                  
                        
                 """;
     }

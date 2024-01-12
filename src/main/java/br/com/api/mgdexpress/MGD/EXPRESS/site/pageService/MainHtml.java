@@ -216,7 +216,7 @@ public class MainHtml {
                                                            <p>Motoboy: ${item.motoboyNome}</p>
                                                            <p>Estabelecimento: ${item.nomeStabelecimento}</p>
                                                            <p>Valor: R$ ${item.valor.toFixed(2)}</p>
-                                                           <a onclick="preencherDetalhesHistorico('${url}historico/detalhes/${item.id}')">
+                                                           <a onclick="carregarPagina('${url}historico/detalhes/${item.id}')">
                                                                <button>Detalhes</button>
                                                            </a>`;
                                                        historicoList.appendChild(li);
@@ -228,42 +228,7 @@ public class MainHtml {
                                            };
                                            
                                            
-                                           function preencherDetalhesHistorico(urll) {
                                            
-                                                        fetch(urll, {
-                                           method: 'GET',
-                                           headers: {
-                                               'Authorization': `Bearer ${token}`,
-                                               'Content-Type': 'application/json'
-                                           }
-                                       })
-                                           .then(response => response.json())
-                                           .then(detalhes => {
-                                       
-                                               const historicoDetails = document.getElementById('historico-details');
-                                                       historicoDetails.innerHTML = `
-                                                           <h3>Histórico</h3>
-                                                           <p>Nome do Estabelecimento: ${detalhes.nomeEstabelecimento}</p>
-                                                           <p>Local de Origem: ${detalhes.localOrigem}  Local de Destino: ${detalhes.localDestino}</p>
-                                                           <p>Valor: ${detalhes.valor}</p>
-                                                           <p>Observação: ${detalhes.observacao}</p>
-                                                           <p>Itens do Pedido: ${detalhes.itensPedido}</p>
-                                                           <p>Data de Criação: ${detalhes.dataCriacao}   Data de Entrega: ${detalhes.dataEntrega}</p>
-                                                           <p>Motoboy:</p>
-                                                           <ul>
-                                                               <li>Nome: ${detalhes.motoboy.nome}</li>
-                                                               <li>Telefone: ${detalhes.motoboy.telefone}</li>
-                                                               <li>Email: ${detalhes.motoboy.email}</li>
-                                                           </ul>
-                                                           <p>Gerente:</p>
-                                                           <ul>
-                                                               <li>Nome: ${detalhes.gerente.nome}</li>
-                                                               <li>Telefone: ${detalhes.gerente.telefone}</li>
-                                                               <li>Email: ${detalhes.gerente.email}</li>
-                                                           </ul>`;
-                                           })
-                                           .catch(error => console.error('Erro:', error));
-                                   }
                                </script>
                                </body>
                                
