@@ -64,6 +64,7 @@ public class ListarHistorico {
                                    border-radius: 4px;
                                    cursor: pointer;
                                }
+                               h2{margin-left: 40%;}
                            </style>
                        </head>
                        
