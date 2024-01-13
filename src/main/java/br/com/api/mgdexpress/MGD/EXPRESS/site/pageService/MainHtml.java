@@ -227,6 +227,41 @@ public class MainHtml {
                                                });
                                            };
                                            
+                                           function listarHistoricoEntregas() {
+                                           
+                                          
+                                                       carregarPagina(`${url}historicoEntregas`);
+                                           
+                                                       fetch(`${urlRoot}/historico/gerente/entregas`, {
+                                                           method: 'GET',
+                                                           headers: {
+                                                               'Authorization': `Bearer ${token}`,
+                                                               'Content-Type': 'application/json'
+                                                           }
+                                                       })
+                                                           .then(response => response.json())
+                                                           .then(data => {
+                                                               data.forEach(item => {
+                                                                   const historicoList = document.getElementById('cardContainer');
+                                           
+                                                                   const li = document.createElement('li');
+                                                                   li.innerHTML = `s
+                                                                   <h2>${item.nome}</h2>
+                                                                   <p>Valor: R$ ${item.valor}</p>
+                                                                   <p>KM: ${item.km}</p>
+                                                         
+                                                                   <button class="btn-detalhe" onclick="redirectToDetailsPage()">
+                                                                     <i class="fas fa-info-circle"></i>
+                                                                   </button>`;
+                                                                   historicoList.appendChild(li);
+                                                               });
+                                                           })
+                                                           .catch(error => {
+                                                               console.error('Erro:', error);
+                                                           });
+                                                   };
+                                           
+                                           
                                            
                                            
                                </script>

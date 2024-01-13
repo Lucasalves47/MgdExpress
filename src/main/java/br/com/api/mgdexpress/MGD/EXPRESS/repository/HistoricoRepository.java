@@ -20,4 +20,6 @@ public interface HistoricoRepository extends JpaRepository<Historico,Long> {
 
     @Query("select h from Historico h where h.gerente.email = :email ")
     List<Historico> BuscarPorEmailGerente(String email);
+
+
 }
