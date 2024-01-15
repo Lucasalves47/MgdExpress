@@ -93,7 +93,7 @@ public class GerenteController {
             var id = historico.getMotoboy().getId().intValue();
             if(historico.getDataEntrega().getDayOfMonth() == LocalDate.now().getDayOfMonth()){
                 if(!listaDeHistorico.contains(new DadosListaHistoricoEntregasDoDia(historico, entregas.get(id)))){
-                    listaDeHistorico.add(id,new DadosListaHistoricoEntregasDoDia(historico, entregas.get(id)));
+                    listaDeHistorico.add(new DadosListaHistoricoEntregasDoDia(historico, entregas.get(id)));
                 }
             }
         });
