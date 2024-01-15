@@ -94,7 +94,7 @@ public class GerenteController {
         historicos.forEach(historico -> {
 
             var id = historico.getMotoboy().getId().intValue();
-            if(historico.getDataEntrega().getDayOfMonth() == LocalDate.now().getDayOfMonth()){
+            if(Objects.equals(historico.getDataEntrega(), LocalDate.now())){
                 if(!listaDeHistorico.contains(new DadosListaHistoricoEntregasDoDia(historico, entregas.get(id)))){
                     listaDeHistorico.add(new DadosListaHistoricoEntregasDoDia(historico, entregas.get(id)));
                 }
