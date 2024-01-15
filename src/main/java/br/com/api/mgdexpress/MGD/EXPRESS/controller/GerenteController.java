@@ -72,7 +72,7 @@ public class GerenteController {
     @GetMapping("/listarMotoboysEntregas")
     public ResponseEntity<List<DadosListaHistoricoEntregasDoDia>> listaHistoricoEntregas(@RequestHeader("Authorization") String header){
         List<DadosListaHistoricoEntregasDoDia> listaDeHistorico = new ArrayList<>();
-        ArrayList<Integer> entregas = new ArrayList<>(Collections.nCopies(motoboyRepository.encontrarMaiorId().intValue() + 1, null));
+        ArrayList<DtoEntregaDistancia> entregas = new ArrayList<>(Collections.nCopies(motoboyRepository.encontrarMaiorId().intValue() + 1, null));
 
 
         var token = header.replace("Bearer ","");
@@ -81,11 +81,12 @@ public class GerenteController {
 
         historicos.forEach(historico -> {
             var id = historico.getMotoboy().getId().intValue();
+            var km = historico.getDistancia();
             if(Objects.equals(historico.getDataEntrega(), LocalDate.now())){
             if(entregas.get(id) == null){
-                entregas.set(id,1);
+                entregas.set(id,new DtoEntregaDistancia(1,km));
             }else{
-                entregas.set(id, entregas.get(id)+1);
+                entregas.set(id, new DtoEntregaDistancia(entregas.get(id).entregas()+1,entregas.get(id).km()+km));
             }
             }
         });
@@ -95,8 +96,8 @@ public class GerenteController {
 
             var id = historico.getMotoboy().getId().intValue();
             if(Objects.equals(historico.getDataEntrega(), LocalDate.now())){
-                if(!listaDeHistorico.contains(new DadosListaHistoricoEntregasDoDia(historico, entregas.get(id)))){
-                    listaDeHistorico.add(new DadosListaHistoricoEntregasDoDia(historico, entregas.get(id)));
+                if(!listaDeHistorico.contains(new DadosListaHistoricoEntregasDoDia(historico, entregas.get(id).entregas()))){
+                    listaDeHistorico.add(new DadosListaHistoricoEntregasDoDia(historico, entregas.get(id).entregas()));
                 }
             }
         });
