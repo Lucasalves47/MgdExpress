@@ -56,9 +56,9 @@ public class PedidoController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER_MOTOBOY')")
-    @GetMapping("/mudarEstadopedido/{idPedido}/{distancia}")
+    @GetMapping("/mudarEstadopedido/{idPedido}")
     @Transactional
-    public ResponseEntity MudarStadoDoPedido(@PathVariable Long idPedido,@RequestHeader("Authorization") String header,@PathVariable Double distancia){
+    public ResponseEntity MudarStadoDoPedido(@PathVariable Long idPedido,@RequestHeader("Authorization") String header/*,@PathVariable Double distancia*/){
 
 //        System.out.println("Entrei no mudar estado do pedido");
 
@@ -73,7 +73,7 @@ public class PedidoController {
             regras.verificarSeMotoboyDisponivel(motoboy);
             pedido.setStatus(Status.ANDAMENTO);
             pedido.setMotoboy(motoboy);
-            pedido.setDistancia(distancia);
+            pedido.setDistancia(10.1);//distancia);
             motoboy.setDisponivel(false);
             motoboy.setEmailGerente(pedido.getGerente().getEmail());
             pedidoRepository.save(pedido);
