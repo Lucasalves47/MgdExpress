@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/gerente")
@@ -80,10 +81,12 @@ public class GerenteController {
 
         historicos.forEach(historico -> {
             var id = historico.getMotoboy().getId().intValue();
+            if(Objects.equals(historico.getDataEntrega(), LocalDate.now())){
             if(entregas.get(id) == null){
                 entregas.set(id,1);
             }else{
                 entregas.set(id, entregas.get(id)+1);
+            }
             }
         });
 
