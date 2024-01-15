@@ -36,6 +36,7 @@ public class Pedido {
     private Motoboy motoboy;
     @ManyToOne
     private Gerente gerente;
+    private Double distancia;
 
     public Pedido(DadosPedido dadosPedido, Gerente gerente) {
 
@@ -49,6 +50,7 @@ public class Pedido {
         this.status = Status.INICIAR;
         this.dataCriacao = LocalDate.now();
         this.gerente = gerente;
+        this.distancia = null;
 
     }
 

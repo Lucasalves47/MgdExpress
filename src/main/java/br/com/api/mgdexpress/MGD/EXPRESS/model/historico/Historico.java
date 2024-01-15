@@ -39,6 +39,7 @@ public class Historico {
     private Motoboy motoboy;
     @ManyToOne
     private Gerente gerente;
+    private Double distancia;
 
 
 
@@ -55,5 +56,6 @@ public class Historico {
         this.motoboy = pedido.getMotoboy();
         this.gerente = pedido.getGerente();
         this.pedidoId = pedido.getId();
+        this.distancia = pedido.getDistancia();
     }
 }
