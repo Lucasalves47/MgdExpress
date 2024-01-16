@@ -92,7 +92,7 @@ public class ControllerSiteGerente {
     }
 
     @GetMapping("/historicoEntregas")
-    public String historcoEntregas(){
-        return HistoricoEntregas.html();
+    public ResponseEntity<HtmlPage> historcoEntregas(){
+        return ResponseEntity.ok(new HtmlPage(HistoricoEntregas.html()));
     }
 }
