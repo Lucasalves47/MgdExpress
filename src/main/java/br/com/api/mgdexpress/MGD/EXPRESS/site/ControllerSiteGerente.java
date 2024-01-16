@@ -70,7 +70,7 @@ public class ControllerSiteGerente {
     }
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
-    @GetMapping("historico/detalhes/{id}")
+    @GetMapping("/historico/detalhes/{id}")
     public ResponseEntity<HtmlPage> detalharHistorico(@PathVariable Long id){
        var historico = historicoRepository.getReferenceById(id);
         return ResponseEntity.ok(new HtmlPage(Detalhehistorico.detalhar(historico)));
@@ -78,7 +78,7 @@ public class ControllerSiteGerente {
     }
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
-    @GetMapping("pedido/detalhes/{id}")
+    @GetMapping("/pedido/detalhes/{id}")
     public ResponseEntity<HtmlPage> detalharPedido(@PathVariable Long id){
         var pedido = pedidoRepository.getReferenceById(id);
         return ResponseEntity.ok(new HtmlPage(DetalhePedido.detalhar(pedido)));
@@ -86,9 +86,13 @@ public class ControllerSiteGerente {
     }
 
 
-
-    @GetMapping("solicitacao/cadastro")
+    @GetMapping("/solicitacao/cadastro")
     public String FormularioSolicitacaoCadastro(){
         return FormularioSolicitacaoCadastroGerente.html();
+    }
+
+    @GetMapping("/historicoEntregas")
+    public String historcoEntregas(){
+        return HistoricoEntregas.html();
     }
 }

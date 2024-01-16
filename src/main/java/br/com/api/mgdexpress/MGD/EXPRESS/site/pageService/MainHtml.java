@@ -232,7 +232,7 @@ public class MainHtml {
                                           
                                                        carregarPagina(`${url}historicoEntregas`);
                                            
-                                                       fetch(`${urlRoot}/historico/gerente/entregas`, {
+                                                       fetch(`${urlRoot}/gerente/listarMotoboysEntregas`, {
                                                            method: 'GET',
                                                            headers: {
                                                                'Authorization': `Bearer ${token}`,
@@ -242,15 +242,16 @@ public class MainHtml {
                                                            .then(response => response.json())
                                                            .then(data => {
                                                                data.forEach(item => {
-                                                                   const historicoList = document.getElementById('cardContainer');
+                                                                   const historicoList = document.getElementById('container');
                                            
                                                                    const li = document.createElement('li');
                                                                    li.innerHTML = `s
-                                                                   <h2>${item.nome}</h2>
+                                                                   <h2>${item.nomeMotoboy}</h2>
                                                                    <p>Valor: R$ ${item.valor}</p>
+                                                                    <p>Entregas: ${item.entregas}</p>
                                                                    <p>KM: ${item.km}</p>
                                                          
-                                                                   <button class="btn-detalhe" onclick="redirectToDetailsPage()">
+                                                                   <button class="btn-detalhe" onclick="carregarPagina('${url}historico/detalhes/${item.id}')">
                                                                      <i class="fas fa-info-circle"></i>
                                                                    </button>`;
                                                                    historicoList.appendChild(li);
