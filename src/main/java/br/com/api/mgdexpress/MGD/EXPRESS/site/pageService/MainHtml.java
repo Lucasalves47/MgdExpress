@@ -241,6 +241,7 @@ public class MainHtml {
                                                        })
                                                            .then(response => response.json())
                                                            .then(data => {
+                                                           console.log(data);
                                                                data.forEach(item => {
                                                                    const historicoList = document.getElementById('container');
                                            
