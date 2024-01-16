@@ -251,9 +251,12 @@ public class MainHtml {
                                                                     <p>Entregas: ${item.entregas}</p>
                                                                    <p>KM: ${item.km}</p>
                                                          
-                                                                   <button class="btn-detalhe" onclick="carregarPagina('${url}historico/detalhes/${item.id}')">
+                                                                    <a onclick="carregarPagina('${url}historico/detalhes/${item.id}')">
+                                                               <button class="btn-detalhe">
                                                                      <i class="fas fa-info-circle"></i>
-                                                                   </button>`;
+                                                                   </button>
+                                                           </a>
+                                                                   `;
                                                                    historicoList.appendChild(li);
                                                                });
                                                            })
