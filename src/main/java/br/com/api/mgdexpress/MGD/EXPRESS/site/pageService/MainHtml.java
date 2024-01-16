@@ -260,6 +260,7 @@ public class MainHtml {
                                                                    historicoList.appendChild(li);
                                                                });
                                                            })
+                                                           
                                                            .catch(error => {
                                                                console.error('Erro:', error);
                                                            });
