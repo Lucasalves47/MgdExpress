@@ -20,7 +20,7 @@ public class HistoricoEntregas {
                       background-color: #333;
                       padding: 10px;
                       color: white;
-                      text-align: center;
+                      
                     }
                                 
                     .container {
@@ -73,12 +73,12 @@ public class HistoricoEntregas {
                 </head>
                 <body>
                
-                             <div>
-                           <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
-                           </div>   
+                            
                   <div class="navbar">
                    
-                   
+                    <div>
+                           <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
+                           </div>   
                     <h1>Entregas Feitas</h1>
                   </div>
                                 
