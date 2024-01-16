@@ -59,19 +59,21 @@ public class HistoricoEntregas {
                         display: inline;
                         margin-left: 40%;
                     }
+                    a{
+                        margin-left: 15%;
+                        display: inline;
+                    }
                     
                    
                   </style>
                 </head>
                 <body>
-                <nav>
-                            <div>
-                                <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
-                           </div>
-                           <h2>Histórico</h2>
-                       </nav>
+               
                                 
                   <div class="navbar">
+                   <div>
+                                <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
+                           </div>
                    
                     <h1>Entregas Feitas</h1>
                   </div>
