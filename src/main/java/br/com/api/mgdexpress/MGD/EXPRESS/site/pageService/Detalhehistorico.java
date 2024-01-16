@@ -93,38 +93,38 @@ public class Detalhehistorico {
                            <main>
                                <div class="card" id="historico-details">
                                    <h3>Histórico</h3>
-                                   <p>Nome do Estabelecimento: """ + dados.getNomeEstabelecimento() + """
+                                   <p>Nome do Estabelecimento : """ + dados.getNomeEstabelecimento() + """
                                    </p>
-                                   <p>Local de Origem:""" + dados.getLocalOrigem() + """
+                                   <p>Local de Origem :""" + dados.getLocalOrigem() + """
                                    </p>
-                                   <p>Local de Destino: """ + dados.getLocalDestino() + """
+                                   <p>Local de Destino : """ + dados.getLocalDestino() + """
                                    </p>
-                                   <p>Valor: """ + dados.getValor() + """
+                                   <p>Valor : """ + dados.getValor() + """
                                    </p>
-                                   <p>Observação: """ + dados.getObservacao() + """
+                                   <p>Observação : """ + dados.getObservacao() + """
                                    </p>
-                                   <p>Itens do Pedido: """ + dados.getItensDoPedido() + """
+                                   <p>Itens do Pedido : """ + dados.getItensDoPedido() + """
                                    </p>
-                                   <p class="inline-block">Data de Criação: """ + dados.getDataCriacao() + """
+                                   <p class="inline-block">Data de Criação : """ + dados.getDataCriacao() + """
                                    </p>
-                                   <p class="inline-block" style="margin-left: 20px;">Data de Entrega: """ + dados.getDataEntrega() + """
+                                   <p class="inline-block" style="margin-left: 20px;">Data de Entrega : """ + dados.getDataEntrega() + """
                                    </p>
-                                   <h3>">Motoboy:</h3>
+                                   <h3>Motoboy:</h3>
                                    <ul>
-                                       <li>Nome: """ + dados.getMotoboy().getNome() + """
+                                       <li>Nome : """ + dados.getMotoboy().getNome() + """
                                        </li>
-                                       <li>Telefone: """ + dados.getMotoboy().getTelefone() + """
+                                       <li>Telefone : """ + dados.getMotoboy().getTelefone() + """
                                        </li>
-                                       <li>Email: """ + dados.getMotoboy().getEmail() + """
+                                       <li>Email : """ + dados.getMotoboy().getEmail() + """
                                    </li>
                                    </ul>
-                                   <p>Gerente:</p>
+                                   <p>Gerente :</p>
                                    <ul>
-                                       <li>Nome: """ + dados.getGerente().getNome() + """
+                                       <li>Nome : """ + dados.getGerente().getNome() + """
                                        </li>
-                                       <li>Telefone: """ + dados.getGerente().getTelefone() + """
+                                       <li>Telefone : """ + dados.getGerente().getTelefone() + """
                                        </li>
-                                       <li>Email: """ + dados.getGerente().getEmail() + """
+                                       <li>Email : """ + dados.getGerente().getEmail() + """
                                    </li>
                                    </ul>
                                </div>
