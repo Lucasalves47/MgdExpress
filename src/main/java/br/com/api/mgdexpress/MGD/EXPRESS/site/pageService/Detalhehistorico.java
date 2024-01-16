@@ -109,7 +109,7 @@ public class Detalhehistorico {
                                    </p>
                                    <p class="inline-block" style="margin-left: 20px;">Data de Entrega : """ + dados.getDataEntrega() + """
                                    </p>
-                                   <h3>Motoboy:</h3>
+                                   <h3>Motoboy</h3>
                                    <ul>
                                        <li>Nome : """ + dados.getMotoboy().getNome() + """
                                        </li>
@@ -118,7 +118,7 @@ public class Detalhehistorico {
                                        <li>Email : """ + dados.getMotoboy().getEmail() + """
                                    </li>
                                    </ul>
-                                   <p>Gerente :</p>
+                                   <h3>Gerente </h3>
                                    <ul>
                                        <li>Nome : """ + dados.getGerente().getNome() + """
                                        </li>
