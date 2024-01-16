@@ -105,11 +105,11 @@ public class Detalhehistorico {
                                    </p>
                                    <p>Itens do Pedido: """ + dados.getItensDoPedido() + """
                                    </p>
-                                   <p>Data de Criação: """ + dados.getDataCriacao() + """
+                                   <p class="inline-block">Data de Criação: """ + dados.getDataCriacao() + """
                                    </p>
-                                   <p class="inline-block">Data de Entrega: """ + dados.getDataEntrega() + """
+                                   <p class="inline-block" style="margin-left: 20px;">Data de Entrega: """ + dados.getDataEntrega() + """
                                    </p>
-                                   <p class="inline-block" style="margin-left: 20px;">Motoboy:</p>
+                                   <h3>">Motoboy:</h3>
                                    <ul>
                                        <li>Nome: """ + dados.getMotoboy().getNome() + """
                                        </li>
