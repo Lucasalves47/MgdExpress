@@ -68,7 +68,7 @@ public class HistoricoEntregas {
                     <h1>Entregas Feitas</h1>
                   </div>
                                 
-                  <div class="container">
+                  <div id="container">
                     
                                 
                             
