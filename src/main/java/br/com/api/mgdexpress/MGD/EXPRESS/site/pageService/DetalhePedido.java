@@ -60,7 +60,7 @@ public class DetalhePedido {
                                       h2 {
                                           margin-left: 40%;
                                           color: #fff;
-                                          margin: 0;
+                                          
                                       }
                               
                                       ul {

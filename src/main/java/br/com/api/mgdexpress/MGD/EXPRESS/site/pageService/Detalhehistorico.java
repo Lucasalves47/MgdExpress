@@ -58,9 +58,9 @@ public class Detalhehistorico {
                                }
                        
                                h2 {
-                                   margin-left: 30px;
+                                   margin-left: 40%;
                                    color: #fff;
-                                   margin: 0;
+                                   
                                }
                        
                                ul {
@@ -84,11 +84,11 @@ public class Detalhehistorico {
                        
                        <body>
                            <nav>
-                               <div>
-                                   <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>
-                               </div>
-                               <h2>Detalhe do Histórico</h2>
-                           </nav>
+                            <div>
+                                <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
+                           </div>
+                           <h2>detalhes</h2>
+                       </nav>
                        
                            <main>
                                <div class="card" id="historico-details">
