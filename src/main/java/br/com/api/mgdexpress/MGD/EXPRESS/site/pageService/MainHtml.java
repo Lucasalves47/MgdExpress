@@ -246,7 +246,7 @@ public class MainHtml {
                                                                    const historicoList = document.getElementById('container');
                                            
                                                                    const li = document.createElement('li');
-                                                                   li.innerHTML = `s
+                                                                   li.innerHTML = `
                                                                    <h2>${item.nomeMotoboy}</h2>
                                                                    <p>Valor: R$ ${item.valor}</p>
                                                                     <p>Entregas: ${item.entregas}</p>
