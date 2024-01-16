@@ -58,7 +58,7 @@ public class Detalhehistorico {
                                }
                        
                                h2 {
-                                   margin-left: 40%;
+                                   margin-left: 30px;
                                    color: #fff;
                                    margin: 0;
                                }
