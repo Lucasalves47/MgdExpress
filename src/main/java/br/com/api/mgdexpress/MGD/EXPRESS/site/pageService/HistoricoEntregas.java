@@ -18,7 +18,7 @@ public class HistoricoEntregas {
                                 
                     .navbar {
                       background-color: #333;
-                      padding: 10px;
+                    
                       color: white;
                       
                     }
@@ -65,7 +65,7 @@ public class HistoricoEntregas {
                     }
                     h1{
                         display: inline;
-                        margin-left: 40%;
+                        margin-left: 30%;
                     }
                     
                    
