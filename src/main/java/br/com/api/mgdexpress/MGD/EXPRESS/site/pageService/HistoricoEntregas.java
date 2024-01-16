@@ -55,7 +55,7 @@ public class HistoricoEntregas {
                         margin-left: 10%;
                         display: inline;
                     }
-                    h2{
+                    h1{
                         display: inline;
                         margin-left: 40%;
                     }
