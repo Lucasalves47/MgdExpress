@@ -67,6 +67,9 @@ public class HistoricoEntregas {
                         display: inline;
                         margin-left: 30%;
                     }
+                    .backLink{
+                        margin-left: 0;
+                        }
                     
                    
                   </style>
