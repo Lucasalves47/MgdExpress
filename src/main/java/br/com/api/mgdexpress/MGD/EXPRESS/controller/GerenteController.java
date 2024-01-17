@@ -91,6 +91,8 @@ public class GerenteController {
             }
         });
 
+        listaDeHistorico.forEach(System.out::println);
+
 
         historicos.forEach(historico -> {
 
