@@ -73,7 +73,7 @@ public class GerenteController {
     public ResponseEntity<List<DadosListaHistoricoEntregasDoDia>> listaHistoricoEntregas(@RequestHeader("Authorization") String header){
         List<DadosListaHistoricoEntregasDoDia> listaDeHistorico = new ArrayList<>(Collections.nCopies(motoboyRepository.encontrarMaiorId().intValue() + 1, null));
         ArrayList<DtoEntregaDistancia> entregas = new ArrayList<>(Collections.nCopies(motoboyRepository.encontrarMaiorId().intValue() + 1, null));
-
+        List<DadosListaHistoricoEntregasDoDia> dto = new ArrayList<>();
 
         var token = header.replace("Bearer ","");
         var email = tokenService.getSubject(token);
@@ -91,7 +91,7 @@ public class GerenteController {
             }
         });
 
-        listaDeHistorico.forEach(System.out::println);
+
 
 
         historicos.forEach(historico -> {
@@ -105,7 +105,14 @@ public class GerenteController {
             }
         });
 
-        return ResponseEntity.ok(listaDeHistorico);
+        listaDeHistorico.forEach(item ->{
+            if(item != null){
+                dto.add(item);
+            }
+        }
+        );
+
+        return ResponseEntity.ok(dto);
     }
 
 }
