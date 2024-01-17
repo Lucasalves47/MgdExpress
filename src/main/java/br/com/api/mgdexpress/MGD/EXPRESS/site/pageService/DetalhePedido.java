@@ -77,7 +77,7 @@ public class DetalhePedido {
                               <body>
                                   <nav>
                                       <div>
-                                          <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>
+                                          <p class="backLink" onclick='listarPedidos()'>←</p>
                                       </div>
                                       <h2>Detalhe do Pedido</h2>
                                   </nav>

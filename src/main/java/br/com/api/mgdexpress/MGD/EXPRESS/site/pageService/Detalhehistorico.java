@@ -85,7 +85,7 @@ public class Detalhehistorico {
                        <body>
                            <nav>
                             <div>
-                                <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
+                                <p class="backLink" onclick='listarHistorico()'>←</p>         
                            </div>
                            <h2>detalhes</h2>
                        </nav>
