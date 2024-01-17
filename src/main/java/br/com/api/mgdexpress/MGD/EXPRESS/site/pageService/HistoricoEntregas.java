@@ -80,7 +80,7 @@ public class HistoricoEntregas {
                             
                   <div class="navbar">
                   
-                    <p class="backLink" onclick='listarHistoricoEntregas()'>←</p>         
+                    <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>         
                              
                     <h1>Entregas Feitas</h1>
                   </div>
