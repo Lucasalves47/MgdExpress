@@ -252,7 +252,7 @@ public class MainHtml {
                                                                    <p>KM: ${item.km}</p>
                                                          
                                                               
-                                                               <button class="btn-detalhe" onclick="carregarPagina('${url}historico/detalhes/14')">
+                                                               <button class="btn-detalhe" onclick="carregarPagina('${url}historico/detalhes/${item.id}')">
                                                                      <i class="fas fa-info-circle"></i>
                                                                    </button>
                                                         
