@@ -69,6 +69,7 @@ public class HistoricoEntregas {
                     }
                     .backLink{
                         margin-left: 0;
+                        cursor: pointer;
                         }
                     
                    
