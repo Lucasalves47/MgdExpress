@@ -64,7 +64,8 @@ public class Home {
                 <nav>
                     <h2>MGD EXPRESS</h2>
                     <div>
-                        <button onclick="clearInterval(intervalId);carregarPagina('mgdexpress-production-bdc8.up.railway.app/site/gerente/criar')">Novo
+                        <button onclick="clearInterval(intervalId);carregarPagina('"""+url+"""
+                            /site/gerente/criar')">Novo
                             Pedido</button>
                         <button onclick="clearInterval(intervalId);listarPedidos();">Meus Pedidos</button>
                         <button onclick="clearInterval(intervalId);listarHistoricoEntregas();">Entregas do dia</button>

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/site/gerente")
 public class ControllerSiteGerente {
 
-    private String url = "mgdexpress-production-bdc8.up.railway.app";
+    private String url = "https://mgdexpress-production-bdc8.up.railway.app";
 
     @Autowired
     private HistoricoRepository historicoRepository;
@@ -31,7 +31,7 @@ public class ControllerSiteGerente {
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/sucesso")
     public ResponseEntity<HtmlPage> sucesso(){
-        return ResponseEntity.ok(new HtmlPage(Sucesso.sucesso()));
+        return ResponseEntity.ok(new HtmlPage(Sucesso.sucesso(url)));
     }
 
 
@@ -51,12 +51,12 @@ public class ControllerSiteGerente {
     @GetMapping("/criar")
     public ResponseEntity<HtmlPage> formulario(){
 
-        return ResponseEntity.ok(new HtmlPage(Formulario.formulario()));
+        return ResponseEntity.ok(new HtmlPage(Formulario.formulario(url)));
     }
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/meusPedidos")
     public ResponseEntity<HtmlPage> listarMeusPedidos(){
-        return  ResponseEntity.ok(new HtmlPage(ListarMeusPedidos.listar()));
+        return  ResponseEntity.ok(new HtmlPage(ListarMeusPedidos.listar(url)));
     }
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
@@ -88,11 +88,11 @@ public class ControllerSiteGerente {
 
     @GetMapping("/solicitacao/cadastro")
     public String FormularioSolicitacaoCadastro(){
-        return FormularioSolicitacaoCadastroGerente.html();
+        return FormularioSolicitacaoCadastroGerente.html(url);
     }
 
     @GetMapping("/historicoEntregas")
     public ResponseEntity<HtmlPage> historcoEntregas(){
-        return ResponseEntity.ok(new HtmlPage(HistoricoEntregas.html()));
+        return ResponseEntity.ok(new HtmlPage(HistoricoEntregas.html(url)));
     }
 }

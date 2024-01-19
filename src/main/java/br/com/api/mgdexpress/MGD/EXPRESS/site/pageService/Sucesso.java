@@ -2,7 +2,7 @@ package br.com.api.mgdexpress.MGD.EXPRESS.site.pageService;
 
 public class Sucesso {
 
-    public static String sucesso(){
+    public static String sucesso(String url){
         return """
                 <head>
                                 
@@ -52,7 +52,8 @@ public class Sucesso {
                 <div class="container">
                     <h1>Pedido Criado com Sucesso!</h1>
                     <p>Seu pedido foi registrado com sucesso. Obrigado!</p>
-                    <button onclick="carregarPagina('mgdexpress-production-bdc8.up.railway.app/site/gerente/home')">Voltar para a Home</button>
+                    <button onclick="carregarPagina('"""+url+"""
+                /site/gerente/home')">Voltar para a Home</button>
                 </div>
                                 
                 """;

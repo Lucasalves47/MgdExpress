@@ -3,7 +3,7 @@ package br.com.api.mgdexpress.MGD.EXPRESS.site.pageService;
 
 public class FormLogin {
 
-    public static String page(){
+    public static String page(String url){
         return """
                                 
                
@@ -77,7 +77,8 @@ public class FormLogin {
                             
                                         <button type="button" onclick="login()">Login</button>
                             
-                                        <a href="mgdexpress-production-bdc8.up.railway.app/site/gerente/solicitacao/cadastro">Cadastre-se</a>
+                                        <a href='"""+url+"""
+                                    /site/gerente/solicitacao/cadastro'>Cadastre-se</a>
                                     </form>
                                 </div>
                             </body>

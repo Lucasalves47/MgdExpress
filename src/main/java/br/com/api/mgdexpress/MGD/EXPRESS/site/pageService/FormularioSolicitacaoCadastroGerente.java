@@ -2,7 +2,7 @@ package br.com.api.mgdexpress.MGD.EXPRESS.site.pageService;
 
 public class FormularioSolicitacaoCadastroGerente {
 
-    public static String html(){
+    public static String html(String url){
         return """
                 <!DOCTYPE html>
                 <html lang="pt-br">
@@ -93,7 +93,8 @@ public class FormularioSolicitacaoCadastroGerente {
                             var formulario = document.getElementById('registroForm');
                             var formData = new FormData(formulario);
                                 
-                            fetch('mgdexpress-production-bdc8.up.railway.app/gerente-temporario', {
+                            fetch('"""+url+"""
+                                    /gerente-temporario', {
                                     method: 'POST',
                                     body: JSON.stringify(Object.fromEntries(formData)),
                                     headers: {

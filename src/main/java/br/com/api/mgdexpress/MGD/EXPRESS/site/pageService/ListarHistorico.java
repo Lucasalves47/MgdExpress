@@ -12,7 +12,7 @@ import java.util.List;
 public class ListarHistorico {
     @Autowired
     private HistoricoRepository historicoRepository;
-    public static String historocos(String email) {
+    public static String historocos(String url) {
 
         return """
                
@@ -71,7 +71,8 @@ public class ListarHistorico {
                        
                        <nav>
                             <div>
-                                <p class="backLink" onclick='carregarPagina("mgdexpress-production-bdc8.up.railway.app/site/gerente/home")'>←</p>         
+                                <p class="backLink" onclick="carregarPagina('"""+url+"""
+                           /site/gerente/home')">←</p>         
                            </div>
                            <h2>Histórico</h2>
                        </nav>

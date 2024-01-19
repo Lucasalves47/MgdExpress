@@ -1,7 +1,7 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.site.pageService;
 
 public class HistoricoEntregas {
-    public static String html(){
+    public static String html(String url){
         return """
                 <head>
                   <meta charset="UTF-8">
@@ -80,7 +80,8 @@ public class HistoricoEntregas {
                             
                   <div class="navbar">
                   
-                    <p class="backLink" onclick='carregarPagina("mgdexpress-production-bdc8.up.railway.app/site/gerente/home")'>←</p>     
+                    <p class="backLink" onclick="carregarPagina('"""+url+"""
+                    /site/gerente/home')">←</p>     
                              
                     <h1>Entregas Feitas</h1>
                   </div>

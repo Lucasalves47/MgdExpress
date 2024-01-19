@@ -23,7 +23,7 @@ public class MainHtml {
                                <script>
                                
                                   
-                                   var urlRoot = "https://mgdexpress-production-bdc8.up.railway.app/"
+                                   var urlRoot = "https://mgdexpress-production-bdc8.up.railway.app"
                                    var url = `${urlRoot}/site/gerente/`;
                                    var token;
                                

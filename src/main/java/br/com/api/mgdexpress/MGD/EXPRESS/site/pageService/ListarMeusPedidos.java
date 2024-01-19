@@ -2,7 +2,7 @@ package br.com.api.mgdexpress.MGD.EXPRESS.site.pageService;
 
 public class ListarMeusPedidos {
 
-    public static String listar(){
+    public static String listar(String url){
         return """
                                
                 <head>
@@ -87,7 +87,8 @@ public class ListarMeusPedidos {
                 <nav>
                                        
                     <div>
-                        <p class="backLink" onclick='carregarPagina("mgdexpress-production-bdc8.up.railway.app/site/gerente/home")'>←</p>
+                        <p class="backLink" onclick="carregarPagina("""+url+"""
+                      /site/gerente/home')">←</p>
                                      
                     </div>
                     <h2>Meus Pedidos</h2>

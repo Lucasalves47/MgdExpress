@@ -1,7 +1,7 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.site.pageService;
 
 public class Download {
-    public static String html(){
+    public static String html(String url){
         return """
                 <!DOCTYPE html>
                 <html lang="pt-br">
@@ -58,7 +58,8 @@ public class Download {
                     </div>
                     <div class="content">
                         <p>Faça o download do app Mgd Express para android aqui:</p>
-                        <a class="download-link" href="mgdexpress-production-bdc8.up.railway.app/download/download" download="app-release.apk">Download</a>
+                        <a class="download-link" href='"""+url+"""
+                    /download/download' download="app-release.apk">Download</a>
                     </div>
                 </body>
                 </html>
