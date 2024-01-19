@@ -29,7 +29,7 @@ public class Configurations {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        return http.csrf(cf -> cf.disable()).sessionManagement(sm ->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        return http.csrf(AbstractHttpConfigurer::disable).sessionManagement(sm ->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers("/login","/login/**").permitAll();
                     req.requestMatchers("/crear/motoboy").permitAll();
