@@ -87,7 +87,7 @@ public class ListarMeusPedidos {
                 <nav>
                                        
                     <div>
-                        <p class="backLink" onclick='carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")'>←</p>
+                        <p class="backLink" onclick='carregarPagina("mgdexpress-production-bdc8.up.railway.app/site/gerente/home")'>←</p>
                                      
                     </div>
                     <h2>Meus Pedidos</h2>

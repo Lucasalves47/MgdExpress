@@ -77,7 +77,7 @@ public class FormLogin {
                             
                                         <button type="button" onclick="login()">Login</button>
                             
-                                        <a href="https://mgdexpress-production.up.railway.app/site/gerente/solicitacao/cadastro">Cadastre-se</a>
+                                        <a href="mgdexpress-production-bdc8.up.railway.app/site/gerente/solicitacao/cadastro">Cadastre-se</a>
                                     </form>
                                 </div>
                             </body>

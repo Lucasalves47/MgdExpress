@@ -88,7 +88,7 @@ public class Formulario {
                         <textarea id="itensDoPedido" name="itensDoPedido" placeholder="Digite seu texto aqui..." rows="8" cols="50"></textarea>
                                        
                         <button type="button" onclick="enviarPedido()">Criar</button>
-                        <button style="background-color: #808080;margin-top: 28px;"  onclick="carregarPagina("https://mgdexpress-production.up.railway.app/site/gerente/home")">Cancelar</button>
+                        <button style="background-color: #808080;margin-top: 28px;"  onclick="carregarPagina("mgdexpress-production-bdc8.up.railway.app/site/gerente/home")">Cancelar</button>
                     </form>
                     
                 </body>
