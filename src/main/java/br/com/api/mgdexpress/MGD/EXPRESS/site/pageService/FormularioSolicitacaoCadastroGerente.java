@@ -105,8 +105,7 @@ public class FormularioSolicitacaoCadastroGerente {
                                     if (!response.ok) {
                                         throw new Error('Erro na solicitação');
                                     }
-                                    window.location.href = '"""+url+"""
-                                /site/gerente/cadastro/pendente'
+                                    window.location.href = '"""+url+"/site/gerente/cadastro/pendente'"+"""
                                 })
                         }
                     </script>

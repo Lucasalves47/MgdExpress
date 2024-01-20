@@ -25,7 +25,7 @@ public class ControllerSiteGerente {
 
     @GetMapping
     public String mainHtml(){
-        return MainHtml.html();
+        return MainHtml.html(url);
     }
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")

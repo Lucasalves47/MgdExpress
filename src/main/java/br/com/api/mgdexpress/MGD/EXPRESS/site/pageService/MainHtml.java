@@ -1,7 +1,7 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.site.pageService;
 
 public class MainHtml {
-    public static String html() {
+    public static String html(String url) {
         return """
                 <!DOCTYPE html>
                                <html lang="pt-br">
@@ -23,7 +23,7 @@ public class MainHtml {
                                <script>
                                
                                   
-                                   var urlRoot = "https://mgdexpress-production-bdc8.up.railway.app"
+                                   var urlRoot = """+url+"""
                                    var url = `${urlRoot}/site/gerente/`;
                                    var token;
                                

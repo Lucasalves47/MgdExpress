@@ -87,8 +87,8 @@ public class ListarMeusPedidos {
                 <nav>
                                        
                     <div>
-                        <p class="backLink" onclick="carregarPagina("""+url+"""
-                      /site/gerente/home')">←</p>
+                        <p class="backLink" onclick="carregarPagina('"""+url+"/site/gerente/home')"+"""
+                    >←</p>
                                      
                     </div>
                     <h2>Meus Pedidos</h2>
