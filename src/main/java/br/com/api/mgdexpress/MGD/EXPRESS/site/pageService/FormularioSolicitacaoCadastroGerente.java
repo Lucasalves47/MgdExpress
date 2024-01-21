@@ -93,8 +93,7 @@ public class FormularioSolicitacaoCadastroGerente {
                             var formulario = document.getElementById('registroForm');
                             var formData = new FormData(formulario);
                                 
-                            fetch('"""+url+"""
-                                    /gerente-temporario', {
+                            fetch('"""+url+"/gerente-temporario', {"+"""
                                     method: 'POST',
                                     body: JSON.stringify(Object.fromEntries(formData)),
                                     headers: {
