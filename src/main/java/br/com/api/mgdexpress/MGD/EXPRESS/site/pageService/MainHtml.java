@@ -24,6 +24,7 @@ public class MainHtml {
                                
                                   
                                    var urlRoot ='"""+url+"'"+"""
+                                   
                                    var url = `${urlRoot}/site/gerente/`;
                                    var token;
                                
