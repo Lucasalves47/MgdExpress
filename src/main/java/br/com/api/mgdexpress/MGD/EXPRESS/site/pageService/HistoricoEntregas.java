@@ -81,7 +81,7 @@ public class HistoricoEntregas {
                   <div class="navbar">
                   
                 <p class="backLink" onclick="carregarPagina('"""+url+"/site/gerente/home')"+"""
-                    >←</p>     
+                    ">←</p>
                              
                     <h1>Entregas Feitas</h1>
                   </div>
