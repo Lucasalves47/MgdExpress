@@ -90,8 +90,8 @@ public class Formulario {
                         <button type="button" onclick="enviarPedido()">Criar</button>
                        
                     </form>
-                     <button style="background-color: #808080;margin-top: 28px;"  onclick="carregarPagina('"""+url+"/site/gerente/home')>Cancelar</button>"+"""
-                                        
+                     <button style="background-color: #808080;margin-top: 28px;"  onclick="carregarPagina('"""+url+"/site/gerente/home')"+"""
+                                        ">Cancelar</button>
                     
                 </body>
                 </html>
