@@ -53,7 +53,7 @@ public class Sucesso {
                     <h1>Pedido Criado com Sucesso!</h1>
                     <p>Seu pedido foi registrado com sucesso. Obrigado!</p>
                     <button onclick="carregarPagina('"""+url+"/site/gerente/home')"+"""
-                >Voltar para a Home</button>
+                ">Voltar para a Home</button>
                 </div>
                                 
                 """;
