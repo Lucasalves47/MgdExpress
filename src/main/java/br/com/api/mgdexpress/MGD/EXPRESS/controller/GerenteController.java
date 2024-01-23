@@ -82,11 +82,12 @@ public class GerenteController {
         historicos.forEach(historico -> {
             var id = historico.getMotoboy().getId().intValue();
             var km = historico.getDistancia();
+            var valor = historico.getValor();
             if(Objects.equals(historico.getDataEntrega(), LocalDate.now())){
             if(entregas.get(id) == null){
-                entregas.set(id,new DtoEntregaDistancia(1,km));
+                entregas.set(id,new DtoEntregaDistancia(1,km,valor));
             }else{
-                entregas.set(id, new DtoEntregaDistancia(entregas.get(id).entregas()+1,entregas.get(id).km()+km));
+                entregas.set(id, new DtoEntregaDistancia(entregas.get(id).entregas()+1,entregas.get(id).km()+km,entregas.get(id).valor().add(valor)));
             }
             }
         });
