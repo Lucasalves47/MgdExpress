@@ -61,12 +61,11 @@ public class ControllerSiteGerente {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/historico")
-    public ResponseEntity<HtmlPage> listaHistoricos(@RequestHeader("Authorization") String header){
-        var token = header.replace("Bearer ","");
-        var subject = tokenService.getSubject(token);
+    public ResponseEntity<HtmlPage> listaHistoricos(){
 
 
-        return ResponseEntity.ok(new HtmlPage(ListarHistorico.historocos(subject)));
+
+        return ResponseEntity.ok(new HtmlPage(ListarHistorico.historocos(url)));
     }
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
