@@ -118,7 +118,7 @@ public class Home {
                             marker = localizacoes
                             // Itera sobre a lista de marcadores e atualiza suas posições
                             markers.forEach(function(markerInfo) {
-
+                            
                                 // Atualiza a posição do marcador
                                 markerInfo.marker.setPosition(markerInfo.position);
                             });
