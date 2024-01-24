@@ -115,12 +115,12 @@ public class Home {
                     }
                     
                     function updateMarkersPosition(localizacoes) {
+                    
+                    console.log(localizacoes);
                        
                             // Itera sobre a lista de marcadores e atualiza suas posições
                             markers.forEach(function(markerInfo) {
-                               
-                               
-                   
+
                                 // Atualiza a posição do marcador
                                 markerInfo.marker.setPosition(markerInfo.position);
                             });
