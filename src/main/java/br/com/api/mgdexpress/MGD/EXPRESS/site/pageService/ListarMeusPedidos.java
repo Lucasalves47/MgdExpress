@@ -58,6 +58,70 @@ public class ListarMeusPedidos {
                                         nav button:hover {
                                             background-color: #45a049;
                                         }
+                                      .card-container body {
+                                                                   font-family: Arial, sans-serif;
+                                                                   margin: 0;
+                                                                   padding: 0;
+                                                                   background-color: #f4f4f4;
+                                                               }
+                                                                   
+                                                                         
+                                                         .card-container  .card {
+                                                                   border: 1px solid #ccc;
+                                                                   border-radius: 8px;
+                                                                   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                                                   margin: 10px;
+                                                                   width: 300px;
+                                                                   float: left;
+                                                                   background-color: #fff;
+                                                               }
+                                                                             
+                                                         .card-container  .card img {
+                                                                   width: 100%;
+                                                                   height: 150px;
+                                                                   object-fit: cover;
+                                                                   border-top-left-radius: 8px;
+                                                                   border-top-right-radius: 8px;
+                                                               }
+                                                                             
+                                                        .card-container .card-content {
+                                                                   padding: 10px;
+                                                                   text-align: left;
+                                                               }
+                                                        .card-container .titulo{
+                                                                   text-align: center;
+                                                               }
+                                                                             
+                                                        .card-container button {
+                                                                   background-color: #4caf50;
+                                                                   color: #fff;
+                                                                   padding: 8px;
+                                                                   border: none;
+                                                                   border-radius: 4px;
+                                                                   cursor: pointer;
+                                                                   width: 100%;
+                                                               }
+                                                                             
+                                                        .card-container button:hover {
+                                                                   background-color: #45a049;
+                                                               }
+                                                                             
+                                                               @media (max-width: 768px) {
+                                                               .card-container .card {
+                                                                       width: calc(50% - 20px);
+                                                                   }
+                                                               }
+                                                                             
+                                                        .card-container nav a {
+                                                                   color: white;
+                                                                   text-decoration: none;
+                                                                   margin-left: 15px;
+                                                               }
+                                                                             
+                                                        .card-container .backLink{
+                                                                   font-size : 160%;
+                                                               }
+                                                        .card-container  h2{margin-left: 40%;}
                                     </style>
                                 </head>
                                                
@@ -76,7 +140,7 @@ public class ListarMeusPedidos {
                                                
                                                
                                 <body>
-                                    <div id="card-container"></div>
+                                    <div id="card-container" class="card-container"></div>
                                 </body>
                                
                                 
