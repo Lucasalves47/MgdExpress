@@ -91,9 +91,10 @@ public class ListarMeusPedidos {
                             background-color: #333;
                             color: white;
                             padding: 10px;
-                            display: flex;
+                            display: inline;
                             justify-content: space-between;
                             align-items: center;
+                            
                         }
                     </style>
                 </head>
@@ -104,7 +105,7 @@ public class ListarMeusPedidos {
                <div>
                        <button class="btnNav" onclick="carregarPagina('"""+url+"/site/gerente/criar')"+"""
                            ">Novo Pedido</button>
-                      
+                     
                        <button class="btnNav" onclick="listarHistoricoEntregas();">Entregas do dia</button>
                                        
                        <button class="btnNav" onclick="listarHistorico();">Histórico</button>
