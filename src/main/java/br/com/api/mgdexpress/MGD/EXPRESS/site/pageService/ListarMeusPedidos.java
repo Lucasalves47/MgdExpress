@@ -14,48 +14,8 @@ public class ListarMeusPedidos {
                             padding: 0;
                             background-color: #f4f4f4;
                         }
-                                       
-                       nav {
-                            background-color: #333;
-                            color: white;
-                            padding: 10px;
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                        }
-                                
-                        nav h2 {
-                            margin: 0;
-                        }
-                                
-                        nav a {
-                            color: white;
-                            text-decoration: none;
-                            margin-left: 15px;
-                        }
-                                
-                        main {
-                            text-align: center;
-                            padding: 20px;
-                        }
-                                
-                       
-                                
-                        div button {
-                            background-color: #4CAF50;
-                            color: white;
-                            padding: 10px 20px;
-                            border: none;
-                            border-radius: 5px;
-                            cursor: pointer;
-                            font-size: 16px;
-                            margin-left: 15px;
-                        }
-                                
-                        nav button:hover {
-                            background-color: #45a049;
-                        }
-                                       
+                             
+                                   
                         .card {
                             border: 1px solid #ccc;
                             border-radius: 8px;
@@ -102,6 +62,11 @@ public class ListarMeusPedidos {
                             }
                         }
                                        
+                        nav a {
+                            color: white;
+                            text-decoration: none;
+                            margin-left: 15px;
+                        }
                                        
                         .backLink{
                             font-size : 160%;
