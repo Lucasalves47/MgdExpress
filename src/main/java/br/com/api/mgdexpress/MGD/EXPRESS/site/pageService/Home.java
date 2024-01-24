@@ -108,11 +108,8 @@ public class Home {
                             markerInfo.marker = marker;
                         });
                    
-                        // Função para atualizar as posições dos marcadores
-                        
-                        // Define o intervalo para atualizar as posições dos marcadores a cada 5 segundos (5000 milissegundos)
-                        
-                    }
+                       
+                       }
                     
                     function updateMarkersPosition(localizacoes) {
                     
@@ -122,7 +119,7 @@ public class Home {
                             markers.forEach(function(markerInfo) {
 
                                 // Atualiza a posição do marcador
-                                markerInfo.marker.setPosition(markerInfo.position);
+                                markerInfo.marker.setPosition(localizacoes.position);
                             });
                         }
                         
