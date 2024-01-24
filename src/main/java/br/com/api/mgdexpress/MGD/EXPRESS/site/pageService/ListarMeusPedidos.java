@@ -129,12 +129,12 @@ public class ListarMeusPedidos {
                                 <nav>
                                     <h2>MGD EXPRESS</h2>
                                     <div>
-                                        <button onclick="clearInterval(intervalId);carregarPagina('"""+url+"/site/gerente/criar')"+"""
+                                        <button onclick="carregarPagina('"""+url+"/site/gerente/criar')"+"""
                                             ">Novo Pedido</button>
-                                        <button onclick="clearInterval(intervalId);listarPedidos();">Meus Pedidos</button>
-                                        <button onclick="clearInterval(intervalId);listarHistoricoEntregas();">Entregas do dia</button>
+                                        <button onclick="listarPedidos();">Meus Pedidos</button>
+                                        <button onclick="listarHistoricoEntregas();">Entregas do dia</button>
                                       
-                                        <button onclick="clearInterval(intervalId);listarHistorico();">Histórico</button>
+                                        <button onclick="listarHistorico();">Histórico</button>
                                     </div>
                                 </nav>
                                                
