@@ -72,11 +72,34 @@ public class ListarMeusPedidos {
                             font-size : 160%;
                         }
                         h2{margin-left: 40%;}
+                        
+                        nav button {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            margin-left: 15px;
+                        }
+                                
+                        nav button:hover {
+                            background-color: #45a049;
+                        }
+                        .toolbar {
+                            background-color: #333;
+                            color: white;
+                            padding: 10px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
                     </style>
                 </head>
                                        
                                        
-                <nav>
+                <nav class="toolbar">
                <h2>MGD EXPRESS</h2>
                <div>
                        <button class="btnNav" onclick="carregarPagina('"""+url+"/site/gerente/criar')"+"""
