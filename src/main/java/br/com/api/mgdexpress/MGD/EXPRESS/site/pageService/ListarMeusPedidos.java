@@ -15,13 +15,49 @@ public class ListarMeusPedidos {
                             background-color: #f4f4f4;
                         }
                                        
-                        nav {
+                       nav {
                             background-color: #333;
                             color: white;
                             padding: 10px;
-                            text-align: center;
                             display: flex;
+                            justify-content: space-between;
                             align-items: center;
+                        }
+                                
+                        nav h2 {
+                            margin: 0;
+                        }
+                                
+                        nav a {
+                            color: white;
+                            text-decoration: none;
+                            margin-left: 15px;
+                        }
+                                
+                        main {
+                            text-align: center;
+                            padding: 20px;
+                        }
+                                
+                        #map {
+                            width: 100%;
+                            height: 600px;
+                            /* Ajuste a altura conforme necessário */
+                        }
+                                
+                        nav button {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            margin-left: 15px;
+                        }
+                                
+                        nav button:hover {
+                            background-color: #45a049;
                         }
                                        
                         .card {
@@ -85,14 +121,16 @@ public class ListarMeusPedidos {
                                        
                                        
                 <nav>
+               <h2>MGD EXPRESS</h2>
+               <div>
+                       <button onclick="clearInterval(intervalId);carregarPagina('"""+url+"/site/gerente/criar')"+"""
+                           ">Novo Pedido</button>
+                      
+                       <button onclick="clearInterval(intervalId);listarHistoricoEntregas();">Entregas do dia</button>
                                        
-                    <div>
-                        <p class="backLink" onclick="carregarPagina('"""+url+"/site/gerente/home')"+"""
-                    ">←</p>
-                                     
-                    </div>
-                    <h2>Meus Pedidos</h2>
-                </nav>
+                       <button onclick="clearInterval(intervalId);listarHistorico();">Histórico</button>
+                   </div>
+               </nav>
                                        
                 <div id="card-container"></div>
                 
