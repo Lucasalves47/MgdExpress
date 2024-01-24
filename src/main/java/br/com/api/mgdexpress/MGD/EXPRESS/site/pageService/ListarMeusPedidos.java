@@ -39,11 +39,7 @@ public class ListarMeusPedidos {
                             padding: 20px;
                         }
                                 
-                        #map {
-                            width: 100%;
-                            height: 600px;
-                            /* Ajuste a altura conforme necessário */
-                        }
+                       
                                 
                         nav button {
                             background-color: #4CAF50;
@@ -123,12 +119,12 @@ public class ListarMeusPedidos {
                 <nav>
                <h2>MGD EXPRESS</h2>
                <div>
-                       <button onclick="clearInterval(intervalId);carregarPagina('"""+url+"/site/gerente/criar')"+"""
+                       <button class="btnNav" onclick="clearInterval(intervalId);carregarPagina('"""+url+"/site/gerente/criar')"+"""
                            ">Novo Pedido</button>
                       
-                       <button onclick="clearInterval(intervalId);listarHistoricoEntregas();">Entregas do dia</button>
+                       <button class="btnNav" onclick="clearInterval(intervalId);listarHistoricoEntregas();">Entregas do dia</button>
                                        
-                       <button onclick="clearInterval(intervalId);listarHistorico();">Histórico</button>
+                       <button class="btnNav" onclick="clearInterval(intervalId);listarHistorico();">Histórico</button>
                    </div>
                </nav>
                                        
