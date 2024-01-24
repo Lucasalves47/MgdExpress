@@ -131,7 +131,7 @@ public class ListarMeusPedidos {
                                     <div>
                                         <button onclick="carregarPagina('"""+url+"/site/gerente/criar')"+"""
                                             ">Novo Pedido</button>
-                                        <button onclick="listarPedidos();">Meus Pedidos</button>
+                                        
                                         <button onclick="listarHistoricoEntregas();">Entregas do dia</button>
                                       
                                         <button onclick="listarHistorico();">Histórico</button>
