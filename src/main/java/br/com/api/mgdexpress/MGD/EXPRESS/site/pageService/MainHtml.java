@@ -134,11 +134,10 @@ public class MainHtml {
                                                     'Content-Type': 'application/json'
                                                 }
                                             })
-                                                .then(response => {
-                                                    console.log(response);
-                                                    response.json()
-                                                    })
-                                                .then(data =>updateMarkersPosition(data))
+                                                .then(response => response.json())
+                                                .then(data =>{
+                                                    console.log(data);
+                                                    updateMarkersPosition(data)})
                                                 .catch(error => console.error('Erro na requisição:', error));
                                         }
                                
