@@ -79,9 +79,7 @@ public class ListarMeusPedidos {
                                     <div id="card-container"></div>
                                 </body>
                                
-                                <script>
-                                    listarPedidos()
-                                    </script>
+                                
                 """;
     }
 }
