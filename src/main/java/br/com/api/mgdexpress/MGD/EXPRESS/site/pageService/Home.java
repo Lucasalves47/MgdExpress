@@ -6,23 +6,16 @@ public class Home {
         return """
                 <head>
                     <title>MGD EXPRESS</title>
-                    <style>
-                        body {
-                            margin: 0;
-                            padding: 0;
-                            font-family: Arial, sans-serif;
-                        }
-                                
-                        
-                    </style>
+            
                 </head>
                                 
-             
+                                
+                
                 <script>
                     listarPedidos()
                     </script>
                     
-              """;
+                """;
     }
 }
 

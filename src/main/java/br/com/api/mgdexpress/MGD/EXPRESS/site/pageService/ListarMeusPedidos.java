@@ -41,7 +41,7 @@ public class ListarMeusPedidos {
                                 
                        
                                 
-                        nav button {
+                        div button {
                             background-color: #4CAF50;
                             color: white;
                             padding: 10px 20px;
@@ -102,11 +102,6 @@ public class ListarMeusPedidos {
                             }
                         }
                                        
-                        nav a {
-                            color: white;
-                            text-decoration: none;
-                            margin-left: 15px;
-                        }
                                        
                         .backLink{
                             font-size : 160%;
