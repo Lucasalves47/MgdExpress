@@ -18,7 +18,7 @@ public interface HistoricoRepository extends JpaRepository<Historico,Long> {
     @Query("select h from Historico h where h.gerente.id = :idgerente ")
     Page<Historico> BuscarProIdGerente(Pageable page, Long idgerente);
 
-    @Query("select h from Historico h where h.gerente.email = :email ")
+    @Query("select h from Historico h where h.gerente.email = :email ORDER BY h.dataEntrega DESC")
     List<Historico> BuscarPorEmailGerente(String email);
 
 
