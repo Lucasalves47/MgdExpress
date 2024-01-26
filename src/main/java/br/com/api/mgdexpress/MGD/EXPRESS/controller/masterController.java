@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -41,7 +42,11 @@ public class masterController {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
     @GetMapping("/motoboy/{id}")
-    public ResponseEntity<Optional<Motoboy>> MotoboysPorId(@PathVariable Long id){
-        return ResponseEntity.ok(motoboyRepository.findById(id));
+    public ResponseEntity<Motoboy> MotoboysPorId(@PathVariable Long id){
+        var funcao = new MotoboyController();
+        var motoboy = motoboyRepository.getReferenceById(id);
+        var localizacao = funcao.MotoboysPorId(id).getBody();
+        motoboy.setLocalizacao(Objects.requireNonNull(localizacao).get(0).localizacao());
+        return ResponseEntity.ok(motoboy);
     }
 }
