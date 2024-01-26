@@ -46,11 +46,14 @@ public class masterController {
     @GetMapping("/motoboy/{id}")
     public ResponseEntity<Motoboy> MotoboysPorId(@PathVariable Long id){
         List<Motoboy> motoboy = new ArrayList<>();
-        motoboyRepository.findAll().forEach(boy ->{
+         motoboyRepository.findAll().forEach(boy ->{
             if(boy.getId().equals(id)) {
                 motoboy.add(boy);
             }
         });
+         var test =  motoboyRepository.findAll();
+         test.forEach(System.out::println);
+
         motoboy.forEach(System.out::println);
         return ResponseEntity.ok(motoboy.get(0));
     }
