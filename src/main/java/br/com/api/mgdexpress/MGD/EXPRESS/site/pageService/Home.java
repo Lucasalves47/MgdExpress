@@ -120,14 +120,11 @@ public class Home {
                   
                   <main>
                       <div id="map"></div>
-                      <div id="cards">
-                  
-                  
-                      </div>
+                      <div id="cards"></div>
                   </main>
                   
                   <script>
-                     listarPedidos()
+                     listarPedidos();
                   
                   
                       var map; // Variável global para o mapa
