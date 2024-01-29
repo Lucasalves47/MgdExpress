@@ -185,69 +185,69 @@ public class Home {
                   
                   </script>
                   
-                  <script>
-                      var markers = [];
-                  
-                      function initMap() {
-                          // Configurações iniciais do mapa
-                          var mapOptions = {
-                              center: { lat: -23.550520, lng: -46.633308 }, // Coordenadas iniciais
-                              zoom: 18
-                          };
-                  
-                          // Criação do mapa
-                          map = new google.maps.Map(document.getElementById('map'), mapOptions); // Atribuindo o mapa à variável global
-                  
-                  
-                  
-                          marker = new google.maps.Marker({
-                              position: { lat: -23.550520, lng: -46.633308 },
-                              map: map,
-                              title: 'Marcador1',
-                          });
-                  
-                          marker2 = new google.maps.Marker({
-                              position: { lat: -23.554520, lng: -46.636308 },
-                              map: map,
-                              title: 'Marcador2',
-                          });
-                  
-                          marker3 = new google.maps.Marker({
-                              position: { lat: -23.559520, lng: -46.638308 },
-                              map: map,
-                              title: 'Marcador3',
-                          });
-                  
-                          markers.push(marker)
-                          markers.push(marker2)
-                          markers.push(marker3)
-                  
-                          google.maps.event.addListenerOnce(map, 'idle', function () {
-                              var pixelPosition = getMarkerPositionInPixels(marker);
-                  
-                          });
-                  
-                          map.addListener('mousemove', function (event) {
-                              // Atualiza a última posição conhecida do mouse
-                              lastMousePosition = { lat: event.latLng.lat(), lng: event.latLng.lng() };
-                  
-                          });
-                      }
-                  
-                      function mostrarEEsconderPedidos() {
-                          let cards = document.getElementById("cards")
-                  
-                          if (cards.style.display !== 'none') {
-                              cards.style.display = 'none';
-                          }
-                          else {
-                              cards.style.display = 'block';
-                          }
-                      }
-                  </script>
-                  
-                  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsTWHMwA_agU_-o35U_3b606930nBrsY8&callback=initMap" async
-                      defer></script>""";
+                <script>
+                                       var markers = [];
+                                   
+                                       function initMap(localizacoes) {
+                                           // Configurações iniciais do mapa
+                                           var mapOptions = {
+                                               center: { lat: -23.550520, lng: -46.633308 }, // Coordenadas iniciais
+                                               zoom: 18
+                                           };
+                                   
+                                           // Criação do mapa
+                                           map = new google.maps.Map(document.getElementById('map'), mapOptions); // Atribuindo o mapa à variável global
+                                   
+                                   
+                                   
+                                           marker = new google.maps.Marker({
+                                               position: { lat: -23.550520, lng: -46.633308 },
+                                               map: map,
+                                               title: 'Marcador1',
+                                           });
+                                   
+                                           marker2 = new google.maps.Marker({
+                                               position: { lat: -23.554520, lng: -46.636308 },
+                                               map: map,
+                                               title: 'Marcador2',
+                                           });
+                                   
+                                           marker3 = new google.maps.Marker({
+                                               position: { lat: -23.559520, lng: -46.638308 },
+                                               map: map,
+                                               title: 'Marcador3',
+                                           });
+                                   
+                                           markers.push(marker)
+                                           markers.push(marker2)
+                                           markers.push(marker3)
+                                   
+                                           google.maps.event.addListenerOnce(map, 'idle', function () {
+                                               var pixelPosition = getMarkerPositionInPixels(marker);
+                                   
+                                           });
+                                   
+                                           map.addListener('mousemove', function (event) {
+                                               // Atualiza a última posição conhecida do mouse
+                                               lastMousePosition = { lat: event.latLng.lat(), lng: event.latLng.lng() };
+                                   
+                                           });
+                                       }
+                                   
+                                       function mostrarEEsconderPedidos() {
+                                           let cards = document.getElementById("cards")
+                                   
+                                           if (cards.style.display !== 'none') {
+                                               cards.style.display = 'none';
+                                           }
+                                           else {
+                                               cards.style.display = 'block';
+                                           }
+                                       }
+                                   </script>
+                                   
+                                   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsTWHMwA_agU_-o35U_3b606930nBrsY8&callback=initMap" async
+                                       defer></script>""";
     }
 }
 
