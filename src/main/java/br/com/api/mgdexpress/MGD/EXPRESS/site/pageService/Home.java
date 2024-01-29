@@ -66,7 +66,7 @@ public class Home {
                               height: 95%;
                               background-color: #333333cc;
                               margin-top: 5vh;
-                             \s
+                             
                           }
                   
                           #card {
@@ -111,10 +111,11 @@ public class Home {
                       <h2>MGD EXPRESS</h2>
                       <div>
                           <button onclick="mostrarEEsconderPedidos()">Pedidos</button>
-                          <button onclick="carregarPagina('+url+/site/gerente/criar')">Novo Pedido</button>
-                          <button onclick="listarPedidos();">Meus Pedidos</button>
-                          <button onclick="listarHistoricoEntregas();">Entregas do dia</button>
-                          <button onclick="listarHistorico();">Histórico</button>
+                          <button onclick="listarHistoricoEntrega();">Motoboy</button>
+                          <button onclick="carregarPagina('"""+url+"/site/gerente/criar')"+"""
+                        ">Novo Pedido</button>
+                        <button onclick="listarHistoricoEntregas();">Entregas do dia</button>
+                        <button onclick="listarHistorico();">Histórico</button>
                       </div>
                   </nav>
                   
