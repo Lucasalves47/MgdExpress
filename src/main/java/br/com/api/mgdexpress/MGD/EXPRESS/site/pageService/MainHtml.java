@@ -168,7 +168,7 @@ public class MainHtml {
                                 
                                             novoElemento.innerHTML = `<div id="card" class="card${cardData.id}" onmousedown="iniciarArrastar(event, '.card${cardData.id}')">
                             <h3>${cardData.nomePedido}</h3>
-                            <button class="btn-detalhe" onclick="carregarPagina('${url}/site/gerente/pedido/detalhes/${cardData.id}')">
+                            <button class="btn-detalhe" onclick="carregarPagina('${url}site/gerente/pedido/detalhes/${cardData.id}')">
                         <i class="fas fa-info-circle"></i>
                       </button>
                             <p>${cardData.localDestino}</p>
