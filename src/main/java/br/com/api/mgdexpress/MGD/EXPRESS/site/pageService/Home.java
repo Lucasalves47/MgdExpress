@@ -188,7 +188,7 @@ public class Home {
                   <script>
                       var markers = [];
                   
-                      function initMap(localizacoes) {
+                      function initMap() {
                           // Configurações iniciais do mapa
                           var mapOptions = {
                               center: { lat: -23.550520, lng: -46.633308 }, // Coordenadas iniciais
