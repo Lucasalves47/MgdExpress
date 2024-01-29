@@ -51,8 +51,6 @@ public class masterController {
                 motoboy.add(boy);
             }
         });
-         var test =  motoboyRepository.findAll();
-         test.forEach(System.out::println);
 
         motoboy.forEach(System.out::println);
         return ResponseEntity.ok(motoboy.get(0));

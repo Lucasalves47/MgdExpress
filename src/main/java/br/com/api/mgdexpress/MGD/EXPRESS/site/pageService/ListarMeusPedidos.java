@@ -129,6 +129,7 @@ public class ListarMeusPedidos {
                                 <nav>
                                     <h2>MGD EXPRESS</h2>
                                     <div>
+                                        <button onclick="listarHistoricoEntrega();">Motoboy</button>
                                         <button onclick="carregarPagina('"""+url+"/site/gerente/criar')"+"""
                                             ">Novo Pedido</button>
                                         

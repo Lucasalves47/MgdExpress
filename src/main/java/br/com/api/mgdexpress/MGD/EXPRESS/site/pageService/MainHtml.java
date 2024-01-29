@@ -144,8 +144,7 @@ public class MainHtml {
                                
                                
                                    function listarPedidos() {
-                                       carregarPagina(`${url}meusPedidos`)
-                               
+                                       
                                       
                                        fetch(`${urlRoot}/pedidos/pendente/gerente`, {
                                            method: 'GET',
@@ -161,31 +160,23 @@ public class MainHtml {
                                       
                                                data.forEach(interData => {
                                                     interData.forEach(cardData =>{
-                                                    const cardContainer = document.getElementById('card-container');
-                                      
-                                              
-                                                   console.log("Dados do card:");
-                                                   console.log(cardData.localDestino);
-                                      
-                                                   const card = document.createElement('div');
-                                                   card.className = 'card';
-                                      
-                                                   const cardContent = document.createElement('div');
-                                                   cardContent.className = 'card-content';
-                                      
-                                                   const cardDetails = `
-                                                 
-                                                       <p class="titulo"><strong>${cardData.nomePedido}</strong></p>
-                                                       <p><strong>Valor:</strong> ${cardData.valor}</p>
-                                                       <p><strong>Local de Destino:</strong> ${cardData.localDestino}</p>
-                                                       <a onclick="carregarPagina('${url}pedido/detalhes/${cardData.id}')"><button>Detalhes</button></a>
-                                                   `;
-                                      
-                                                   cardContent.innerHTML = cardDetails;
-                                      
-                                                   card.appendChild(cardContent);
-                                                   cardContainer.appendChild(card);
-                                              }); });
+                                                    let cards = document.getElementById('cards')
+                                               
+                                               interData.forEach(function (dado) {
+                                                                         let novoElemento = document.createElement('div')
+                                                                         novoElemento.innerHTML = `<div id="card" class="${dado.id}" onmousedown="iniciarArrastar(event, '.${dado.id}')">
+                                                                             <h3>${dado.nomePedido}</h3>
+                                                                             <button class="btn-detalhe" onclick="redirectToDetailsPage()">
+                                                                         <i class="fas fa-info-circle"></i>
+                                                                       </button>
+                                                                             <p>${dado.localDestino}</p>
+                                                                           
+                                                                         </div>`
+                                                                
+                                                                         cards.appendChild(novoElemento)
+                                                                     })
+                                               
+                                               });
                                            })
                                            .catch(error => {
                                                console.error('Erro na requisição:', error);
