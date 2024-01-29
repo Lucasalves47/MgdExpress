@@ -214,7 +214,7 @@ public class MainHtml {
                                                            </a>`;
                                                        historicoList.appendChild(li);
                                                    });
-                                               })
+                                               })})
                                                .catch(error => {
                                                    console.error('Erro:', error);
                                                });
