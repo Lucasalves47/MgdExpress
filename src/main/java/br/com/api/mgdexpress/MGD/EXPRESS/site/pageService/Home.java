@@ -124,66 +124,6 @@ public class Home {
                       <div id="cards"></div>
                   </main>
                   
-                  <script>
-                     listarPedidos();
-                  
-                  
-                      var map; // Variável global para o mapa
-                      var lastMousePosition;
-                      var mouseStopTimer;
-                  
-                  
-                      function iniciarArrastar(event, classe) {
-                          let card = event.target.closest(classe);
-                  
-                          let offsetX = event.clientX - card.getBoundingClientRect().left;
-                          let offsetY = event.clientY - card.getBoundingClientRect().top + 35;
-                  
-                          function arrastarElemento(event) {
-                              event.preventDefault();
-                              card.style.position = 'absolute';
-                              card.style.left = (event.clientX - offsetX) + 'px';
-                              card.style.top = (event.clientY - offsetY) + 'px';
-                          }
-                  
-                          function pararArrastar(card, event) {
-                              window.removeEventListener('mousemove', arrastarElemento);
-                              window.removeEventListener('mouseup', pararArrastar);
-                  
-                  
-                  
-                              markers.forEach(function (marker) {
-                                  var markerPosition = getMarkerPositionInPixels(marker);
-                  
-                                  if (card.style.display !== 'none') {
-                                      if (lastMousePosition.lat <= markerPosition.lat + 0.0001 && lastMousePosition.lat >= markerPosition.lat - 0.0001 &&
-                                          lastMousePosition.lng <= markerPosition.lng + 0.0001 && lastMousePosition.lng >= markerPosition.lng - 0.0001) {
-                                          card.style.display = 'none';
-                  
-                                          console.log('marcador', marker)
-                                          console.log('card', card)
-                                      }
-                                  }
-                              })
-                  
-                  
-                  
-                  
-                          }
-                  
-                          window.addEventListener('mousemove', arrastarElemento);
-                          window.addEventListener('mouseup', function (event) {
-                              pararArrastar(card, event);
-                          });
-                      }
-                  
-                      function getMarkerPositionInPixels(marker) {
-                  
-                          return { lat: marker.position.lat(), lng: marker.position.lng() };
-                      }
-                  
-                  
-                  </script>
                   
                 <script>
                                        var markers = [];
