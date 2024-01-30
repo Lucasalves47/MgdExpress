@@ -257,7 +257,7 @@ public class Home {
                     function updateMarkersPosition(localizacoes) {
                                
                         // Itera sobre a lista de marcadores e atualiza suas posições
-                        loc.forEach(function (markerInfo) {
+                        markers.forEach(function (markerInfo) {
                             markerInfo.setMap(null);
                         });
                         loc = localizacoes
