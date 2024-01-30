@@ -64,7 +64,7 @@ public class Home {
                                      height: 95%;
                                      background-color: #333333cc;
                                      margin-top: 5vh;
-                                    \s
+                                    
                                  }
                          
                                  #card {
@@ -77,31 +77,7 @@ public class Home {
                                      padding: 5px;
                                  }
                          
-                                 #card p {
-                                     margin: 15px;
-                                     margin-top: 0%;
-                                     margin-bottom: 5px;
-                                     font-size: 12px;
-                                 }
-                         
-                                 #card h3 {
-                                     margin: 15px;
-                                     margin-bottom: 0%;
-                                     font-size: 15px;
-                                     margin-top: 8px;
-                                     display: inline;
-                                 }
-                         
-                                 .btn-detalhe {
-                                     background-color: #d5dcd500;
-                                     color: cadetblue;
-                                     border: none;
-                                     padding: 10px 15px;
-                                     border-radius: 100%;
-                                     cursor: pointer;
-                                     margin-left: 50%;
-                                     display: inline;
-                                 }
+                                
                     </style>
                 </head>
                                 
