@@ -45,7 +45,7 @@ public class MotoboyController {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/EmEntregas&Disponivel")
-    public ResponseEntity ListarMotoboysLocalizacao(){
+    public ResponseEntity<List<DadosCadastroListaSemColcheteNoJsom>> ListarMotoboysLocalizacao(){
         List<DadosCadastroListaSemColcheteNoJsom> lista = new ArrayList<>();
 
 
