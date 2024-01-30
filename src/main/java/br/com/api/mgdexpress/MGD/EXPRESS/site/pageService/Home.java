@@ -66,6 +66,7 @@ public class Home {
                             height: 95%;
                             background-color: #333333cc;
                             margin-top: 5vh;
+                            display: none;
                                 
                         }
                                 
@@ -111,8 +112,9 @@ public class Home {
                     <h2>MGD EXPRESS</h2>
                     <div>
                         <button onclick="mostrarEEsconderPedidos()">Pedidos</button>
-                        <button onclick="clearInterval(intervalId);carregarPagina('+url+/site/gerente/criar')">Novo Pedido</button>
-                        <button onclick="clearInterval(intervalId);listarPedidos();">Meus Pedidos</button>
+                        <button onclick="clearInterval(intervalId);carregarPagina('"""+url+"/site/gerente/criar'"+"""
+    )">Novo Pedido</button>
+                        
                         <button onclick="clearInterval(intervalId);listarHistoricoEntregas();">Entregas do dia</button>
                         <button onclick="clearInterval(intervalId);listarHistorico();">Histórico</button>
                     </div>
