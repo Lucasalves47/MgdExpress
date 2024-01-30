@@ -159,8 +159,8 @@ public class Home {
          card.style.display = 'none';
                  
          console.log('marcador', marker.id)
-         console.log('card', classe.replace("ard", "") )
-         joinPedidoMotoboy(classe.replace("ard", ""), marker.id)
+         console.log('card', classe.replace(".card", "") )
+         joinPedidoMotoboy(classe.replace(".card", ""), marker.id)
      }
  }
                              })
