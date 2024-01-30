@@ -209,7 +209,8 @@ public class Home {
          position: { lat:parseFloat(markerInfo.localizacao.latitude), lng:parseFloat(markerInfo.localizacao.longitude) },
          map: map,
          title: markerInfo.nome,
-         id: markerInfo.id
+         id: markerInfo.id,
+         icon:'https://mgdexpress-production-bdc8.up.railway.app/img/iconeMoto'
      });
                  
      // Adiciona o marcador ao array para referência futura
