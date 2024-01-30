@@ -67,17 +67,7 @@ public class Home {
                                     
                                  }
                          
-                                 #card {
-                                     margin: 5%;
-                                     margin-top: 8%;
-                                     background-color: #232323;
-                                     color: white;
-                                     border-radius: 20px;
-                                     cursor: pointer;
-                                     padding: 5px;
-                                 }
-                         
-                                
+                                 
                     </style>
                 </head>
                                 
