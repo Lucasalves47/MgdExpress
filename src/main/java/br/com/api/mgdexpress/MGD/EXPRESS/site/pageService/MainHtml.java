@@ -255,7 +255,7 @@ public class MainHtml {
                                 });
                         };
                         
-                        function joinPedidoMotoboy(idPedido,idMotobo){
+                        function joinPedidoMotoboy(idPedido,idMotoboy){
                             fetch(`${url}/pedidos/joinMotoboy_pedido/${idPedido}/${idMotoboy}`,{
                                 method:'GET',
                                 headers:{
