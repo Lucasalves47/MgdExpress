@@ -56,16 +56,7 @@ public class Home {
                                      background-color: #45a049;
                                  }
                          
-                                 #cards {
-                                     position: absolute;
-                                     top: 0;
-                                     left: 0;
-                                     width: 20%;
-                                     height: 95%;
-                                     background-color: #333333cc;
-                                     margin-top: 5vh;
-                                    
-                                 }
+                                
                          
                                  
                     </style>
