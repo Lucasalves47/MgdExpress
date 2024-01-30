@@ -6,8 +6,6 @@ public class Home {
         return """
                 <head>
                     <title>MGD EXPRESS</title>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-                    
                     <style>
                         body {
                             margin: 0;
@@ -35,12 +33,13 @@ public class Home {
                         }
                                 
                         main {
-                            margin-top: 0%;
+                            text-align: center;
+                            padding: 20px;
                         }
                                 
                         #map {
                             width: 100%;
-                            height: 92%;
+                            height: 600px;
                             /* Ajuste a altura conforme necessário */
                         }
                                 
