@@ -126,6 +126,7 @@ public class PedidoController {
     public ResponseEntity joinMotoboy_Pedido(@PathVariable Long idPedido,@PathVariable Long idMotoboy ){
         var pedido = pedidoRepository.getReferenceById(idPedido);
         pedido.setMotoboy(motoboyRepository.getReferenceById(idMotoboy));
+        pedidoRepository.save(pedido);
         return ResponseEntity.ok().build();
     }
 
