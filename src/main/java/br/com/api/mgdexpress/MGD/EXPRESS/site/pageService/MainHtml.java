@@ -3,277 +3,259 @@ package br.com.api.mgdexpress.MGD.EXPRESS.site.pageService;
 public class MainHtml {
     public static String html(String url) {
         return """
-                <!DOCTYPE html>
-                <html lang="pt-br">
-                                
                 <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                                
-                                
-                </head>
-                                
-                <body>
-                                
-                    <div id="content-container">
-                        <!-- O conteúdo carregado será exibido aqui -->
-                    </div>
-                                
-                    <script>
-                                
-                                
-                        var urlRoot = '"""+url+"'"+"""
-                                
-                        var url = `${urlRoot}/site/gerente/`;
-                        var token;
-                                
-                        if (token == null) {
-                                
-                            fetch(`${urlRoot}/login`, {
-                                method: 'GET',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                    $('#content-container').html(data.page);
-                                
-                                })
-                                .catch(error => console.log(error));
-                        }
-                                
-                        function login() {
-                            // Obter os valores dos campos de entrada
-                            var username = document.getElementById("username").value;
-                            var password = document.getElementById("password").value;
-                                
-                            // Criar um objeto com os dados do formulário
-                            var formData = {
-                                username: username,
-                                password: password
-                            };
-                                
-                            // Converter o objeto em uma string JSON
-                            var jsonData = JSON.stringify(formData);
-                                
-                            // Enviar os dados para a URL usando AJAX
-                            $.ajax({
-                                type: "POST",
-                                url: `${urlRoot}/login`,
-                                data: jsonData,
-                                contentType: "application/json",
-                                success: function (response) {
-                                    token = response
-                                    console.log(response);
-                                    carregarPagina(`${url}home`)
-                                
-                                    // Lógica adicional para lidar com a resposta do servidor
-                                },
-                                error: function (error) {
-                                    console.error("Erro na requisição AJAX:", error);
-                                    // Lógica adicional para lidar com erros
-                                }
-                            });
-                        }
-                                
-                        function carregarPagina(url) {
-                            console.log(url)
-                            fetch(url, {
-                                method: 'GET',
-                                headers: {
-                                    'Authorization': `Bearer ${token}`,
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                
-                                    $('#content-container').html(data.page);
-                                })
-                                .catch(error => console.error('Erro:', error));
-                        }
-                                
-                                
-                        function enviarPedido() {
-                            var formData = new FormData(document.getElementById('pedidoForm'));
-                            var urlpedido = `${urlRoot}/pedidos`;
-                                
-                            fetch(urlpedido, {
-                                method: 'POST',
-                                headers: {
-                                    'Authorization': `Bearer ${token}`,
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify(Object.fromEntries(formData))
-                            })
-                                .then(response => carregarPagina(`${url}sucesso`))
-                                
-                                .catch(error => console.error('Erro:', error));
-                        }
-                                
-                        function buscarMotoboys() {
-                            fetch(`${urlRoot}/motoboy/EmEntregas&Disponivel`, {
-                                method: 'GET',
-                                headers: {
-                                    'Authorization': `Bearer ${token}`,
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                                .then(response => response.json())
-                                .then(data => initMap(data))
-                                .catch(error => console.error('Erro na requisição:', error));
-                        }
-                                
-                        function buscarMotoboys2() {
-                            fetch(`${urlRoot}/motoboy/EmEntregas&Disponivel`, {
-                                method: 'GET',
-                                headers: {
-                                    'Authorization': `Bearer ${token}`,
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                    console.log(data);
-                                    updateMarkersPosition(data)
-                                })
-                                .catch(error => console.error('Erro na requisição:', error));
-                        }
-                                
-                                
-                                
-                        function listarPedidos() {
-                                
-                                
-                            fetch(`${urlRoot}/pedidos/pendente/gerente`, {
-                                method: 'GET',
-                                headers: {
-                                    'Authorization': `Bearer ${token}`,
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                
-                                    data.forEach(interData => {
-                                        const cardContainer = document.getElementById('cards');
-                                
-                                        interData.forEach(cardData => {
-                                     let novoElemento = document.createElement('div')
-                                
-                                            novoElemento.innerHTML = `<div id="card" class="card${cardData.id}" onmousedown="iniciarArrastar(event, '.card${cardData.id}')">
-                            <h3>${cardData.nomePedido}</h3>
-                            <button class="btn-detalhe" onclick="carregarPagina('${url}pedido/detalhes/${cardData.id}')">
-                        <i class="fas fa-info-circle"></i>
-                      </button>
-                            <p>${cardData.localDestino}</p>
-                           \s
-                        </div>`
-                                            cardContainer.appendChild(novoElemento);
-                                        });
-                                    });
-                                })
-                                .catch(error => {
-                                    console.error('Erro na requisição:', error);
-                                });
-                                
-                        };
-                                
-                                
-                                
-                        function listarHistorico() {
-                                
-                                
-                            carregarPagina(`${url}historico`);
-                                
-                            fetch(`${urlRoot}/historico/gerente`, {
-                                method: 'GET',
-                                headers: {
-                                    'Authorization': `Bearer ${token}`,
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                    data.forEach(item => {
-                                        const historicoList = document.getElementById('historico-list');
-                                
-                                        const li = document.createElement('li');
-                                        li.innerHTML = `
-                                                                           <p>Data de Entrega: ${item.dataEntrega}</p>
-                                                                           <p>Motoboy: ${item.motoboyNome}</p>
-                                                                           <p>Estabelecimento: ${item.nomeStabelecimento}</p>
-                                                                           <p>Valor: R$ ${item.valor.toFixed(2)}</p>
-                                                                           <a onclick="carregarPagina('${url}historico/detalhes/${item.id}')">
-                                                                               <button>Detalhes</button>
-                                                                           </a>`;
-                                        historicoList.appendChild(li);
-                                    });
-                                })
-                                .catch(error => {
-                                    console.error('Erro:', error);
-                                });
-                        };
-                                
-                        function listarHistoricoEntregas() {
-                                
-                                
-                            carregarPagina(`${url}historicoEntregas`);
-                                
-                            fetch(`${urlRoot}/gerente/listarMotoboysEntregas`, {
-                                method: 'GET',
-                                headers: {
-                                    'Authorization': `Bearer ${token}`,
-                                    'Content-Type': 'application/json'
-                                }
-                            })
-                                .then(response => response.json())
-                                .then(data => {
-                                    console.log(data);
-                                    data.forEach(item => {
-                                        const historicoList = document.getElementById('container');
-                                
-                                        const li = document.createElement('li');
-                                        li.innerHTML = `<h3>${item.nomeMotoboy}</h3>
-                                                                                   <p>Valor: R$ ${item.valor}</p>
-                                                                                    <p>Entregas: ${item.entregas}</p>
-                                                                                   <p>KM: ${item.km}</p>
-                                                                        \s
-                                                                             \s
-                                                                               <button class="btn-detalhe" onclick="carregarPagina('${url}historico/detalhes/${item.id}')">
-                                                                                     <i class="fas fa-info-circle"></i>
-                                                                                   </button>
-                                                                       \s
-                                                                                   `;
-                                        historicoList.appendChild(li);
-                                    });
-                                })
-                                .catch(error => {
-                                    console.error('Erro:', error);
-                                });
-                        };
-                        
-                        function joinPedidoMotoboy(idPedido,idMotobo){
-                            fetch(`${url}/pedidos/joinMotoboy_pedido/${idPedido}/${idMotoboy}`,{
-                                method:'GET',
-                                headers:{
-                                    'Authorization':`Bearer ${token}`,
-                                    'Content-Type':'application/json'
-                                }
-                            }). then(response => response.json)
-                            .catch(error=>{
-                                console.log(error);
-                            })
-                        }
-                                
-                                
-                                
-                    </script>
-                </body>
-                                
-                </html>
+                           <title>MGD EXPRESS</title>
+                           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+                       
+                           <style>
+                               body {
+                                   margin: 0;
+                                   padding: 0;
+                                   font-family: Arial, sans-serif;
+                               }
+                       
+                               nav {
+                                   background-color: #333;
+                                   color: white;
+                                   padding: 10px;
+                                   display: flex;
+                                   justify-content: space-between;
+                                   align-items: center;
+                               }
+                       
+                               nav h2 {
+                                   margin: 0;
+                               }
+                       
+                               nav a {
+                                   color: white;
+                                   text-decoration: none;
+                                   margin-left: 15px;
+                               }
+                       
+                               main {
+                                   margin-top: 0%;
+                               }
+                       
+                               #map {
+                                   width: 100%;
+                                   height: 700px;
+                               }
+                       
+                               nav button {
+                                   background-color: #4CAF50;
+                                   color: white;
+                                   padding: 10px 20px;
+                                   border: none;
+                                   border-radius: 5px;
+                                   cursor: pointer;
+                                   font-size: 16px;
+                                   margin-left: 15px;
+                               }
+                       
+                               nav button:hover {
+                                   background-color: #45a049;
+                               }
+                       
+                               #cards {
+                                   position: absolute;
+                                   top: 0;
+                                   left: 0;
+                                   width: 20%;
+                                   height: 95%;
+                                   background-color: #333333cc;
+                                   margin-top: 5vh;
+                       
+                               }
+                       
+                               #card {
+                                   margin: 5%;
+                                   margin-top: 8%;
+                                   background-color: #232323;
+                                   color: white;
+                                   border-radius: 20px;
+                                   cursor: pointer;
+                                   padding: 5px;
+                               }
+                       
+                               #card p {
+                                   margin: 15px;
+                                   margin-top: 0%;
+                                   margin-bottom: 5px;
+                                   font-size: 12px;
+                               }
+                       
+                               #card h3 {
+                                   margin: 15px;
+                                   margin-bottom: 0%;
+                                   font-size: 15px;
+                                   margin-top: 8px;
+                                   display: inline;
+                               }
+                       
+                               .btn-detalhe {
+                                   background-color: #d5dcd500;
+                                   color: cadetblue;
+                                   border: none;
+                                   padding: 10px 15px;
+                                   border-radius: 100%;
+                                   cursor: pointer;
+                                   margin-left: 50%;
+                                   display: inline;
+                               }
+                           </style>
+                       </head>
+                       
+                       <nav>
+                           <h2>MGD EXPRESS</h2>
+                           <div>
+                               <button onclick="mostrarEEsconderPedidos()">Pedidos</button>
+                               <button onclick="clearInterval(intervalId);carregarPagina('+url+/site/gerente/criar')">Novo Pedido</button>
+                               <button onclick="clearInterval(intervalId);listarPedidos();">Meus Pedidos</button>
+                               <button onclick="clearInterval(intervalId);listarHistoricoEntregas();">Entregas do dia</button>
+                               <button onclick="clearInterval(intervalId);listarHistorico();">Histórico</button>
+                           </div>
+                       </nav>
+                       
+                       <main>
+                           <div id="map"></div>
+                           <div id="cards"></div>
+                       </main>
+                       
+                       <script>
+                           listarPedidos()
+                       
+                           var map; // Variável global para o mapa
+                           var lastMousePosition;
+                           var mouseStopTimer;
+                       
+                       
+                           function iniciarArrastar(event, classe) {
+                               let card = event.target.closest(classe);
+                       
+                               let offsetX = event.clientX - card.getBoundingClientRect().left;
+                               let offsetY = event.clientY - card.getBoundingClientRect().top + 35;
+                       
+                               function arrastarElemento(event) {
+                                   event.preventDefault();
+                                   card.style.position = 'absolute';
+                                   card.style.left = (event.clientX - offsetX) + 'px';
+                                   card.style.top = (event.clientY - offsetY) + 'px';
+                               }
+                       
+                               function pararArrastar(card, event) {
+                                   window.removeEventListener('mousemove', arrastarElemento);
+                                   window.removeEventListener('mouseup', pararArrastar);
+                       
+                       
+                       
+                                   markers.forEach(function (marker) {
+                                       var markerPosition = getMarkerPositionInPixels(marker);
+                       
+                                       if (card.style.display !== 'none') {
+                                           if (lastMousePosition.lat <= markerPosition.lat + 0.0001 && lastMousePosition.lat >= markerPosition.lat - 0.0001 &&
+                                               lastMousePosition.lng <= markerPosition.lng + 0.0001 && lastMousePosition.lng >= markerPosition.lng - 0.0001) {
+                                               card.style.display = 'none';
+                       
+                                               console.log('marcador', marker)
+                                               console.log('card', card)
+                                               joinPedidoMotoboy(classe.replace(".c", ""), marker.id)
+                                           }
+                                       }
+                                   })
+                       
+                       
+                       
+                       
+                               }
+                       
+                               window.addEventListener('mousemove', arrastarElemento);
+                               window.addEventListener('mouseup', function (event) {
+                                   pararArrastar(card, event);
+                               });
+                           }
+                       
+                           function getMarkerPositionInPixels(marker) {
+                       
+                               return { lat: marker.position.lat(), lng: marker.position.lng() };
+                           }
+                       
+                       
+                       </script>
+                       
+                       <script>
+                           var markers = [];
+                       
+                           var loc;
+                           buscarMotoboys();
+                       
+                           function initMap(localizacoes) {
+                               // Configurações iniciais do mapa
+                               var mapOptions = {
+                                   center: { lat: -23.550520, lng: -46.633308 }, // Coordenadas iniciais
+                                   zoom: 18
+                               };
+                       
+                               // Criação do mapa
+                               map = new google.maps.Map(document.getElementById('map'), mapOptions); // Atribuindo o mapa à variável global
+                       
+                               loc = localizacoes
+                       
+                               loc.forEach(function (markerInfo) {
+                                   if (markerInfo.localizacao != null) {
+                                       if (markerInfo.localizacao.longitude != null) {
+                                           var marker = new google.maps.Marker({
+                                               position: { lat: markerInfo.localizacao.longitude, lng: markerInfo.localizacao.latitude },
+                                               map: map,
+                                               title: markerInfo.nome,
+                                               id: markerInfo.id
+                                           });
+                       
+                                           // Adiciona o marcador ao array para referência futura
+                                           markerInfo.marker = marker;
+                                           markers.push(marker)
+                                           markerInfo.localizacao.longitud
+                                       }
+                                   }
+                               });
+                       
+                       
+                               google.maps.event.addListenerOnce(map, 'idle', function () {
+                                   var pixelPosition = getMarkerPositionInPixels(marker);
+                       
+                               });
+                       
+                               map.addListener('mousemove', function (event) {
+                                   // Atualiza a última posição conhecida do mouse
+                                   lastMousePosition = { lat: event.latLng.lat(), lng: event.latLng.lng() };
+                       
+                               });
+                           }
+                       
+                           function mostrarEEsconderPedidos() {
+                               let cards = document.getElementById("cards")
+                       
+                               if (cards.style.display !== 'none') {
+                                   cards.style.display = 'none';
+                               }
+                               else {
+                                   cards.style.display = 'block';
+                               }
+                           }
+                       
+                           function updateMarkersPosition(localizacoes) {
+                       
+                               // Itera sobre a lista de marcadores e atualiza suas posições
+                               loc.forEach(function (markerInfo) {
+                                   markerInfo.marker.setPosition({ lat: markerInfo.localizacao.longitude, lng: markerInfo.localizacao.latitude });
+                               });
+                           }
+                       
+                           var intervalId = setInterval(buscarMotoboys2, 10000);
+                       </script>
+                       
+                       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsTWHMwA_agU_-o35U_3b606930nBrsY8&callback=initMap" async
+                           defer></script>
                 """;
     }
 }
