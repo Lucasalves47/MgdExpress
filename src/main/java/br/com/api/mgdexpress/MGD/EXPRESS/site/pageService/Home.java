@@ -66,7 +66,7 @@ public class Home {
                             height: 95%;
                             background-color: #333333cc;
                             margin-top: 5vh;
-                          \s
+                                
                         }
                                 
                         #card {
@@ -160,7 +160,7 @@ public class Home {
                                 
                                         console.log('marcador', marker)
                                         console.log('card', card)
-                                        joinPedidoMotoboy(classe.replace(".c",""),marker.id)
+                                        joinPedidoMotoboy(classe.replace(".c", ""), marker.id)
                                     }
                                 }
                             })
@@ -186,7 +186,7 @@ public class Home {
                                 
                 <script>
                     var markers = [];
-                   \s
+                                
                     var loc;
                     buscarMotoboys();
                                 
@@ -202,20 +202,25 @@ public class Home {
                                 
                         loc = localizacoes
                                 
-                    loc.forEach(function(markerInfo) {
-                           var marker = new google.maps.Marker({
-                               position: {lat: markerInfo.localizacao.longitude,lng: markerInfo.localizacao.latitude},
-                               map: map,
-                               title: markerInfo.nome,
-                               id:markerInfo.id
-                           });
-                  \s
-                           // Adiciona o marcador ao array para referência futura
-                           markerInfo.marker = marker;
-                           markers.push(marker)
-                       });
-                       \s
-                       \s
+                        loc.forEach(function (markerInfo) {
+                            if (markerInfo.localizacao != null) {
+                                if (markerInfo.localizacao.longitude != null) {
+                                    var marker = new google.maps.Marker({
+                                        position: { lat: markerInfo.localizacao.longitude, lng: markerInfo.localizacao.latitude },
+                                        map: map,
+                                        title: markerInfo.nome,
+                                        id: markerInfo.id
+                                    });
+                                
+                                    // Adiciona o marcador ao array para referência futura
+                                    markerInfo.marker = marker;
+                                    markers.push(marker)
+                                    markerInfo.localizacao.longitud
+                                }
+                            }
+                        });
+                                
+                                
                         google.maps.event.addListenerOnce(map, 'idle', function () {
                             var pixelPosition = getMarkerPositionInPixels(marker);
                                 
@@ -240,14 +245,14 @@ public class Home {
                     }
                                 
                     function updateMarkersPosition(localizacoes) {
-                      \s
-                       // Itera sobre a lista de marcadores e atualiza suas posições
-                       loc.forEach(function(markerInfo) {
-                           markerInfo.marker.setPosition({lat: markerInfo.localizacao.longitude,lng: markerInfo.localizacao.latitude});
-                       });
-                   }
-                  \s
-                   var intervalId = setInterval(buscarMotoboys2, 10000);
+                                
+                        // Itera sobre a lista de marcadores e atualiza suas posições
+                        loc.forEach(function (markerInfo) {
+                            markerInfo.marker.setPosition({ lat: markerInfo.localizacao.longitude, lng: markerInfo.localizacao.latitude });
+                        });
+                    }
+                                
+                    var intervalId = setInterval(buscarMotoboys2, 10000);
                 </script>
                                 
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsTWHMwA_agU_-o35U_3b606930nBrsY8&callback=initMap" async
