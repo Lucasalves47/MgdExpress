@@ -112,7 +112,7 @@ public class Home {
                     <h2>MGD EXPRESS</h2>
                     <div>
                         <button onclick="mostrarEEsconderPedidos()">Pedidos</button>
-                        <button onclick="clearInterval(intervalId);carregarPagina('""\"+url+"/site/gerente/criar'"+""\"
+                        <button onclick="clearInterval(intervalId);carregarPagina('"""+url+"/site/gerente/criar'"+"""
                 )">Novo Pedido</button>
                        
                         <button onclick="clearInterval(intervalId);listarHistoricoEntregas();">Entregas do dia</button>
