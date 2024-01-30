@@ -43,7 +43,7 @@ public class MotoboyController {
         return ResponseEntity.ok(motoboyRepository.findAll(page).map(DadosMotoboyList::new));
     }
 
-    @PreAuthorize("hasRole('ROLE_USER_MASTER')")
+    @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/EmEntregas&Disponivel")
     public ResponseEntity ListarMotoboysLocalizacao(){
         List<DadosCadastroListaSemColcheteNoJsom> lista = new ArrayList<>();
