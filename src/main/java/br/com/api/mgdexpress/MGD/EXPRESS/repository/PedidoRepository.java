@@ -12,8 +12,8 @@ import java.util.List;
 
 public interface PedidoRepository extends JpaRepository<Pedido,Long> {
 
-    @Query("select p from Pedido p where p.status = INICIAR")
-    List<Pedido> findAllWhereStatusINICIAR();
+    @Query("select p from Pedido p where p.status = INICIAR and p.motoboy.id = :id")
+    List<Pedido> findAllWhereStatusINICIAR(Long id);
 
     @Query("select p from Pedido p where p.status = INICIAR and p.gerente.email = :email")
     List<Pedido> findAllWhereStatusINICIARByLogin(String email);

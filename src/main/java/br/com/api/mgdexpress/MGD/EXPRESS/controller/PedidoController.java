@@ -72,7 +72,6 @@ public class PedidoController {
         if(pedido.getStatus() == Status.INICIAR) {
             regras.verificarSeMotoboyDisponivel(motoboy);
             pedido.setStatus(Status.ANDAMENTO);
-            pedido.setMotoboy(motoboy);
             pedido.setDistancia(distancia);
             motoboy.setDisponivel(false);
             motoboy.setEmailGerente(pedido.getGerente().getEmail());
@@ -116,10 +115,18 @@ public class PedidoController {
 
         var token = header.replace("Bearer ", "");
         var subject = tokenService.getSubject(token);
+        var id = tokenService.getId(token);
         if (motoboyRepository.findByEmail(subject).getDisponivel()) {
-            return ResponseEntity.ok(pedidoRepository.findAllWhereStatusINICIAR().stream().map(DadosPedidoPage::new).toList());
+            return ResponseEntity.ok(pedidoRepository.findAllWhereStatusINICIAR(id).stream().map(DadosPedidoPage::new).toList());
         }
         return  ResponseEntity.ok(pedidoRepository.findByEmailMotoboy(subject).stream().map(DadosPedidoPage::new).toList());
+    }
+
+    @GetMapping("/joinMotoboy_pedido/{idPedido}/{idMotoboy}")
+    public ResponseEntity joinMotoboy_Pedido(@PathVariable Long idPedido,@PathVariable Long idMotoboy ){
+        var pedido = pedidoRepository.getReferenceById(idPedido);
+        pedido.setMotoboy(motoboyRepository.getReferenceById(idMotoboy));
+        return ResponseEntity.ok().build();
     }
 
 

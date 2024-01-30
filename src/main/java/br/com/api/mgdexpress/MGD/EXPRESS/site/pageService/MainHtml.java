@@ -254,7 +254,19 @@ public class MainHtml {
                                     console.error('Erro:', error);
                                 });
                         };
-                                
+                        
+                        function joinPedidoMotoboy(idPedido,idMotobo){
+                            fetch(`${url}/pedidos/joinMotoboy_pedido/${idPedido}/${idMotoboy}`,{
+                                method:'GET',
+                                headers:{
+                                    'Authorization':`Bearer ${token}`,
+                                    'Content-Type':'application/json'
+                                }
+                            }). then(response => response.json)
+                            .catch(error=>{
+                                console.log(error);
+                            })
+                        }
                                 
                                 
                                 

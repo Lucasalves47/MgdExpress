@@ -160,6 +160,7 @@ public class Home {
 
                                         console.log('marcador', marker)
                                         console.log('card', card)
+                                        joinPedidoMotoboy(classe.replace(".c",""),marker.id)
                                     }
                                 }
                             })
@@ -185,6 +186,9 @@ public class Home {
 
                 <script>
                     var markers = [];
+                    
+                    var loc;
+                    buscarMotoboys();
 
                     function initMap(localizacoes) {
                         // Configurações iniciais do mapa
@@ -196,30 +200,22 @@ public class Home {
                         // Criação do mapa
                         map = new google.maps.Map(document.getElementById('map'), mapOptions); // Atribuindo o mapa à variável global
 
+                        loc = localizacoes
 
-
-                        marker = new google.maps.Marker({
-                            position: { lat: -23.550520, lng: -46.633308 },
-                            map: map,
-                            title: 'Marcador1',
-                        });
-
-                        marker2 = new google.maps.Marker({
-                            position: { lat: -23.554520, lng: -46.636308 },
-                            map: map,
-                            title: 'Marcador2',
-                        });
-
-                        marker3 = new google.maps.Marker({
-                            position: { lat: -23.559520, lng: -46.638308 },
-                            map: map,
-                            title: 'Marcador3',
-                        });
-
-                        markers.push(marker)
-                        markers.push(marker2)
-                        markers.push(marker3)
-
+                    loc.forEach(function(markerInfo) {
+                           var marker = new google.maps.Marker({
+                               position: markerInfo.position,
+                               map: map,
+                               title: markerInfo.title
+                               id: markerInfo.id
+                           });
+                   
+                           // Adiciona o marcador ao array para referência futura
+                           markerInfo.marker = marker;
+                           markers.push(marker)
+                       });
+                        
+                        
                         google.maps.event.addListenerOnce(map, 'idle', function () {
                             var pixelPosition = getMarkerPositionInPixels(marker);
 
