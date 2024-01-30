@@ -252,6 +252,7 @@ public class Home {
                              markerInfo.marker.setPosition({ lat:parseFloat(markerInfo.localizacao.latitude), lng:parseFloat(markerInfo.localizacao.longitude )});
                          });
                      }
+                     
                  
                      var intervalId = setInterval(buscarMotoboys2, 10000);
                  </script>
