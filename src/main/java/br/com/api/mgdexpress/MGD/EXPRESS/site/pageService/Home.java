@@ -58,52 +58,6 @@ public class Home {
                         nav button:hover {
                             background-color: #45a049;
                         }
-                        #cards {
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    width: 20%;
-                                    height: 95%;
-                                    background-color: #333333cc;
-                                    margin-top: 5vh;
-                                   \s
-                                }
-                        
-                                #card {
-                                    margin: 5%;
-                                    margin-top: 8%;
-                                    background-color: #232323;
-                                    color: white;
-                                    border-radius: 20px;
-                                    cursor: pointer;
-                                    padding: 5px;
-                                }
-                        
-                                #card p {
-                                    margin: 15px;
-                                    margin-top: 0%;
-                                    margin-bottom: 5px;
-                                    font-size: 12px;
-                                }
-                        
-                                #card h3 {
-                                    margin: 15px;
-                                    margin-bottom: 0%;
-                                    font-size: 15px;
-                                    margin-top: 8px;
-                                    display: inline;
-                                }
-                        
-                                .btn-detalhe {
-                                    background-color: #d5dcd500;
-                                    color: cadetblue;
-                                    border: none;
-                                    padding: 10px 15px;
-                                    border-radius: 100%;
-                                    cursor: pointer;
-                                    margin-left: 50%;
-                                    display: inline;
-                                }
                     </style>
                 </head>
                                 
@@ -122,7 +76,6 @@ public class Home {
                                 
                 <main>
                     <div id="map"></div>
-                    
                 </main>
                 
                 <script>
