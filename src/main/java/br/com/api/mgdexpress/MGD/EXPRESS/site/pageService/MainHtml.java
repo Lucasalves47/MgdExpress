@@ -256,7 +256,7 @@ public class MainHtml {
                         };
                         
                         function joinPedidoMotoboy(idPedido,idMotoboy){
-                            fetch(`${url}/pedidos/joinMotoboy_pedido/${idPedido}/${idMotoboy}`,{
+                            fetch(`${urlRoot}/pedidos/joinMotoboy_pedido/${idPedido}/${idMotoboy}`,{
                                 method:'GET',
                                 headers:{
                                     'Authorization':`Bearer ${token}`,
