@@ -207,7 +207,7 @@ public class Home {
                                position: markerInfo.position,
                                map: map,
                                title: markerInfo.title
-                               id:1
+                              
                            });
                    
                            // Adiciona o marcador ao array para referência futura
