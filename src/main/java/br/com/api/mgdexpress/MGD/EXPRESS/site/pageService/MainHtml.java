@@ -114,7 +114,7 @@ public class MainHtml {
                         }
                                 
                         function buscarMotoboys() {
-                            fetch(`${urlRoot}/motoboy/EmEntregas&Disponive`, {
+                            fetch(`${urlRoot}/motoboy//EmEntregas&Disponivel`, {
                                 method: 'GET',
                                 headers: {
                                     'Authorization': `Bearer ${token}`,
