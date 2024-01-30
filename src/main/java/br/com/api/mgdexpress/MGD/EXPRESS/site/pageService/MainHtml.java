@@ -161,10 +161,7 @@ public class MainHtml {
                                         const cardContainer = document.getElementById('cards');
                                 
                                         interData.forEach(cardData => {
-                                
-                                
-                                
-                                            let novoElemento = document.createElement('div')
+                                     let novoElemento = document.createElement('div')
                                 
                                             novoElemento.innerHTML = `<div id="card" class="card${cardData.id}" onmousedown="iniciarArrastar(event, '.card${cardData.id}')">
                             <h3>${cardData.nomePedido}</h3>
