@@ -122,7 +122,7 @@ public class Home {
                                 
                 <main>
                     <div id="map"></div>
-                    <div id="cards"></div>
+                    
                 </main>
                 
                 <script>
