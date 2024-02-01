@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/site/gerente")
 public class ControllerSiteGerente {
 
-    public String url = "https://mgdexpress-production-bdc8.up.railway.app";
+    public String url = "http://localhost:8080";
 
     @Autowired
     private HistoricoRepository historicoRepository;

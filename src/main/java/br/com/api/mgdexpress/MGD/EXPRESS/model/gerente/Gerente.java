@@ -1,6 +1,7 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.model.gerente;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerenteTemporario.GerenteTemporario;
+import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.Localizacao;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +25,11 @@ public class Gerente{
     private String senha;
     private String nomeEstebelecimento;
     private String localEstabelecimento;
+    private Localizacao localizacao;
+    private String clientId;
+    private String clientSecret;
+    @Column(length = 8001)
+    private String token;
 
 
     public Gerente(GerenteTemporario dadosGerente) {
@@ -32,6 +38,8 @@ public class Gerente{
         this.email = dadosGerente.getEmail();
         this.nomeEstebelecimento = dadosGerente.getNomeEstebelecimento();
         this.localEstabelecimento = dadosGerente.getLocalEstabelecimento();
+        this.clientId = dadosGerente.getClientId();
+        this.clientSecret = dadosGerente.getClientSecret();
     }
 
 

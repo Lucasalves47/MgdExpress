@@ -1,11 +1,14 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.controller;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.DadosGerente;
+import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.DtoGerenteTemporario;
+import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.Gerente;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerenteTemporario.DadosGerenteTemporarioList;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerenteTemporario.GerenteTemporario;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.users.User;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.GerenteTemporarioRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.UserRepository;
+import br.com.api.mgdexpress.MGD.EXPRESS.service.requests.Requests;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,14 +32,17 @@ public class GerenteTemporarioController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity criarGerente(@Valid @RequestBody DadosGerente dadosGerente){
+    public ResponseEntity criarGerente(@Valid @RequestBody DtoGerenteTemporario dadosGerente){
+        var request = new Requests();
+        var token = request.requestToken(dadosGerente.clientId(), dadosGerente.clientSecret());
+        System.out.println(token);
+        var dadosGerenteComEndereço = request.requestDadosGerente(token);
         var user = userRepository.findByUsername(dadosGerente.email());
 
         if(user != null){
             return ResponseEntity.status(422).body("usuario ja cadastrado");
         }
-
-        gerenteRepository.save(new GerenteTemporario(dadosGerente));
+        gerenteRepository.save(new GerenteTemporario(dadosGerenteComEndereço,dadosGerente));
         return ResponseEntity.ok().build();
     }
 

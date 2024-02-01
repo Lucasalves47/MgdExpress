@@ -6,6 +6,7 @@ import br.com.api.mgdexpress.MGD.EXPRESS.model.pedido.*;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.*;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.RegrasService;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.TokenService;
+import br.com.api.mgdexpress.MGD.EXPRESS.service.requests.Requests;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -103,8 +104,12 @@ public class PedidoController {
 //        System.out.println("Entrei no pedido pendente gerente");
         var token = header.replace("Bearer ","");
         var subject = tokenService.getSubject(token);
+        var id = tokenService.getId(token);
         var lista= pedidoRepository.findAllWhereStatusINICIARByLogin(subject).stream().map(DadosPedidoPage::new).toList();
 
+        var request = new Requests(gerenteRepository);
+
+        request.requestPedidosPendentes(id);
         return ResponseEntity.ok(List.of(lista));
 
     }
