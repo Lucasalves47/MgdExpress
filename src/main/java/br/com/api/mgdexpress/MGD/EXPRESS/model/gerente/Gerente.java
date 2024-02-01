@@ -28,7 +28,8 @@ public class Gerente{
     private Localizacao localizacao;
     private String clientId;
     private String clientSecret;
-
+    @Column(length = 8001)
+    private String token;
 
 
     public Gerente(GerenteTemporario dadosGerente) {
