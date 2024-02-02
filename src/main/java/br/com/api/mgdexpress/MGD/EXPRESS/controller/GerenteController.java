@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -82,7 +83,7 @@ public class GerenteController {
         historicos.forEach(historico -> {
             var id = historico.getMotoboy().getId().intValue();
             var km = historico.getDistancia();
-            var valor = historico.getValor();
+            var valor = new BigDecimal(historico.getTaxa());
             if(Objects.equals(historico.getDataEntrega(), LocalDate.now())){
             if(entregas.get(id) == null){
                 entregas.set(id,new DtoEntregaDistancia(1,km,valor));

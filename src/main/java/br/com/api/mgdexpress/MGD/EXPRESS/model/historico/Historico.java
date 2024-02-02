@@ -1,6 +1,7 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.model.historico;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.Gerente;
+import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.Localizacao;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.Motoboy;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.pedido.Pedido;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.pedido.Status;
@@ -28,8 +29,11 @@ public class Historico {
     private String nomeEstabelecimento;
     private String localOrigem;
     private String LocalDestino;
-    private BigDecimal valor;
-    private String observacao;
+    private BigDecimal valorPedido;
+    private String metodoPagamento;
+    private Double troco;
+    private Double taxa;
+    private Localizacao localizacao;
     private String itensDoPedido;
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -47,8 +51,10 @@ public class Historico {
         this.nomeEstabelecimento = pedido.getNomeEstabelecimento();
         this.localOrigem = pedido.getLocalOrigem();
         LocalDestino =pedido.getLocalDestino();
-        this.valor = pedido.getValor();
-        this.observacao = pedido.getObservacao();
+        this.valorPedido = pedido.getValorDoPedido();
+        this.troco = pedido.getTroco();
+        this.taxa = pedido.getTaxaEntrega();
+        this.metodoPagamento = pedido.getMetodoPagamento();
         this.itensDoPedido = pedido.getItensDoPedido();
         this.status = Status.FINALIZADO;
         this.dataCriacao = pedido.getDataCriacao();
@@ -57,5 +63,6 @@ public class Historico {
         this.gerente = pedido.getGerente();
         this.pedidoId = pedido.getId();
         this.distancia = pedido.getDistancia();
+        this.localizacao = pedido.getLocalizacao();
     }
 }

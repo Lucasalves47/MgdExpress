@@ -32,7 +32,7 @@ public record DadosHistoricoMotoboy(
 
     public DadosHistoricoMotoboy(Historico historico) {
         this(historico.getId(), historico.getLocalDestino(),
-                historico.getValor(), historico.getObservacao(),
+                historico.getValorPedido(), historico.getMetodoPagamento(),
                 historico.getItensDoPedido(), historico.getDataCriacao(),
                 historico.getDataEntrega(),historico.getGerente().getId(),
                 historico.getGerente().getNome(),historico.getGerente().getTelefone(),

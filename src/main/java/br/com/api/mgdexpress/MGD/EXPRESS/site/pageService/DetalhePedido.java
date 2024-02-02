@@ -4,7 +4,7 @@ import br.com.api.mgdexpress.MGD.EXPRESS.model.pedido.Pedido;
 
 public class DetalhePedido {
 
-    public static String detalhar(Pedido dados){
+    public static String detalhar(Pedido dados,String url){
         return """
                 
                       <!DOCTYPE html>
@@ -77,7 +77,8 @@ public class DetalhePedido {
                               <body>
                                   <nav>
                                       <div>
-                                          <p class="backLink" onclick='listarPedidos()'>←</p>
+                                          <p class="backLink" onclick='carregarPagina(\""""+url+"/site/gerente/home\")'"+"""
+                                      >←</p>
                                       </div>
                                       <h2>Detalhe do Pedido</h2>
                                   </nav>
@@ -91,9 +92,11 @@ public class DetalhePedido {
                                           </p>
                                           <p>Local de Destino : """ + dados.getLocalDestino() + """
                                           </p>
-                                          <p>Valor : """ + dados.getValor() + """
+                                          <p>Valor : """ + dados.getValorDoPedido() + """
                                           </p>
-                                          <p>Observação : """ + dados.getObservacao() + """
+                                          <p>Metodo De Pagamento : """ + dados.getMetodoPagamento() + """
+                                          </p>
+                                          <p>Troco : """ + dados.getTroco() + """
                                           </p>
                                           <p>Itens do Pedido : """ + dados.getItensDoPedido() + """
                                           </p>

@@ -145,8 +145,7 @@ public class MainHtml {
                                 
                                 
                         function listarPedidos() {
-                                
-                                
+                               
                             fetch(`${urlRoot}/pedidos/pendente/gerente`, {
                                 method: 'GET',
                                 headers: {
@@ -156,6 +155,8 @@ public class MainHtml {
                             })
                                 .then(response => response.json())
                                 .then(data => {
+                               
+                                document.getElementById("cards").innerHTML = "";
                                 
                                     data.forEach(interData => {
                                         const cardContainer = document.getElementById('cards');
@@ -163,7 +164,7 @@ public class MainHtml {
                                         interData.forEach(cardData => {
                                      let novoElemento = document.createElement('div')
                                 
-                                            novoElemento.innerHTML = `<div id="card" class="card${cardData.id}" onmousedown="iniciarArrastar(event, '.card${cardData.id}')">
+                                            novoElemento.innerHTML = `<div id="card" class="card${cardData.id}" onclick="desenharLocalizacaoEntrega(${cardData.localizacaoEntrega.latitude},${cardData.localizacaoEntrega.longitude},${cardData.nomePedido})" onmousedown="iniciarArrastar(event, '.card${cardData.id}')">
                             <h3>${cardData.nomePedido}</h3>
                             <button class="btn-detalhe" onclick="carregarPagina('${url}pedido/detalhes/${cardData.id}')">
                         <i class="fas fa-info-circle"></i>
@@ -235,7 +236,7 @@ public class MainHtml {
                                     data.forEach(item => {
                                         const historicoList = document.getElementById('container');
                                 
-                                        const li = document.createElement('li');
+                                        const li = document.createElement('div');
                                         li.innerHTML = `<h3>${item.nomeMotoboy}</h3>
                                                                                    <p>Valor: R$ ${item.valor}</p>
                                                                                     <p>Entregas: ${item.entregas}</p>

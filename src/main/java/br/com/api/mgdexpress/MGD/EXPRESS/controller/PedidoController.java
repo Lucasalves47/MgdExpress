@@ -105,11 +105,23 @@ public class PedidoController {
         var token = header.replace("Bearer ","");
         var subject = tokenService.getSubject(token);
         var id = tokenService.getId(token);
-        var lista= pedidoRepository.findAllWhereStatusINICIARByLogin(subject).stream().map(DadosPedidoPage::new).toList();
+        var gerente = gerenteRepository.getReferenceById(id);
 
         var request = new Requests(gerenteRepository);
 
-        request.requestPedidosPendentes(id);
+        var pedidos = request.requestPedidosPendentes(id);
+        if(pedidos != null){
+            pedidos.forEach(pedidoid ->{
+                if(pedidoRepository.findByIdPedidoIfood(pedidoid.getOrderId()) == null) {
+                    var pedidoIfood = request.requstDetalhes(pedidoid.getOrderId(), id);
+                    pedidoRepository.save(new Pedido(pedidoIfood, gerente.getToken(), gerente));
+                }
+            });
+        }
+        var lista= pedidoRepository.findAllWhereStatusINICIARByLogin(subject).stream().map(DadosPedidoPage::new).toList();
+
+
+
         return ResponseEntity.ok(List.of(lista));
 
     }

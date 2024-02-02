@@ -1,8 +1,6 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.repository;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.model.pedido.Pedido;
-import br.com.api.mgdexpress.MGD.EXPRESS.model.pedido.Status;
-import io.micrometer.observation.ObservationFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,4 +23,6 @@ public interface PedidoRepository extends JpaRepository<Pedido,Long> {
     Page<Pedido> findAllWhereStatusANDAMENTO(Pageable page);
     @Query("select p from Pedido p where p.id = :id and p.id not in (select h.pedidoId from Historico h)")
     Pedido getReferenceByIdAndNotinHistorico(Long id);
+
+    Pedido findByIdPedidoIfood(String pedidoid);
 }

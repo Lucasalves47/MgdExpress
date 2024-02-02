@@ -1,5 +1,6 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.model.pedido;
 
+import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.Localizacao;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,12 +16,18 @@ public record DadosPedido(
         @NotBlank
         String localDestino,
         @NotNull
-        BigDecimal valor,
+        BigDecimal valorPedido,
 
-        String observacao,
+        String metodoPagamento,
         @NotBlank
-        String itensDoPedido) {
+        String itensDoPedido,
+        @NotNull
+        Localizacao localizacao,
+        @NotNull
+        Double troco,
+        Double taxaEntrega
+        ) {
         public DadosPedido(Pedido pedido) {
-                this(pedido.getId(),pedido.getNomePedido(), pedido.getLocalDestino(),pedido.getValor(), pedido.getObservacao(), pedido.getItensDoPedido());
+                this(pedido.getId(),pedido.getNomePedido(), pedido.getLocalDestino(),pedido.getValorDoPedido(), pedido.getMetodoPagamento(), pedido.getItensDoPedido(),pedido.getLocalizacao(), pedido.getTroco(), pedido.getTaxaEntrega());
         }
 }

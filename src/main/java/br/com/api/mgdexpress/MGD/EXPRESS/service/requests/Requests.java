@@ -1,9 +1,7 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.service.requests;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.GerenteRepository;
-import br.com.api.mgdexpress.MGD.EXPRESS.service.requests.gsonData.DtoDadosGerente;
-import br.com.api.mgdexpress.MGD.EXPRESS.service.requests.gsonData.DtolistaGerente;
-import br.com.api.mgdexpress.MGD.EXPRESS.service.requests.gsonData.ModelTokenResponse;
+import br.com.api.mgdexpress.MGD.EXPRESS.service.requests.gsonData.*;
 import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -12,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 @NoArgsConstructor
@@ -111,7 +111,7 @@ public class Requests {
         return null;
     }
 
-    public void requestPedidosPendentes(Long id){
+    public List<DtoOrderid> requestPedidosPendentes(Long id){
         var gerente = gerenteRepository.getReferenceById(id);
         var token = gerente.getToken();
         if(token == null){
@@ -127,15 +127,47 @@ public class Requests {
         try {
             var reponse = client.newCall(request).execute();
             if(reponse.isSuccessful()){
-                System.out.println(reponse.body().string());
+                if(reponse.code()!=204){
+                    Gson gson= new Gson();
+                    return Arrays.stream(gson.fromJson(reponse.body().string(), DtoOrderid[].class)).toList();
+                }
+                else{
+                    System.out.println("esta vazio");
+                }
             }
             else{
                 gerente.setToken(requestToken(gerente.getClientId(),gerente.getClientSecret()));
+                gerenteRepository.save(gerente);
                 requestPedidosPendentes(id);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return null;
+    }
+
+    public DtoDetalhesDoPedido requstDetalhes(String pedidoId,Long id){
+
+        var token = gerenteRepository.getReferenceById(id).getToken();
+
+        var client = new OkHttpClient();
+
+        var url = "https://merchant-api.ifood.com.br/order/v1.0/orders/"+pedidoId;
+
+        var request = new Request.Builder().addHeader("Authorization",token).url(url).build();
+
+        try {
+            var response = client.newCall(request).execute();
+
+            if(response.isSuccessful()){
+                Gson gson = new Gson();
+
+                return gson.fromJson(response.body().string(), DtoDetalhesDoPedido.class);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
 

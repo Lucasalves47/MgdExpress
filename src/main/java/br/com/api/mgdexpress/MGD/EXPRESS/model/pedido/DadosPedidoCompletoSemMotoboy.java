@@ -2,6 +2,7 @@ package br.com.api.mgdexpress.MGD.EXPRESS.model.pedido;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.DadosGerente;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.DadosMotoboy;
+import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.Localizacao;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,18 +19,22 @@ public record DadosPedidoCompletoSemMotoboy (
         @NotBlank
         String localDestino,
         @NotNull
-        BigDecimal valor,
+        BigDecimal valorPedido,
 
-        String observacao,
+        String metodoPagamento,
         @NotBlank
         String itensDoPedido,
         Status status,
         LocalDate dataCriacao,
         @NotNull @Valid
-        DadosGerente dadosGerente
+        DadosGerente dadosGerente,
+        @NotNull
+        Localizacao localizacao,
+        Double troco,
+        Double taxaEntrega
 ){
 
     public DadosPedidoCompletoSemMotoboy(Pedido pedido) {
-        this(pedido.getId(), pedido.getNomeEstabelecimento(), pedido.getLocalOrigem(), pedido.getLocalDestino(), pedido.getValor(), pedido.getObservacao(), pedido.getItensDoPedido(), pedido.getStatus(), pedido.getDataCriacao(), new DadosGerente(pedido.getGerente()));
+        this(pedido.getId(), pedido.getNomeEstabelecimento(), pedido.getLocalOrigem(), pedido.getLocalDestino(), pedido.getValorDoPedido(), pedido.getMetodoPagamento(), pedido.getItensDoPedido(), pedido.getStatus(), pedido.getDataCriacao(), new DadosGerente(pedido.getGerente()),pedido.getLocalizacao(), pedido.getTroco(), pedido.getTaxaEntrega());
     }
 }

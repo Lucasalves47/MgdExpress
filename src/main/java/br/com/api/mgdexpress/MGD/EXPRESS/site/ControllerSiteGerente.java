@@ -1,9 +1,11 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.site;
 
+import br.com.api.mgdexpress.MGD.EXPRESS.repository.GerenteRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.HistoricoRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.PedidoRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.TokenService;
 import br.com.api.mgdexpress.MGD.EXPRESS.site.pageService.*;
+import io.swagger.v3.oas.annotations.headers.Header;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,6 +25,8 @@ public class ControllerSiteGerente {
     private PedidoRepository pedidoRepository;
     @Autowired
     private TokenService tokenService;
+    @Autowired
+    private GerenteRepository gerenteRepository;
 
     @GetMapping
     public String mainHtml(){
@@ -44,8 +48,12 @@ public class ControllerSiteGerente {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/home")
-    public ResponseEntity<HtmlPage> home(){
-        return ResponseEntity.ok(new HtmlPage(Home.home(url)));
+    public ResponseEntity<HtmlPage> home(@RequestHeader("Authorization") String header){
+        var token = header.replace("Bearer ","");
+
+        var id = tokenService.getId(token);
+        var gerente = gerenteRepository.getReferenceById(id);
+        return ResponseEntity.ok(new HtmlPage(Home.home(url,gerente)));
     }
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
@@ -81,7 +89,7 @@ public class ControllerSiteGerente {
     @GetMapping("/pedido/detalhes/{id}")
     public ResponseEntity<HtmlPage> detalharPedido(@PathVariable Long id){
         var pedido = pedidoRepository.getReferenceById(id);
-        return ResponseEntity.ok(new HtmlPage(DetalhePedido.detalhar(pedido)));
+        return ResponseEntity.ok(new HtmlPage(DetalhePedido.detalhar(pedido,url)));
        // return ResponseEntity.ok(new HtmlPage(EmConstrucao.html()));
     }
 
