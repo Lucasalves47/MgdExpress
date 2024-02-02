@@ -95,7 +95,7 @@ public class Pedido {
         this.itensDoPedido = itens.toString();
         this.status = Status.INICIAR;
         this.dataCriacao =LocalDate.now();
-        this.localizacao = new Localizacao(String.valueOf(cordenadas.getLatitude()),String.valueOf(cordenadas.getLongitude()));
+        this.localizacao = new Localizacao(cordenadas.getLatitude()+"",cordenadas.getLongitude()+"");
         this.gerente = gerente;
         this.distancia = null;
         this.idPedidoIfood = p.getId();
