@@ -2,6 +2,7 @@ package br.com.api.mgdexpress.MGD.EXPRESS.model.gerenteTemporario;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.DadosGerente;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.DtoGerenteTemporario;
+import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.Localizacao;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.requests.gsonData.DtoDadosGerente;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class GerenteTemporario{
     private String localEstabelecimento;
     private String clientId;
     private String clientSecret;
+    private Localizacao localizacao;
 
     public GerenteTemporario(DtoDadosGerente dtoDadosGerente, DtoGerenteTemporario dtoGerenteTemporario) {
         var endereco = dtoDadosGerente.getAddress();
@@ -39,5 +41,7 @@ public class GerenteTemporario{
         this.localEstabelecimento = endereco.getCountry()+",  "+endereco.getState()+",  "+endereco.getCity()+",  "+endereco.getStreet()+",  "+endereco.getNumber()+",  "+endereco.getPostalCode();
         this.clientId = dtoGerenteTemporario.clientId();
         this.clientSecret = dtoGerenteTemporario.clientSecret();
+        this.localizacao = new Localizacao(dtoDadosGerente.getAddress().getLongitude()+"",dtoDadosGerente.getAddress().getLatitude()+"");
+
     }
 }

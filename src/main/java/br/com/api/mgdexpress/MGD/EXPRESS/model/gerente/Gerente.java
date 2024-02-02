@@ -40,6 +40,7 @@ public class Gerente{
         this.localEstabelecimento = dadosGerente.getLocalEstabelecimento();
         this.clientId = dadosGerente.getClientId();
         this.clientSecret = dadosGerente.getClientSecret();
+        this.localizacao = dadosGerente.getLocalizacao();
     }
 
 
