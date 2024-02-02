@@ -82,11 +82,11 @@ public class FormularioSolicitacaoCadastroGerente {
                                     <fieldset name="ifood" class="ifoodfildset">
                         
                                         <label for="clientId">clientId:</label>
-                                        <input type="text" id="localEstabelecimento" name="clientId" required>
+                                        <input type="text" id="clientId" name="clientId" required>
                         
                         
-                                        <label for="localEstabelecimento">clientSecret:</label>
-                                        <input type="text" id="localEstabelecimento" name="clientSecret" required>
+                                        <label for="clientSecret">clientSecret:</label>
+                                        <input type="text" id="clientSecret" name="clientSecret" required>
                         
                                     </fieldset>
                         
