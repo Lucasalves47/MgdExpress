@@ -23,11 +23,15 @@ public record DadosPedido(
         String itensDoPedido,
 
         Localizacao localizacao,
+        String lat,
+        String lng,
+
         @NotNull
         Double troco,
         Double taxaEntrega
         ) {
         public DadosPedido(Pedido pedido) {
-                this(pedido.getId(),pedido.getNomePedido(), pedido.getLocalDestino(),pedido.getValorDoPedido(), pedido.getMetodoPagamento(), pedido.getItensDoPedido(),pedido.getLocalizacao(), pedido.getTroco(), pedido.getTaxaEntrega());
+                this(pedido.getId(),pedido.getNomePedido(), pedido.getLocalDestino(),pedido.getValorDoPedido(), pedido.getMetodoPagamento(), pedido.getItensDoPedido(),pedido.getLocalizacao(),pedido.getLocalizacao().getLatitude(),pedido.getLocalizacao().getLongitude()
+                        , pedido.getTroco(), pedido.getTaxaEntrega());
         }
 }

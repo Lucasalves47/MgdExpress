@@ -58,9 +58,11 @@ public class ControllerSiteGerente {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/criar")
-    public ResponseEntity<HtmlPage> formulario(){
-
-        return ResponseEntity.ok(new HtmlPage(Formulario.formulario(url)));
+    public ResponseEntity<HtmlPage> formulario(@RequestHeader("Authorization") String header){
+        var token = header.replace("Bearer ","");
+        var id = tokenService.getId(token);
+        var gerente = gerenteRepository.getReferenceById(id);
+        return ResponseEntity.ok(new HtmlPage(Formulario.formulario(url,gerente)));
     }
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/meusPedidos")
