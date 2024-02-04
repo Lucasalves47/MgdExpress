@@ -373,10 +373,12 @@ public class Home {
                         }
                                
                                
-                               
+                    function passaPagelistarPedidos() {
+                        listarPedidos(page)
+                    }          
                                
                     var intervalId = setInterval(buscarMotoboys2, 10000);
-                    var getPedidoIntereval = setInterval(listarPedidos, 27000);
+                    var getPedidoIntereval = setInterval(passaPagelistarPedidos, 27000);
                 </script>
                                
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsTWHMwA_agU_-o35U_3b606930nBrsY8&callback=initMap" async
