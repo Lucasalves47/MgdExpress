@@ -169,10 +169,10 @@ public class PedidoController {
         }else return ResponseEntity.notFound().build();
     }
     @GetMapping("test/{id}")
-    public ResponseEntity<DadosPedidoCompletoSemMotoboy> testPedido(@PathVariable Long id){
+    public ResponseEntity<DadosPedidoCompleto> testPedido(@PathVariable Long id){
 //        System.out.println("Entrei no detar pedido id");
         var pedido = pedidoRepository.getReferenceByIdAndNotinHistorico(id);
 
-            return ResponseEntity.ok(new DadosPedidoCompletoSemMotoboy(pedido));
+        return ResponseEntity.ok(new DadosPedidoCompleto(pedido));
     }
 }
