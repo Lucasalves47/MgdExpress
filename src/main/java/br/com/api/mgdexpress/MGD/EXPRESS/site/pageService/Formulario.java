@@ -80,7 +80,7 @@ public class Formulario {
                              
                         
                         <label for="valorPedido">Valor:</label>
-                        <input type="number" id="valorPedido" name="valor" required />
+                        <input type="number" id="valorPedido" name="valorPedido" required />
                             
                          <label for="metodoPagamento">Metodo De Pagamento:</label>
                         <select id="metodoPagamento" name="metodoPagamento">
