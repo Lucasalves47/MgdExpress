@@ -168,6 +168,7 @@ public class PedidoController {
             return ResponseEntity.ok(new DadosPedidoCompletoSemMotoboy(pedido));
         }else return ResponseEntity.notFound().build();
     }
+    @GetMapping("test/{id}")
     public ResponseEntity<DadosPedidoCompletoSemMotoboy> testPedido(@PathVariable Long id){
 //        System.out.println("Entrei no detar pedido id");
         var pedido = pedidoRepository.getReferenceByIdAndNotinHistorico(id);
