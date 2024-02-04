@@ -43,7 +43,8 @@ public class Pedido {
     private LocalDate dataCriacao;
     private LocalDate dataEntrega;
     private Localizacao localizacao;
-    private Localizacao localizacaoLoja;
+    private String latitudeLoja;
+    private String longitudeLoja;
     @ManyToOne
     private Motoboy motoboy;
     @ManyToOne
@@ -100,7 +101,8 @@ public class Pedido {
         this.gerente = gerente;
         this.distancia = null;
         this.idPedidoIfood = p.getId();
-        this.localizacaoLoja = gerente.getLocalizacao();
+        this.longitudeLoja = gerente.getLocalizacao().getLongitude();
+        this.latitudeLoja = gerente.getLocalizacao().getLatitude();
 
     }
 

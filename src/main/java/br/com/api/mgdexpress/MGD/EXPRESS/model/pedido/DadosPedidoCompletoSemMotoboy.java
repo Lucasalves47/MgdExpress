@@ -36,6 +36,6 @@ public record DadosPedidoCompletoSemMotoboy (
 ){
 
     public DadosPedidoCompletoSemMotoboy(Pedido pedido) {
-        this(pedido.getId(), pedido.getNomeEstabelecimento(), pedido.getLocalOrigem(), pedido.getLocalDestino(), pedido.getValorDoPedido(), pedido.getMetodoPagamento(), pedido.getItensDoPedido(), pedido.getStatus(), pedido.getDataCriacao(), new DadosGerente(pedido.getGerente()),pedido.getLocalizacao(),pedido.getLocalizacaoLoja(), pedido.getTroco(), pedido.getTaxaEntrega());
+        this(pedido.getId(), pedido.getNomeEstabelecimento(), pedido.getLocalOrigem(), pedido.getLocalDestino(), pedido.getValorDoPedido(), pedido.getMetodoPagamento(), pedido.getItensDoPedido(), pedido.getStatus(), pedido.getDataCriacao(), new DadosGerente(pedido.getGerente()),pedido.getLocalizacao(),new Localizacao(pedido.getLatitudeLoja(),pedido.getLongitudeLoja()), pedido.getTroco(), pedido.getTaxaEntrega());
     }
 }
