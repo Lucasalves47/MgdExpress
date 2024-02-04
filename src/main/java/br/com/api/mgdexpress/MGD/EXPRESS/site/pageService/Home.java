@@ -60,7 +60,7 @@ public class Home {
                             background-color: #45a049;
                         }
                                
-                        #cards {
+                        #cardsTela {
                             position: absolute;
                             top: 0;
                             left: 0;
@@ -69,6 +69,7 @@ public class Home {
                             background-color: #333333cc;
                             margin-top: 5vh;
                             display: none;
+                            
                                
                         }
                                
@@ -107,6 +108,32 @@ public class Home {
                             margin-left: 50%;
                             display: inline;
                         }
+                        #cardsTela button {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            position: absolute;
+                            bottom: 9px;
+                           
+                        }
+                        
+                         #cardsTela p{
+                        
+                             color: white;
+                             font-size: 16px;
+                             position: absolute;
+                             bottom: 9px;
+                             margin-left: 30%;
+                             }
+                        
+                        .btnpageableleft{
+                              margin-left: 83%;
+                        } 
+                        
                     </style>
                 </head>
                                
@@ -127,16 +154,40 @@ public class Home {
                                
                 <main>
                     <div id="map"></div>
-                    <div id="cards"></div>
+                    
+                    <div id="cardsTela">
+                        <div id="cards"> </div>
+                        
+                        <button class="btnpageable" onclick="back();"><</button>
+                        <p class="btnpageable">pagina 2 de 1</p>
+                        <button class="btnpageableleft" onclick="next();">></button>
+                       
+                    </div>
                 </main>
                                
                 <script>
-                    listarPedidos()
+                    var page = 1
+               
+                    var pageMax;
+                    listarPedidos(page)
                                
                     var map; // Variável global para o mapa
                     var lastMousePosition;
                     var mouseStopTimer;
-                               
+                    
+                    function back() {
+                    if((page-1) > 0){
+                        page -=1
+                        listarPedidos(page)
+                        }
+                       
+                    }
+                    function next() {
+                        if((page+1) <= pageMax){
+                            page +=1
+                            listarPedidos(page)
+                        }
+                    }
                                
                     function iniciarArrastar(event, classe) {
                         let card = event.target.closest(classe);
@@ -270,7 +321,7 @@ public class Home {
                     }
                                
                     function mostrarEEsconderPedidos() {
-                        let cards = document.getElementById("cards")
+                        let cards = document.getElementById("cardsTela")
                                
                         if (cards.style.display !== 'none') {
                             cards.style.display = 'none';

@@ -14,7 +14,7 @@ public interface PedidoRepository extends JpaRepository<Pedido,Long> {
     List<Pedido> findAllWhereStatusINICIAR(Long id);
 
     @Query("select p from Pedido p where p.status = INICIAR and p.gerente.email = :email and p.motoboy IS NULL")
-    List<Pedido> findAllWhereStatusINICIARByLogin(String email);
+    Page<Pedido> findAllWhereStatusINICIARByLogin(String email, Pageable pageable);
 
     @Query("select p from Pedido p where p.motoboy.email = :email")
     List<Pedido> findByEmailMotoboy(String email);

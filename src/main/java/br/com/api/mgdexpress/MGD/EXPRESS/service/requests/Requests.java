@@ -120,7 +120,7 @@ public class Requests {
         }
         var client = new OkHttpClient();
 
-        var url = "https://merchant-api.ifood.com.br/order/v1.0/events:polling?types=PLC%2CREC%2CCFM&groups=ORDER_STATUS%2CDELIVERY";
+        var url = "https://merchant-api.ifood.com.br/order/v1.0/events:polling?types=PLC%2CREC%2CCFM&groups=DELIVERY";
 
         var request = new Request.Builder().url(url).addHeader("Authorization",token).build();
 

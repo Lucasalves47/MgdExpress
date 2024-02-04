@@ -144,9 +144,9 @@ public class MainHtml {
                                 
                                 
                                 
-                        function listarPedidos() {
+                        function listarPedidos(page) {
                                
-                            fetch(`${urlRoot}/pedidos/pendente/gerente`, {
+                            fetch(`${urlRoot}/pedidos/pendente/gerente?page=${page}`, {
                                 method: 'GET',
                                 headers: {
                                     'Authorization': `Bearer ${token}`,
@@ -158,7 +158,7 @@ public class MainHtml {
                                
                                 document.getElementById("cards").innerHTML = "";
                                 
-                                    data.forEach(interData => {
+                                    data.content.forEach(interData => {
                                         const cardContainer = document.getElementById('cards');
                                 
                                         interData.forEach(cardData => {

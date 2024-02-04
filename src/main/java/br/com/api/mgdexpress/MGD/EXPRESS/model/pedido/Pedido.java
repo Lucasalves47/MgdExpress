@@ -79,12 +79,9 @@ public class Pedido {
         for (Method method : p.getPayments().getMethods()) {
             totalTroco += (method.getCash()==null)? 0.0 :method.getCash().getChangeFor();
         }
-
         for (Item item :p.getItems()){
             itens.append(item.getName()).append(",\n");
         }
-
-
         this.nomeEstabelecimento = p.getMerchant().getName();
         this.nomeCliente = p.getCustomer().getName();
         this.nomePedido = p.getDisplayId();

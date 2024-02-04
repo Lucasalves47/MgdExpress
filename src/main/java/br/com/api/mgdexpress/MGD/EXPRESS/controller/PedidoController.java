@@ -47,11 +47,8 @@ public class PedidoController {
     public ResponseEntity criar(@Valid @RequestBody DadosPedido dadosPedido, UriComponentsBuilder uriComponentsBuilder,@RequestHeader("Authorization") String header){
         var token = header.replace("Bearer ","");
         var subject = tokenService.getSubject(token);
-
         var gerente = gerenteRepository.findByEmail(subject);
-
         var pedido = pedidoRepository.save(new Pedido(dadosPedido,gerente));
-
         var uri = uriComponentsBuilder.path("/pedidos/{id}").buildAndExpand("id",pedido.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
@@ -100,7 +97,7 @@ public class PedidoController {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/pendente/gerente")
-    public ResponseEntity<List<List<DadosPedidoPage>>> listar(@RequestHeader("Authorization") String header){
+    public ResponseEntity<Page<DadosPedidoPage>> listar(@RequestHeader("Authorization") String header,@PageableDefault(size = 7) Pageable pageable){
 //        System.out.println("Entrei no pedido pendente gerente");
         var token = header.replace("Bearer ","");
         var subject = tokenService.getSubject(token);
@@ -118,11 +115,9 @@ public class PedidoController {
                 }
             });
         }
-        var lista= pedidoRepository.findAllWhereStatusINICIARByLogin(subject).stream().map(DadosPedidoPage::new).toList();
+        var page= pedidoRepository.findAllWhereStatusINICIARByLogin(subject,pageable).map(DadosPedidoPage::new);
 
-
-
-        return ResponseEntity.ok(List.of(lista));
+        return ResponseEntity.ok(page);
 
     }
 
