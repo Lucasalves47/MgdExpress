@@ -61,7 +61,7 @@ public class PedidoController {
     @Transactional
     public ResponseEntity MudarStadoDoPedido(@PathVariable Long idPedido,@RequestHeader("Authorization") String header,@PathVariable Double distancia){
 
-//        System.out.println("Entrei no mudar estado do pedido");
+        System.out.println("Entrei no mudar estado do pedido");
 
         var token = header.replace("Bearer ","");
         var id = tokenService.getId(token);
