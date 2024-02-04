@@ -60,7 +60,7 @@ public class Pedido {
         this.valorDoPedido = dadosPedido.valorPedido();
         this.metodoPagamento = dadosPedido.metodoPagamento();
         this.troco = dadosPedido.troco();
-        this.localizacao = dadosPedido.localizacao();
+        this.localizacao = new Localizacao("0.0","0.0");
         this.taxaEntrega = 8.0;
         this.itensDoPedido = dadosPedido.itensDoPedido();
         this.status = Status.INICIAR;
