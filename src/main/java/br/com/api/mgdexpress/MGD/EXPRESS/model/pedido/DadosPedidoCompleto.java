@@ -31,10 +31,11 @@ public record DadosPedidoCompleto(
         DadosMotoboy dadosMotoboy,
         @NotNull
         Localizacao localizacao,
+        Localizacao localizacaoLoja,
         Double troco,
         Double taxaEntrega) {
     public DadosPedidoCompleto(Pedido pedido) {
-        this(pedido.getId(), pedido.getNomeEstabelecimento(), pedido.getLocalOrigem(), pedido.getLocalDestino(), pedido.getValorDoPedido(), pedido.getMetodoPagamento(), pedido.getItensDoPedido(), pedido.getStatus(), pedido.getDataCriacao(), new DadosGerente(pedido.getGerente()), new DadosMotoboy(pedido.getMotoboy()),pedido.getLocalizacao(), pedido.getTroco(), pedido.getTaxaEntrega());
+        this(pedido.getId(), pedido.getNomeEstabelecimento(), pedido.getLocalOrigem(), pedido.getLocalDestino(), pedido.getValorDoPedido(), pedido.getMetodoPagamento(), pedido.getItensDoPedido(), pedido.getStatus(), pedido.getDataCriacao(), new DadosGerente(pedido.getGerente()), new DadosMotoboy(pedido.getMotoboy()),pedido.getLocalizacao(),pedido.getLocalizacaoLoja(), pedido.getTroco(), pedido.getTaxaEntrega());
     }
 }
 
