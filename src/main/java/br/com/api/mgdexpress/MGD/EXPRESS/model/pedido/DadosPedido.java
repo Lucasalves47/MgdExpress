@@ -21,7 +21,7 @@ public record DadosPedido(
         String metodoPagamento,
         @NotBlank
         String itensDoPedido,
-        @NotNull
+
         Localizacao localizacao,
         @NotNull
         Double troco,

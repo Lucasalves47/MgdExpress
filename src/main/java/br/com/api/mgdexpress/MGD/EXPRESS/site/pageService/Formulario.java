@@ -77,16 +77,32 @@ public class Formulario {
                                    
                         <label for="localDestino">Local de Destino:</label>
                         <input type="text" id="localDestino" name="localDestino" required />
-                                    
-                        <label for="valor">Valor:</label>
-                        <input type="number" id="valor" name="valor" required />
-                                    
-                        <label for="observacao">Observação:</label>
-                        <textarea id="observacao" name="observacao" rows="8" cols="50"></textarea>
-                                      
+                             
+                        
+                        <label for="valorPedido">Valor:</label>
+                        <input type="number" id="valorPedido" name="valor" required />
+                            
+                         <label for="metodoPagamento">Metodo De Pagamento:</label>
+                        <select id="metodoPagamento" name="metodoPagamento">
+                          <option value="opcao1">DINHEIRO</option>
+                          <option value="opcao2">CRÉDITO</option>
+                          <option value="opcao3">DÉBITO</option>
+                          <option value="opcao4">VALE REFEIÇÃO</option>
+                          <option value="opcao5">VALE ALIMENTAÇÃO</option>
+                          <option value="opcao6">VALE-PRESENTE</option>
+                          <option value="opcao7">CARTEIRA DIGITAL</option>
+                          <option value="opcao8">PIX</option>
+                          <option value="opcao9">não especificado</option>
+                        </select>
+                        
+                         <label for="troco">Troco:</label>
+                        <input type="number" id="troco" name="troco" required />
+                          
+                                       
                         <label for="itensDoPedido">Itens do Pedido:</label>
                         <textarea id="itensDoPedido" name="itensDoPedido" placeholder="Digite seu texto aqui..." rows="8" cols="50"></textarea>
-                                       
+                             
+                          
                         <button type="button" onclick="enviarPedido()">Criar</button>
                        
                     </form>

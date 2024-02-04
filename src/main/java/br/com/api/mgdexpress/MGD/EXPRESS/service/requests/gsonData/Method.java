@@ -21,7 +21,7 @@ public class Method {
             case "MEAL_VOUCHER"->"VALE REFEIÇÃO";
             case "FOOD_VOUCHER"->"VALE ALIMENTAÇÃO";
             case "GIFT_CARD"->"VALE-PRESENTE";
-            case "DIGITAL_WALLE"->"CARTEIRA DIGITA";
+            case "DIGITAL_WALLE"->"CARTEIRA DIGITAL";
             case "PIX"->"PIX";
             default -> "não especificado";
         };
