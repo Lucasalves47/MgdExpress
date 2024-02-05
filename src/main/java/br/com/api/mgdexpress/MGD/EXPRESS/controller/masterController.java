@@ -63,8 +63,8 @@ public class masterController {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
     @GetMapping("/gerente/{id}")
-    public ResponseEntity GerentesById(@PathVariable Long id){
-        return ResponseEntity.ok(gerenteRepository.getReferenceById(id));
+    public ResponseEntity GerentesById(@PathVariable Integer id){
+        return ResponseEntity.ok(gerenteRepository.getReferenceById(id.longValue()));
     }
 
 
