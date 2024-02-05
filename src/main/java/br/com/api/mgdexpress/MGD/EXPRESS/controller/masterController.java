@@ -32,7 +32,7 @@ public class masterController {
     @Autowired
     private UserRepository userRepository;
 
-    Double total = 0.0;
+    Double total;
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
     @GetMapping("/motoboy")
@@ -49,7 +49,7 @@ public class masterController {
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
     @GetMapping("/motoboy/{id}")
     public ResponseEntity<DtoMotoboyDadosCompleto> MotoboysPorId(@PathVariable Long id){
-
+        total = 0.0;
         var motoboy = motoboyRepository.getReferenceById(id);
         historicoRepository.BuscarMotoboy(id).forEach(pedido ->{
             if(Objects.equals(pedido.getDataEntrega(), LocalDate.now())){
