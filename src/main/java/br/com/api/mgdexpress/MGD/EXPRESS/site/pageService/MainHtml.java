@@ -169,16 +169,24 @@ public class MainHtml {
                                                 }
                                                 else if(cardData.status == "INICIAR"){
                                                      cor = "green"
+                                                     var url = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+                                                     desenharTodasLocalizacaoEntrega(cardData.localizacaoEntrega.latitude,cardData.localizacaoEntrega.longitude,cardData.nomePedido,30,url)
                                                 }
                                                 else if(cardData.status == "ANDAMENTO"){
                                                     cor = "orange"
+                                                    var url = "http://maps.google.com/mapfiles/ms/icons/orange-dot.png"
+                                                     desenharTodasLocalizacaoEntrega(cardData.localizacaoEntrega.latitude,cardData.localizacaoEntrega.longitude,cardData.nomePedido,30,url)
                                                 }
                                                 else if(cardData.status == "FINALIZADO"){
                                                     cor = "red"
+                                                    var url = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+                                                     desenharTodasLocalizacaoEntrega(cardData.localizacaoEntrega.latitude,cardData.localizacaoEntrega.longitude,cardData.nomePedido,30,url)
                                                 }
+                                                
+                                               
                                                 let novoElemento = document.createElement('div')
                         
-                                                novoElemento.innerHTML = `<div id="card" class="card${cardData.id}" onclick="desenharLocalizacaoEntrega(${cardData.localizacaoEntrega.latitude},${cardData.localizacaoEntrega.longitude},${cardData.nomePedido})" onmousedown="iniciarArrastar(event, '.card${cardData.id}')">
+                                                novoElemento.innerHTML = `<div id="card" class="card${cardData.id}" onclick="desenharLocalizacaoEntrega(${cardData.localizacaoEntrega.latitude},${cardData.localizacaoEntrega.longitude},${cardData.nomePedido},80)" onmousedown="iniciarArrastar(event, '.card${cardData.id}')">
                                                     <h3 style="color:${cor};">${cardData.nomePedido}</h3>
                                                     <button class="btndetalhe" onclick="carregarPagina('${url}pedido/detalhes/${cardData.id}')">
                                                 <i class="fas fa-info-circle"></i>
@@ -193,6 +201,8 @@ public class MainHtml {
                         
                                             hideLoaderIcon()
                                             document.getElementById('cards').style.display = 'block'
+                                            
+                                            
                                         })
                                         .catch(error => {
                                             console.error('Erro na requisição:', error);

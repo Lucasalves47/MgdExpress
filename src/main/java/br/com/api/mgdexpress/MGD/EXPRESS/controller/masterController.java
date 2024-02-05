@@ -1,5 +1,6 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.controller;
 
+import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.DtoMotoboyDadosCompleto;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.Motoboy;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +32,8 @@ public class masterController {
     @Autowired
     private UserRepository userRepository;
 
+    Double total = 0.0;
+
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
     @GetMapping("/motoboy")
     public ResponseEntity ListarMotoboys(){
@@ -44,15 +48,16 @@ public class masterController {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
     @GetMapping("/motoboy/{id}")
-    public ResponseEntity<Motoboy> MotoboysPorId(@PathVariable Long id){
-        List<Motoboy> motoboy = new ArrayList<>();
-         motoboyRepository.findAll().forEach(boy ->{
-            if(boy.getId().equals(id)) {
-                motoboy.add(boy);
+    public ResponseEntity<DtoMotoboyDadosCompleto> MotoboysPorId(@PathVariable Long id){
+
+        var motoboy = motoboyRepository.getReferenceById(id);
+        historicoRepository.BuscarMotoboy(id).forEach(pedido ->{
+            if(Objects.equals(pedido.getDataEntrega(), LocalDate.now())){
+                total += pedido.getTaxa();
             }
         });
 
-        motoboy.forEach(System.out::println);
-        return ResponseEntity.ok(motoboy.get(0));
+        return ResponseEntity.ok(new DtoMotoboyDadosCompleto(motoboy,total));
+
     }
 }

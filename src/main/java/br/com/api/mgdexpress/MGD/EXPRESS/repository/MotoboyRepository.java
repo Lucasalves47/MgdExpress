@@ -24,4 +24,5 @@ public interface MotoboyRepository extends JpaRepository<Motoboy,Long> {
 
     @Query("SELECT MAX(e.id) FROM Motoboy e")
     Long encontrarMaiorId();
+
 }

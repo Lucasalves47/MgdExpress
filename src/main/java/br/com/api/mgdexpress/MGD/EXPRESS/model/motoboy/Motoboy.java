@@ -33,6 +33,7 @@ public class Motoboy {
     private Boolean ativo;
     private String emailGerente;
 
+
     public Motoboy(DadosMotoboyCadastro dadosMotoboy) {
         this.nome = dadosMotoboy.nome();
         this.telefone = dadosMotoboy.telefone();

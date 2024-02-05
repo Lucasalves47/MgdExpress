@@ -414,6 +414,18 @@ public class Home {
                                             position: { lat:latitude , lng:longitude},
                                             map: map,
                                             title: nomePedido+"",
+                                       });
+                        }
+                        
+                        function desenharTodasLocalizacaoEntrega(latitude,longitude,nomePedido,tamanho,url){
+                             var marker = new google.maps.Marker({
+                                            position: { lat:parseFloat(latitude) , lng:parseFloat(longitude)},
+                                            map: map,
+                                            title: nomePedido+"",
+                                            icon: {
+                                                    url: url,
+                                                    scaledSize: new google.maps.Size(tamanho, tamanho) // Tamanho do ícone personalizado
+                                                }
                                           
                                         });
                         }
