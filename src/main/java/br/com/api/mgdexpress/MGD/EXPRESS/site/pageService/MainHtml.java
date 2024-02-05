@@ -163,7 +163,7 @@ public class MainHtml {
                         
                                             var cor
                                             data.content.forEach(cardData => {
-                                               \s
+                                               
                                                 if(cardData.status == "INICIAR" && cardData.motoboy == null){
                                                     cor = "white"
                                                 }
