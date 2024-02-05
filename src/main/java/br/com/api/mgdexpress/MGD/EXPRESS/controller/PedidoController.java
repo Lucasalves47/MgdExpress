@@ -86,13 +86,12 @@ public class PedidoController {
         else{
             listaLocalizacao.setStatus(id,"");
             historicoRepository.save(new Historico(pedido));
-            pedidoRepository.deleteById(pedido.getId());
+            pedido.setStatus(Status.FINALIZADO);
             motoboy.setDisponivel(true);
             motoboy.setEmailGerente("");
 
             return ResponseEntity.noContent().build();
         }
-
     }
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
@@ -115,7 +114,7 @@ public class PedidoController {
                 }
             });
         }
-        var page= pedidoRepository.findAllWhereStatusINICIARByLogin(subject,pageable).map(DadosPedidoPage::new);
+        var page= pedidoRepository.findAllByLogin(subject,pageable).map(DadosPedidoPage::new);
 
         return ResponseEntity.ok(page);
 

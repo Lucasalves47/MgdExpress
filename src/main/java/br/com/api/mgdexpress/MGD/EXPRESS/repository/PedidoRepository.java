@@ -13,8 +13,8 @@ public interface PedidoRepository extends JpaRepository<Pedido,Long> {
     @Query("select p from Pedido p where p.status = INICIAR and p.motoboy.id = :id")
     List<Pedido> findAllWhereStatusINICIAR(Long id);
 
-    @Query("select p from Pedido p where p.status = INICIAR and p.gerente.email = :email and p.motoboy IS NULL")
-    Page<Pedido> findAllWhereStatusINICIARByLogin(String email, Pageable pageable);
+    @Query("select p from Pedido p where p.gerente.email = :email")
+    Page<Pedido> findAllByLogin(String email, Pageable pageable);
 
     @Query("select p from Pedido p where p.motoboy.email = :email")
     List<Pedido> findByEmailMotoboy(String email);
