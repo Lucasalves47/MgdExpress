@@ -97,18 +97,8 @@ public class Home {
                             margin-top: 8px;
                             display: inline;
                         }
-                               
-                        .btn-detalhe {
-                            background-color: #d5dcd500;
-                            color: cadetblue;
-                            border: none;
-                            padding: 10px 15px;
-                            border-radius: 100%;
-                            cursor: pointer;
-                            margin-left: 50%;
-                            display: inline;
-                        }
-                        #cardsTela button {
+                        
+                         .btnpageable{
                             background-color: #4CAF50;
                             color: white;
                             padding: 10px 20px;
@@ -118,10 +108,21 @@ public class Home {
                             font-size: 16px;
                             position: absolute;
                             bottom: 9px;
-                           
                         }
+                               
+                        .btndetalhe {
+                            background-color: #d5dcd500;
+                            color: cadetblue;
+                            border: none;
+                            padding: 10px 15px;
+                            border-radius: 100%;
+                            cursor: pointer;
+                            margin-left: 50%;
+                            display: inline;
+                        }
+                       
                         
-                         #cardsTela p{
+                         .numero_de_tela{
                         
                              color: white;
                              font-size: 16px;
@@ -131,9 +132,35 @@ public class Home {
                              }
                         
                         .btnpageableleft{
+                                background-color: #4CAF50;
+                            color: white;
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            position: absolute;
+                            bottom: 9px;
                               margin-left: 83%;
                         } 
+                        .loaderIcon {
+                                border: 4px solid #f3f3f3;
+                                border-top: 4px solid #3498db;
+                                border-radius: 50%;
+                                width: 30px;
+                                height: 30px;
+                                animation: spin 1s linear infinite;
+                                position: absolute;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                                display: none;
+                            }
                         
+                            @keyframes spin {
+                                0% { transform: rotate(0deg); }
+                                100% { transform: rotate(360deg); }
+                            }
                     </style>
                 </head>
                                
@@ -157,37 +184,56 @@ public class Home {
                     
                     <div id="cardsTela">
                         <div id="cards"> </div>
-                        
-                        <button class="btnpageable" onclick="back();"><</button>
-                        <p class="btnpageable">pagina 2 de 1</p>
-                        <button class="btnpageableleft" onclick="next();">></button>
+                         <div class="loaderIcon"></div>
+                        <button class="btnpageable" onclick="back()"><</button>
+                        <p class="numero_de_tela"></p>
+                        <button class="btnpageableleft" onclick="next()">></button>
                        
                     </div>
                 </main>
                                
                 <script>
-                    var page = 1
+                    var page = 0
+                    var elemento = document.querySelector(".numero_de_tela");
+                    
                
                     var pageMax;
                     listarPedidos(page)
+                         
                                
                     var map; // Variável global para o mapa
                     var lastMousePosition;
                     var mouseStopTimer;
                     
                     function back() {
-                    if((page-1) > 0){
+                    if((page-1) >= 0){
                         page -=1
+                        document.getElementById('cards').style.display = 'none'
+                        showLoaderIcon()
                         listarPedidos(page)
+                        elemento.textContent = `página ${page+1} de ${pageMax}`;
                         }
                        
                     }
                     function next() {
-                        if((page+1) <= pageMax){
+                        if((page+1) < pageMax){
                             page +=1
+                            document.getElementById('cards').style.display = 'none'
+                            showLoaderIcon()
                             listarPedidos(page)
+                            elemento.textContent = `página ${page+1} de ${pageMax}`;
+                           
                         }
                     }
+                    
+                    function showLoaderIcon() {
+                                document.querySelector(".loaderIcon").style.display = "block";
+                            }
+                    
+                            // Função para ocultar o ícone de carregamento
+                    function hideLoaderIcon() {
+                           document.querySelector(".loaderIcon").style.display = "none";
+                       }
                                
                     function iniciarArrastar(event, classe) {
                         let card = event.target.closest(classe);

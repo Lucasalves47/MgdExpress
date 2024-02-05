@@ -157,24 +157,28 @@ public class MainHtml {
                                 .then(data => {
                                
                                 document.getElementById("cards").innerHTML = "";
-                                
-                                    data.content.forEach(interData => {
-                                        const cardContainer = document.getElementById('cards');
-                                
-                                        interData.forEach(cardData => {
+                               
+                               const cardContainer = document.getElementById('cards');
+                               pageMax = data.totalPages
+                                    data.content.forEach(cardData => {
+                                        
                                      let novoElemento = document.createElement('div')
                                 
                                             novoElemento.innerHTML = `<div id="card" class="card${cardData.id}" onclick="desenharLocalizacaoEntrega(${cardData.localizacaoEntrega.latitude},${cardData.localizacaoEntrega.longitude},${cardData.nomePedido})" onmousedown="iniciarArrastar(event, '.card${cardData.id}')">
                             <h3>${cardData.nomePedido}</h3>
-                            <button class="btn-detalhe" onclick="carregarPagina('${url}pedido/detalhes/${cardData.id}')">
+                            <button class="btndetalhe" onclick="carregarPagina('${url}pedido/detalhes/${cardData.id}')">
                         <i class="fas fa-info-circle"></i>
                       </button>
                             <p>${cardData.localDestino}</p>
                            \s
                         </div>`
                                             cardContainer.appendChild(novoElemento);
-                                        });
+                                        
                                     });
+                                     elemento.textContent = `página ${page+1} de ${pageMax}`;
+                     
+                                     hideLoaderIcon()
+                                     document.getElementById('cards').style.display = 'block'
                                 })
                                 .catch(error => {
                                     console.error('Erro na requisição:', error);
