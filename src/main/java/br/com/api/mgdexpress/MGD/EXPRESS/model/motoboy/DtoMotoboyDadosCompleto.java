@@ -21,6 +21,6 @@ public record DtoMotoboyDadosCompleto(
          Double totalAReceberNoDia
 ) {
     public DtoMotoboyDadosCompleto(Motoboy motoboy, Double total) {
-        this(motoboy.getId(), motoboy.getNome(), motoboy.getTelefone(), motoboy.getEmail(), motoboy.getCpf(), motoboy.getNomeParente(), motoboy.getTelefoneEmergencia(), motoboy.getChavePix(), motoboy.getLocalizacao(),motoboy.getHistico(),motoboy.getDisponivel(),motoboy.getAtivo(), motoboy.getEmailGerente(), total);
+        this(motoboy.getId(), motoboy.getNome(), motoboy.getTelefone(), motoboy.getEmail(), motoboy.getCpf(), motoboy.getNomeParente(), motoboy.getTelefoneEmergencia(), motoboy.getChavePix(), (motoboy.getLocalizacao()== null)?null:motoboy.getLocalizacao() ,motoboy.getHistico(),motoboy.getDisponivel(),motoboy.getAtivo(), motoboy.getEmailGerente(), total);
     }
 }
