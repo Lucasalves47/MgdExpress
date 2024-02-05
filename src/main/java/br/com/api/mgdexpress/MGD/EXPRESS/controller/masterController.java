@@ -60,4 +60,12 @@ public class masterController {
         return ResponseEntity.ok(new DtoMotoboyDadosCompleto(motoboy,total));
 
     }
+
+    @PreAuthorize("hasRole('ROLE_USER_MASTER')")
+    @GetMapping("/gerente/{id}")
+    public ResponseEntity GerentesById(@PathVariable Long id){
+        return ResponseEntity.ok(gerenteRepository.getReferenceById(id));
+    }
+
+
 }
