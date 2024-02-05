@@ -168,13 +168,13 @@ public class MainHtml {
                                                     cor = "white"
                                                 }
                                                 else if(cardData.status == "INICIAR"){
-                        
+                                                     cor = "green"
                                                 }
                                                 else if(cardData.status == "ANDAMENTO"){
                                                     cor = "orange"
                                                 }
                                                 else if(cardData.status == "FINALIZADO"){
-                                                    cor = red
+                                                    cor = "red"
                                                 }
                                                 let novoElemento = document.createElement('div')
                         
