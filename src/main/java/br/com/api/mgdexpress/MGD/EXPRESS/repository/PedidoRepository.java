@@ -16,7 +16,7 @@ public interface PedidoRepository extends JpaRepository<Pedido,Long> {
     @Query("select p from Pedido p where p.gerente.email = :email")
     Page<Pedido> findAllByLogin(String email, Pageable pageable);
 
-    @Query("select p from Pedido p where p.motoboy.email = :email")
+    @Query("select p from Pedido p where p.motoboy.email = :email and p.status = ANDAMENTO")
     List<Pedido> findByEmailMotoboy(String email);
 
     @Query("select p from Pedido p where p.status = ANDAMENTO and p.id not in (select h.pedidoId from Historico h)")
