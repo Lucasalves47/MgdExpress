@@ -77,7 +77,7 @@ public class FormLogin {
                             
                                         <button type="button" onclick="login()">Login</button>
                             
-                                        <a href='"""+url+"/site/gerente/solicitacao/cadastro'>Cadastre-se</a>"+"""
+                                        <a href='"""+url+"/site/gerente/cadastroGerenteSemIfood'>Cadastre-se</a>"+"""
                                     </form>
                                 </div>
                             </body>

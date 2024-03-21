@@ -1,6 +1,7 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.site;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.GerenteRepository;
+import br.com.api.mgdexpress.MGD.EXPRESS.repository.HandeShakeDisputRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.HistoricoRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.PedidoRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.TokenService;
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/site/gerente")
 public class ControllerSiteGerente {
 
-    //public String url = "http://localhost:8080";
-    public String url = "https://mgdexpress-production-bdc8.up.railway.app";
+    public String url = "http://localhost:8080";
+    //public String url = "https://mgdexpress-production-bdc8.up.railway.app";
 
     @Autowired
     private HistoricoRepository historicoRepository;
@@ -27,6 +28,8 @@ public class ControllerSiteGerente {
     private TokenService tokenService;
     @Autowired
     private GerenteRepository gerenteRepository;
+    @Autowired
+    private HandeShakeDisputRepository handeShakeDisputRepository;
 
     @GetMapping
     public String mainHtml(){
@@ -89,7 +92,13 @@ public class ControllerSiteGerente {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/pedido/detalhes/{id}")
-    public ResponseEntity<HtmlPage> detalharPedido(@PathVariable Long id){
+    public ResponseEntity<HtmlPage> detalharPedido(@PathVariable Long id,@RequestHeader("Authorization") String header){
+
+        var token = header.replace("Bearer ","");
+        var idgerente = tokenService.getId(token);
+        var gerente = gerenteRepository.getReferenceById(idgerente);
+
+
         var pedido = pedidoRepository.getReferenceById(id);
         return ResponseEntity.ok(new HtmlPage(DetalhePedido.detalhar(pedido,url)));
        // return ResponseEntity.ok(new HtmlPage(EmConstrucao.html()));
@@ -105,4 +114,22 @@ public class ControllerSiteGerente {
     public ResponseEntity<HtmlPage> historcoEntregas(){
         return ResponseEntity.ok(new HtmlPage(HistoricoEntregas.html(url)));
     }
+
+    @GetMapping("/Handshake_disput")
+    public ResponseEntity<HtmlPage> Handshake_disputList(){
+        return ResponseEntity.ok(new HtmlPage(Handshake_disput.html(url)));
+    }
+
+    @GetMapping("/Handshake_disput/detalhes/{id}")
+    public ResponseEntity<HtmlPage> HandshakeDetalhes(@PathVariable String id){
+        var handShake = handeShakeDisputRepository.getReferenceById(id);
+        var pedido = pedidoRepository.findByIdPedidoIfood(handShake.getOrderId());
+        return ResponseEntity.ok(new HtmlPage(HandshakeDetalhe.html(url,pedido,handShake)));
+    }
+
+    @GetMapping("/cadastroGerenteSemIfood")
+    public ResponseEntity cadastroGerenteSemIfood(){
+        return ResponseEntity.ok(formularioCadastroSemIfood.html(url));
+    }
+
 }

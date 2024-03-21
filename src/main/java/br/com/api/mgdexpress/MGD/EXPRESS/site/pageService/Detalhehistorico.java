@@ -99,13 +99,13 @@ public class Detalhehistorico {
                                    </p>
                                    <p>Local de Destino : """ + dados.getLocalDestino() + """
                                    </p>
-                                   <p>Valor : """ + dados.getValorPedido() + """
+                                   <p>Valor : """ + dados.getValorDoPedido() + """
                                    </p>
                                    <p>Observação : """ + dados.getMetodoPagamento() + """
                                    </p>
                                    <p>Troco : """ + dados.getTroco() + """
                                    </p>
-                                   <p>Taxa do Motoboy : """ + dados.getTaxa() + """
+                                   <p>Taxa do Motoboy : """ + dados.getTaxaEntrega() + """
                                    </p>
                                    <p>Itens do Pedido : """ + dados.getItensDoPedido() + """
                                    </p>

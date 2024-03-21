@@ -53,7 +53,7 @@ public class masterController {
         var motoboy = motoboyRepository.getReferenceById(id);
         historicoRepository.BuscarMotoboy(id).forEach(pedido ->{
             if(Objects.equals(pedido.getDataEntrega(), LocalDate.now())){
-                total += pedido.getTaxa();
+                total += pedido.getTaxaEntrega();
             }
         });
 

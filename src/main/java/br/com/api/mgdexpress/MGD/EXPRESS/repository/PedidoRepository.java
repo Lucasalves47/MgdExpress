@@ -13,7 +13,7 @@ public interface PedidoRepository extends JpaRepository<Pedido,Long> {
     @Query("select p from Pedido p where p.status = INICIAR and p.motoboy.id = :id")
     List<Pedido> findAllWhereStatusINICIAR(Long id);
 
-    @Query("select p from Pedido p where p.gerente.email = :email")
+    @Query("select p from Pedido p where p.gerente.email = :email ORDER BY p.dataCriacao DESC")
     Page<Pedido> findAllByLogin(String email, Pageable pageable);
 
     @Query("select p from Pedido p where p.motoboy.email = :email and p.status = ANDAMENTO")
@@ -25,4 +25,6 @@ public interface PedidoRepository extends JpaRepository<Pedido,Long> {
     Pedido getReferenceByIdAndNotinHistorico(Long id);
 
     Pedido findByIdPedidoIfood(String pedidoid);
+
+    Boolean existsByIdPedidoIfood(String pedidoid);
 }

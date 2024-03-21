@@ -22,6 +22,8 @@ public class DtoDetalhesDoPedido {
     private List<Item> items;
     private Total total;
     private Payments payments;
+    private Schedule schedule;
+    private List<Beneficios> benefits;
 }
 
 

@@ -6,6 +6,6 @@ import java.time.LocalDate;
 public record DadosHistoricoListMotoboy(Long id, LocalDate dataEntrega, String nomeStabelecimento, BigDecimal valor) {
 
     public DadosHistoricoListMotoboy (Historico historico){
-        this(historico.getId(), historico.getDataEntrega(),historico.getNomeEstabelecimento(),new BigDecimal(historico.getTaxa()));
+        this(historico.getId(), historico.getDataEntrega(),historico.getNomeEstabelecimento(),new BigDecimal(historico.getTaxaEntrega()));
     }
 }

@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -32,6 +35,7 @@ public class Motoboy {
     private Boolean disponivel;
     private Boolean ativo;
     private String emailGerente;
+    private LocalDateTime ultimaEntrega;
 
 
     public Motoboy(DadosMotoboyCadastro dadosMotoboy) {

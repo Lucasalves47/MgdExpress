@@ -1,9 +1,11 @@
 package br.com.api.mgdexpress.MGD.EXPRESS.controller;
 
+import br.com.api.mgdexpress.MGD.EXPRESS.Login;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.DadosGerente;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.DtoGerenteTemporario;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerente.Gerente;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerenteTemporario.DadosGerenteTemporarioList;
+import br.com.api.mgdexpress.MGD.EXPRESS.model.gerenteTemporario.DtoGerenteTemporarioSEmIfood;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.gerenteTemporario.GerenteTemporario;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.users.User;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.GerenteTemporarioRepository;
@@ -34,9 +36,9 @@ public class GerenteTemporarioController {
     @Transactional
     public ResponseEntity criarGerente(@Valid @RequestBody DtoGerenteTemporario dadosGerente){
         var request = new Requests();
-        var token = request.requestToken(dadosGerente.clientId(), dadosGerente.clientSecret());
+        var token = request.requestToken(Login.clientId, Login.clientSecret);
         System.out.println(token);
-        var dadosGerenteComEndereço = request.requestDadosGerente(token);
+        var dadosGerenteComEndereço = request.requestDadosGerente(token,dadosGerente.name(),dadosGerente.CorporativeName());
         var user = userRepository.findByUsername(dadosGerente.email());
 
         if(user != null){
@@ -44,6 +46,20 @@ public class GerenteTemporarioController {
         }
         gerenteRepository.save(new GerenteTemporario(dadosGerenteComEndereço,dadosGerente));
         return ResponseEntity.ok().build();
+    }
+
+
+    @PostMapping("/cadastroSemIfood")
+    public ResponseEntity criarGerenteSemIfood(@Valid @RequestBody DtoGerenteTemporarioSEmIfood dadosGerente){
+        var user = userRepository.findByUsername(dadosGerente.email());
+
+        if(user != null){
+            return ResponseEntity.status(422).body("usuario ja cadastrado");
+        }
+
+        gerenteRepository.save(new GerenteTemporario(dadosGerente));
+        return ResponseEntity.ok().build();
+
     }
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
@@ -65,5 +81,8 @@ public class GerenteTemporarioController {
         gerenteRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
+
+
 
 }

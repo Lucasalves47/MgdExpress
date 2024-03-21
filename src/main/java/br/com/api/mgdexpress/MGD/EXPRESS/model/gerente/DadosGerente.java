@@ -17,16 +17,13 @@ public record DadosGerente(
         @NotBlank
         String nomeEstabelecimento,
         @NotBlank
-        String localEstabelecimento,
-        @NotBlank
-        String clientId,
-        @NotBlank
-        String clientSecret) {
+        String localEstabelecimento
+       ) {
     public DadosGerente(Gerente gerente) {
-        this(gerente.getId(),gerente.getNome(), gerente.getTelefone(), gerente.getEmail(), gerente.getSenha(),gerente.getNomeEstebelecimento(), gerente.getLocalEstabelecimento(), gerente.getClientId(), gerente.getClientSecret());
+        this(gerente.getId(),gerente.getNome(), gerente.getTelefone(), gerente.getEmail(), gerente.getSenha(),gerente.getNomeEstebelecimento(), gerente.getLocalEstabelecimento());
     }
 
     public DadosGerente(GerenteTemporario gerenteTemporario) {
-        this(gerenteTemporario.getId(),gerenteTemporario.getNome(),gerenteTemporario.getTelefone(),gerenteTemporario.getEmail(),null,gerenteTemporario.getNomeEstebelecimento(),gerenteTemporario.getLocalEstabelecimento(), gerenteTemporario.getClientId(), gerenteTemporario.getClientSecret());
+        this(gerenteTemporario.getId(),gerenteTemporario.getNome(),gerenteTemporario.getTelefone(),gerenteTemporario.getEmail(),null,gerenteTemporario.getNomeEstebelecimento(),gerenteTemporario.getLocalEstabelecimento());
     }
 }

@@ -70,20 +70,20 @@ public class GerenteController {
 
     }
 
-    @GetMapping("/listarMotoboysEntregas")
-    public ResponseEntity<List<DadosListaHistoricoEntregasDoDia>> listaHistoricoEntregas(@RequestHeader("Authorization") String header){
+    @GetMapping("/listarMotoboysEntregas/{comanda}")
+    public ResponseEntity<List<DadosListaHistoricoEntregasDoDia>> listaHistoricoEntregas(@RequestHeader("Authorization") String header,@PathVariable String comanda){
         List<DadosListaHistoricoEntregasDoDia> listaDeHistorico = new ArrayList<>(Collections.nCopies(motoboyRepository.encontrarMaiorId().intValue() + 1, null));
         ArrayList<DtoEntregaDistancia> entregas = new ArrayList<>(Collections.nCopies(motoboyRepository.encontrarMaiorId().intValue() + 1, null));
         List<DadosListaHistoricoEntregasDoDia> dto = new ArrayList<>();
 
         var token = header.replace("Bearer ","");
         var email = tokenService.getSubject(token);
-        var historicos = historicoRepository.BuscarPorEmailGerente(email);
+        var historicos =(comanda.isEmpty())? historicoRepository.BuscarPorEmailGerente(email):historicoRepository.BuscarPorEmailGerenteEIdIfood(email,comanda);
 
         historicos.forEach(historico -> {
             var id = historico.getMotoboy().getId().intValue();
             var km = historico.getDistancia();
-            var valor = new BigDecimal(historico.getTaxa());
+            var valor = new BigDecimal(historico.getTaxaEntrega());
             if(Objects.equals(historico.getDataEntrega(), LocalDate.now())){
             if(entregas.get(id) == null){
                 entregas.set(id,new DtoEntregaDistancia(1,km,valor));

@@ -21,5 +21,6 @@ public interface HistoricoRepository extends JpaRepository<Historico,Long> {
     @Query("select h from Historico h where h.gerente.email = :email ORDER BY h.dataEntrega DESC")
     List<Historico> BuscarPorEmailGerente(String email);
 
-
+    @Query("select h from Historico h where h.gerente.email = :email and h.nomePedido = :comanda ORDER BY h.dataEntrega DESC")
+    List<Historico> BuscarPorEmailGerenteEIdIfood(String email, String comanda);
 }

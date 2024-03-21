@@ -25,6 +25,7 @@ public class FilterToken extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         String token;
+        
         var authorizationHeder = request.getHeader("Authorization");
         if(authorizationHeder != null){
             token = authorizationHeder.replace("Bearer ","");

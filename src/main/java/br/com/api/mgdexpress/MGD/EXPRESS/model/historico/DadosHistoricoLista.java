@@ -8,6 +8,6 @@ import java.time.LocalDate;
 public record DadosHistoricoLista(Long id, LocalDate dataEntrega, String motoboyNome, String nomeStabelecimento, BigDecimal valor) {
 
     public DadosHistoricoLista (Historico historico){
-        this(historico.getId(), historico.getDataEntrega(), historico.getMotoboy().getNome(),historico.getNomeEstabelecimento(),historico.getValorPedido());
+        this(historico.getId(), historico.getDataEntrega(), historico.getMotoboy().getNome(),historico.getNomeEstabelecimento(),historico.getValorDoPedido());
     }
 }

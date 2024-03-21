@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DtolistaGerente {
-
     private String id;
+    private String name;
+    private String corporateName;
 }

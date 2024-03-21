@@ -2,8 +2,10 @@ package br.com.api.mgdexpress.MGD.EXPRESS.controller;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.controller.listaLocalizacao.ListaLocalizacao;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.historico.Historico;
+import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.DtoLocalizacao;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.pedido.*;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.*;
+import br.com.api.mgdexpress.MGD.EXPRESS.service.CalculaDistanciCordenadas;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.RegrasService;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.TokenService;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.requests.Requests;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +43,9 @@ public class PedidoController {
 
     @Autowired
     private ListaLocalizacao listaLocalizacao;
+
+    @Autowired
+    private HandeShakeDisputRepository handeShakeDisputRepository;
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @PostMapping
@@ -89,6 +95,7 @@ public class PedidoController {
             pedido.setStatus(Status.FINALIZADO);
             motoboy.setDisponivel(true);
             motoboy.setEmailGerente("");
+            motoboy.setUltimaEntrega(LocalDateTime.now());
 
             return ResponseEntity.noContent().build();
         }
@@ -96,8 +103,9 @@ public class PedidoController {
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER') OR hasRole('ROLE_USER_GERENTE')")
     @GetMapping("/pendente/gerente")
-    public ResponseEntity<Page<DadosPedidoPage>> listar(@RequestHeader("Authorization") String header,@PageableDefault(size = 7) Pageable pageable){
-//        System.out.println("Entrei no pedido pendente gerente");
+    @Transactional
+    public ResponseEntity listar(@RequestHeader("Authorization") String header,@PageableDefault(size = 7) Pageable pageable){
+        System.out.println("Entrei no pedido pendente gerente");
         var token = header.replace("Bearer ","");
         var subject = tokenService.getSubject(token);
         var id = tokenService.getId(token);
@@ -105,15 +113,34 @@ public class PedidoController {
 
         var request = new Requests(gerenteRepository);
 
+
         var pedidos = request.requestPedidosPendentes(id);
+
         if(pedidos != null){
             pedidos.forEach(pedidoid ->{
-                if(pedidoRepository.findByIdPedidoIfood(pedidoid.getOrderId()) == null) {
+
+                if(pedidoid.getCode().equals("HSD")){
+                    handeShakeDisputRepository.save(pedidoid);
+                }
+                else if(!pedidoRepository.existsByIdPedidoIfood(pedidoid.getOrderId())) {
                     var pedidoIfood = request.requstDetalhes(pedidoid.getOrderId(), id);
                     pedidoRepository.save(new Pedido(pedidoIfood, gerente.getToken(), gerente));
                 }
+                else if(pedidoid.getCode().equals("CFM")){
+                    pedidoRepository.findByIdPedidoIfood(pedidoid.getOrderId()).setStatus(Status.IFOODACEITO);
+                }
+                else if(pedidoid.getCode().equals("CAN")){
+                    pedidoRepository.findByIdPedidoIfood(pedidoid.getOrderId()).setStatus(Status.CANCELADO);
+                }
+                else if(pedidoid.getCode().equals("DSP")){
+                    pedidoRepository.findByIdPedidoIfood(pedidoid.getOrderId()).setStatus(Status.FINALIZADO);
+                }
+
             });
+            request.acknowledgment(pedidos,id);
         }
+
+
         var page= pedidoRepository.findAllByLogin(subject,pageable).map(DadosPedidoPage::new);
 
         return ResponseEntity.ok(page);
@@ -169,4 +196,21 @@ public class PedidoController {
 
         return ResponseEntity.ok(new DadosPedidoCompleto(pedido));
     }
+
+    @GetMapping("peiddosSemInformacao/{comanda}")
+    public ResponseEntity peiddosSemInformacao(@RequestHeader("Authorization") String header,@PathVariable String comanda){
+        var token = header.replace("Bearer ","");
+        var subject = tokenService.getSubject(token);
+        var gerente = gerenteRepository.findByEmail(subject);
+        var pedido = pedidoRepository.save(new Pedido(gerente,comanda));
+        var motoboys = motoboyRepository.findAllDisponivelTrue().stream().map(DtoLocalizacao::new).toList();
+
+        var idmotobooy = CalculaDistanciCordenadas.menorDistancia(gerente.getLocalizacao(),motoboys);
+
+        joinMotoboy_Pedido(pedido.getId(),idmotobooy.id());
+
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

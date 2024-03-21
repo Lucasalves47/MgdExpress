@@ -19,6 +19,9 @@ public interface MotoboyRepository extends JpaRepository<Motoboy,Long> {
     @Query("select m from Motoboy m where m.id in(select p.motoboy.id from Pedido p where p.status = ANDAMENTO and p.gerente.email =:email)")
     Page<Motoboy> findAllAtivosEmEntregaByGerente(Pageable page,String email);
 
+    @Query("select m from Motoboy m where m.disponivel = true")
+    List<Motoboy> findAllDisponivelTrue();
+
 
     Motoboy findByEmail(String username);
 

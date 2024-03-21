@@ -2,8 +2,10 @@ package br.com.api.mgdexpress.MGD.EXPRESS.controller;
 
 import br.com.api.mgdexpress.MGD.EXPRESS.controller.listaLocalizacao.ListaLocalizacao;
 import br.com.api.mgdexpress.MGD.EXPRESS.model.motoboy.*;
+import br.com.api.mgdexpress.MGD.EXPRESS.repository.GerenteRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.MotoboyRepository;
 import br.com.api.mgdexpress.MGD.EXPRESS.repository.UserRepository;
+import br.com.api.mgdexpress.MGD.EXPRESS.service.CalculaDistanciCordenadas;
 import br.com.api.mgdexpress.MGD.EXPRESS.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -35,6 +37,9 @@ public class MotoboyController {
 
     @Autowired
     private ListaLocalizacao listaLocalizacao;
+
+    @Autowired
+    private GerenteRepository gerenteRepository;
 
 
     @PreAuthorize("hasRole('ROLE_USER_MASTER')")
@@ -140,5 +145,19 @@ public class MotoboyController {
 
         listaLocalizacao.getListaLocalizacao().forEach(System.out::println);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/buscarMotoboyDisponive")
+    public ResponseEntity<DtoId> buscarMotoboyDisponive(@RequestHeader("Authorization") String header){
+        var token = header.replace("Bearer ","");
+        var id = tokenService.getId(token);
+
+        var gernte = gerenteRepository.getReferenceById(id);
+        var motoboys = motoboyRepository.findAllDisponivelTrue().stream().map(DtoLocalizacao::new).toList();
+
+        var idmotobooy =CalculaDistanciCordenadas.menorDistancia(gernte.getLocalizacao(),motoboys);
+
+        return ResponseEntity.ok(idmotobooy);
+
     }
 }
